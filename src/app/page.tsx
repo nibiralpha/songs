@@ -1,9 +1,9 @@
-import Image from "next/image";
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <div>
-      
-    </div>
+    <>
+      <h1>Home</h1>
+
+      <p>Welcome to the music app.</p>
+    </>
   );
 }

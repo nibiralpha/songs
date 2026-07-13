@@ -3,6 +3,9 @@
 
 * {
   color: #fff !important;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -11,4 +14,15 @@ body {
   font-family: "Poppins", sans-serif;
   max-width: 100%;
   overflow-x: hidden;
+}
+
+.app {
+  display: flex;
+}
+
+.content {
+  margin-left: 240px;
+  padding: 30px;
+  width: calc(100% - 240px);
+  min-height: 100vh;
 }
