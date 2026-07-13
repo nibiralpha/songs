@@ -11,6 +11,7 @@
 
 .logo {
   margin-bottom: 32px;
+  /* padding-left: 20px; */
 }
 
 .sidebar ul {
@@ -29,4 +30,45 @@
 
 .sidebar a:hover {
   color: #1db954;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-left: 15px;
+}
+
+.icon {
+  margin-right: 10px;
+  font-size: 10px;
+}
+
+.icon svg {
+  stroke: #9e9e9e;
+}
+
+.name {
+  font-size: 0.9em;
+  color: #9e9e9e;
+}
+
+.icon_type {
+  width: 20px;
+  height: 20px;
+}
+
+.active {
+  background-color: #1d1d1d;
+  /* padding: 10px 0px; */
+  padding: 10px 10px 10px 19px;
+  border-radius: 10px;
+}
+
+.active .icon svg {
+  stroke: #fff !important;
+}
+
+.active .name {
+  color: #fff;
 }
