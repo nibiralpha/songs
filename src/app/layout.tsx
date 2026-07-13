@@ -1,5 +1,6 @@
 import "./globals.css";
-import Sidebar from "@Components/SidebarComponent/SidebarComponent";
+import Sidebar from "@Components/Layout/SidebarComponent/SidebarComponent";
+import Header from "@Components/Layout/HeaderComponent/HeaderComponent";
 
 export default function RootLayout({
   children,
@@ -12,9 +13,15 @@ export default function RootLayout({
         <div className="app">
           <Sidebar />
 
-          <main className="content">
-            {children}
-          </main>
+          <div className="main">
+            <div className="header_area">
+              <Header /> 
+            </div>
+
+            <div className={"content"}>{children}</div>
+
+            {/* <MusicPlayer /> */}
+          </div>
         </div>
       </body>
     </html>

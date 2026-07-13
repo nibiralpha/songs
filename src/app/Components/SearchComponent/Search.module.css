@@ -1,0 +1,20 @@
+.search-pad{
+    padding: 0 40px;
+    border-radius: 50px;
+    background-color: #1e1e1e;
+    border-color: #1e1e1e;
+    color: #fff;
+}
+
+.search_icon{
+    padding-left: 10px;
+}
+
+.search-pad::placeholder {
+  color: #a3a3a3;
+  opacity: 1; 
+}
+
+.search-pad:focus {
+  border-color: #1e1e1e;
+}
