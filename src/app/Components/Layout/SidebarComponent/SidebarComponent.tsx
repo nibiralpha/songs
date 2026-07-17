@@ -8,7 +8,7 @@ export default function SidebarComponent() {
   return (
     <aside className={styles.sidebar}>
       <h2 className={styles.logo}>
-        <img src="/image_d5352eb5.png" />
+        <img src="/logo.png" />
       </h2>
 
       <nav>

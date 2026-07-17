@@ -18,7 +18,7 @@ export default function RootLayout({
               <Header /> 
             </div>
 
-            <div className={"content"}>{children}</div>
+            <div className="content">{children}</div>
 
             {/* <MusicPlayer /> */}
           </div>
