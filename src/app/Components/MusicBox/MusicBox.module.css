@@ -1,17 +1,22 @@
-.desc{
-    margin-top: 12px;
+.desc {
+  margin-top: 12px;
 }
 
-.sub_title{
-    color: #828282;
+.title {
+  font-size: 0.9em;
 }
 
-.album_img{
-    width: 98%;
+.sub_title {
+  font-size: 0.8em;
+  color: #828282;
 }
 
-.section_name{
-    margin-bottom: 12px;
-    font-size: 1.2em;
-    font-weight: 600;
+.album_img {
+  width: 98%;
+}
+
+.section_name {
+  margin-bottom: 12px;
+  font-size: 1.2em;
+  font-weight: 600;
 }
