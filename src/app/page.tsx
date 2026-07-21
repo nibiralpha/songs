@@ -37,9 +37,55 @@ export default function HomePage() {
             spaceBetween={12}
           />
         </div>
+       
         <div className={styles.sections}>
           <ArtistComponent
-            title={"Populer artist"}
+            title={"New Tracks"}
+            data={[
+              {
+                img: "",
+                title: "Good reason",
+                artist: "Linkin Park",
+                album: "Daughter from hell",
+                time: "4:80",
+              },
+              {
+                img: "",
+                title: "Good reason",
+                artist: "Linkin Park",
+                album: "Daughter from hell",
+                time: "4:80",
+              },
+              {
+                img: "",
+                title: "Good reason",
+                artist: "Linkin Park",
+                album: "Daughter from hell",
+                time: "4:80",
+              },
+              {
+                img: "",
+                title: "Good reason",
+                artist: "Linkin Park",
+                album: "Daughter from hell",
+                time: "4:80",
+              },
+              {
+                img: "",
+                title: "Good reason",
+                artist: "Linkin Park",
+                album: "Daughter from hell",
+                time: "4:80",
+              },
+            ]}
+            slidesPerView={4}
+            spaceBetween={12}
+          />
+        </div>
+
+        <div className={styles.sections}>
+          <MusicBoxComponent
+            title={"The Hits"}
             data={[
               { title: "Linkin Park", album: "Hybirtheory" },
               { title: "Bonjovi", album: "Its my life" },

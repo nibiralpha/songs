@@ -3,14 +3,21 @@
 }
 
 .title {
-  text-align: center;
-  font-size: 0.9em;
+  text-align: left;
+  font-size: 0.8em;
+  color: #afafb6;
+  font-weight: 600;
 }
 
-.sub_title {
-  font-size: 0.8em;
-  color: #828282;
+.track_details {
+  font-size: 0.9em;
+  font-weight: 500;
 }
+
+/* .sub_title {
+  font-size: 0.7em;
+  color: #828282;
+} */
 
 .album_img {
   width: 98%;
@@ -24,11 +31,70 @@
 
 .artist_img {
   border-radius: 50%;
-  border-radius: 50%;
   width: 90%;
 }
 
-.img_container{
+.img_container {
   display: flex;
   justify-content: center;
+}
+
+.song_img {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  display: block;
+}
+
+.track_details {
+  padding: 8px 0;
+  vertical-align: middle;
+}
+
+/* --- Table Width Rules --- */
+
+.music_table {
+  width: 100%;
+  table-layout: fixed; /* Enforces strict adherence to your custom percentages */
+  border-collapse: collapse;
+}
+
+/* Individual column setups */
+.col_img {
+  width: 5%;
+}
+.col_title {
+  width: 26%;
+  padding-left: 15px;
+}
+.col_artist {
+  width: 23%;
+}
+.col_album {
+  width: 26%;
+}
+.col_time {
+  width: 10%;
+}
+.col_last {
+  width: 10%;
+}
+
+tbody tr:hover {
+  background-color: #151515;
+}
+
+tbody tr:first-child {
+  background-color: #151515;
+}
+
+.title_track {
+  padding-left: 15px;
+}
+
+.track_details,
+.track_details_img {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  vertical-align: middle;
 }
