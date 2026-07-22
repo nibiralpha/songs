@@ -51,7 +51,7 @@ export default function MusicBoxComponent({
           <SwiperSlide key={i}>
             <div className={styles.music_box}>
               <div className={styles.img_container}>
-                <img src={"/320x320.jpg"} className={styles.album_img}/>
+                <img src={"/320x320.jpg"} className={styles.album_img} alt={box.title}/>
               </div>
               <div className={styles.desc}>
                 <div className={styles.title}>{box.title}</div>
