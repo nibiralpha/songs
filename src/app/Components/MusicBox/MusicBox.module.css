@@ -24,17 +24,58 @@
 .img_container {
   position: relative;
   overflow: hidden;
-  
+
   /* border-radius: 8px;  */
+}
+
+.music_box {
+  position: relative;
+}
+
+.actions {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 2;
+
+  opacity: 0; /* Hidden by default */
+  transform: translateY(5px); /* Optional: slight slide-up animation effect */
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.action_button {
+  position: relative;
+  background-color: black;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.action_icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .img_container::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 20%, rgba(0, 0, 0, 0.7) 100%);
+  background: linear-gradient(
+    to bottom,
+    transparent 20%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
+  z-index: 1;
   /* pointer-events: none; */
 }
 
@@ -43,12 +84,18 @@
   cursor: pointer;
 }
 
-.desc:hover{
+.music_box:hover .actions {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.desc:hover {
   cursor: pointer;
 }
 
-/* .album_img {
+.album_img {
   width: 100%;
   display: block;
   object-fit: cover;
-} */
+  z-index: 0;
+}

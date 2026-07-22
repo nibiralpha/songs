@@ -9,6 +9,8 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
+import { FaHeart, FaPlay } from "react-icons/fa";
+
 interface Props {
   title: string;
   data: [];
@@ -51,7 +53,19 @@ export default function MusicBoxComponent({
           <SwiperSlide key={i}>
             <div className={styles.music_box}>
               <div className={styles.img_container}>
-                <img src={"/320x320.jpg"} className={styles.album_img} alt={box.title}/>
+                <img
+                  src={"/320x320.jpg"}
+                  className={styles.album_img}
+                  alt={box.title}
+                />
+                <div className={styles.actions}>
+                  <div className={styles.action_button}>
+                    <FaPlay className={styles.action_icon} size={16} />
+                  </div>
+                  <div className={styles.action_button}>
+                    <FaHeart className={styles.action_icon} size={16} />
+                  </div>
+                </div>
               </div>
               <div className={styles.desc}>
                 <div className={styles.title}>{box.title}</div>
