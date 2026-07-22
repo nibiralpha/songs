@@ -60,7 +60,7 @@ export default function ArtistComponent({
             <td className={styles.track_details}>Hyber theory</td>
             <td className={styles.track_details}>4:30</td>
             <td className={styles.track_details}>
-              <CiHeart size={20}/>
+              <CiHeart className={styles.heart} size={20}/>
             </td>
           </tr>
           <tr>
@@ -72,7 +72,7 @@ export default function ArtistComponent({
             <td className={styles.track_details}>Hyber theory</td>
             <td className={styles.track_details}>4:30</td>
             <td className={styles.track_details}>
-              <CiHeart size={20}/>
+              <CiHeart className={styles.heart} size={20}/>
             </td>
           </tr>
           <tr>
@@ -84,7 +84,7 @@ export default function ArtistComponent({
             <td className={styles.track_details}>Hyber theory</td>
             <td className={styles.track_details}>4:30</td>
             <td className={styles.track_details}>
-              <CiHeart size={20}/>
+              <CiHeart className={styles.heart} size={20}/>
             </td>
           </tr>
           <tr>
@@ -96,7 +96,7 @@ export default function ArtistComponent({
             <td className={styles.track_details}>Hyber theory</td>
             <td className={styles.track_details}>4:30</td>
             <td className={styles.track_details}>
-              <CiHeart size={20}/>
+              <CiHeart className={styles.heart} size={20}/>
             </td>
           </tr>
         </tbody>
