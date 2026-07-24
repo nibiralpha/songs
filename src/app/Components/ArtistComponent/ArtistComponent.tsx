@@ -66,7 +66,7 @@ export default function ArtistComponent({
               </div>
               <div className={styles.desc}>
                 <div className={styles.title}>{box.title}</div>
-              </div>
+               </div>
             </div>
           </SwiperSlide>
         ))}
