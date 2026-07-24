@@ -9,14 +9,16 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
+import { CiHeart } from "react-icons/ci";
+
 interface Props {
   title: string;
-  data: [];
+  data: any[]; // Changed from [] to any[] to avoid strict type errors
   slidesPerView: number;
   spaceBetween: number;
 }
 
-export default function NewTracksComponent({
+export default function ArtistComponent({
   title,
   data,
   slidesPerView,
@@ -24,43 +26,81 @@ export default function NewTracksComponent({
 }: Readonly<Props>) {
   return (
     <>
-      {/* <HeaderComponent /> */}
       <p className={styles.section_name}>{title}</p>
-      <Swiper
-        navigation={true}
-        //   modules={[Navigation]}
-        slidesPerView={slidesPerView}
-        spaceBetween={spaceBetween}
-        className="mySwiper"
-        breakpoints={{
-          0: {
-            slidesPerView: 1,
-          },
-          430: {
-            slidesPerView: 1,
-          },
-          768: {
-            slidesPerView: 3,
-          },
-          1024: {
-            slidesPerView: slidesPerView,
-          },
-        }}
-      >
-        {data.map((box, i) => (
-          <SwiperSlide key={i}>
-            <div className={styles.music_box}>
-              <div className={styles.img_container}>
-                <img src={"/320x320.jpg"} className={styles.album_img}/>
-              </div>
-              <div className={styles.desc}>
-                <div className={styles.title}>{box.title}</div>
-                <div className={styles.sub_title}>{box.album}</div>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {/* Added styles.music_table to handle layout behavior */}
+      <table className={styles.music_table}>
+        <thead>
+          <tr className={styles.table_row}>
+            {/* Assigned column-specific width classes to the th tags */}
+            <th className={`${styles.table_head} ${styles.col_img}`}></th>
+            <th className={`${styles.table_head} ${styles.col_title}`}>
+              <div className={styles.title}>TITLE</div>
+            </th>
+            <th className={`${styles.table_head} ${styles.col_artist}`}>
+              <div className={styles.title}>ARTIST</div>
+            </th>
+            <th className={`${styles.table_head} ${styles.col_album}`}>
+              <div className={styles.title}>ALBUM</div>
+            </th>
+            <th className={`${styles.table_head} ${styles.col_time}`}>
+              <div className={styles.title}>TIME</div>
+            </th>
+            <th className={`${styles.table_head} ${styles.col_last}`}>
+              <div className={styles.title}></div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td className={`${styles.track_details_img}`}>
+              <img className={styles.song_img} src={"/table.jpg"} alt="Cover" />
+            </td>
+            <td className={`${styles.track_details} ${styles.title_track}`}>No more sorrw</td>
+            <td className={styles.track_details}>Linkin Park</td>
+            <td className={styles.track_details}>Hyber theory</td>
+            <td className={styles.track_details}>4:30</td>
+            <td className={styles.track_details}>
+              <CiHeart className={styles.heart} size={20}/>
+            </td>
+          </tr>
+          <tr>
+            <td className={`${styles.track_details_img}`}>
+              <img className={styles.song_img} src={"/table.jpg"} alt="Cover" />
+            </td>
+            <td className={`${styles.track_details} ${styles.title_track}`}>No more sorrw</td>
+            <td className={styles.track_details}>Linkin Park</td>
+            <td className={styles.track_details}>Hyber theory</td>
+            <td className={styles.track_details}>4:30</td>
+            <td className={styles.track_details}>
+              <CiHeart className={styles.heart} size={20}/>
+            </td>
+          </tr>
+          <tr>
+            <td className={`${styles.track_details_img}`}>
+              <img className={styles.song_img} src={"/table.jpg"} alt="Cover" />
+            </td>
+            <td className={`${styles.track_details} ${styles.title_track}`}>No more sorrw</td>
+            <td className={styles.track_details}>Linkin Park</td>
+            <td className={styles.track_details}>Hyber theory</td>
+            <td className={styles.track_details}>4:30</td>
+            <td className={styles.track_details}>
+              <CiHeart className={styles.heart} size={20}/>
+            </td>
+          </tr>
+          <tr>
+            <td className={`${styles.track_details_img}`}>
+              <img className={styles.song_img} src={"/table.jpg"} alt="Cover" />
+            </td>
+            <td className={`${styles.track_details} ${styles.title_track}`}>No more sorrw</td>
+            <td className={styles.track_details}>Linkin Park</td>
+            <td className={styles.track_details}>Hyber theory</td>
+            <td className={styles.track_details}>4:30</td>
+            <td className={styles.track_details}>
+              <CiHeart className={styles.heart} size={20}/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </>
   );
 }

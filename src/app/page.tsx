@@ -1,6 +1,6 @@
 import MusicBoxComponent from "@Components/MusicBox/MusicBoxComponent";
 import styles from "./page.module.css";
-import ArtistComponent from "@Components/Artist/ArtistComponent";
+import NewTracksComponent from "@/src/app/Components/NewTracksComponent/NewTracksComponent";
 
 export default function HomePage() {
   return (
@@ -39,7 +39,7 @@ export default function HomePage() {
         </div>
        
         <div className={styles.sections}>
-          <ArtistComponent
+          <NewTracksComponent
             title={"New Tracks"}
             data={[
               {
