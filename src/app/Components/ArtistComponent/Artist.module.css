@@ -124,12 +124,16 @@
     font-size: 1em;
   }
 
-  .section_name{
+  .section_name {
     text-align: center;
   }
 
-  .music_box{
+  .music_box {
     width: 100%;
   }
+  /* .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
 }
-
