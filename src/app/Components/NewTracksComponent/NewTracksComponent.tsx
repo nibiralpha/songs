@@ -10,6 +10,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import { CiHeart } from "react-icons/ci";
+import { FaPlay } from "react-icons/fa";
 
 interface Props {
   title: string;
@@ -55,48 +56,57 @@ export default function ArtistComponent({
             <td className={`${styles.track_details_img}`}>
               <img className={styles.song_img} src={"/table.jpg"} alt="Cover" />
             </td>
-            <td className={`${styles.track_details} ${styles.title_track}`}>No more sorrw</td>
+
+            <td className={`${styles.track_details} ${styles.title_track}`}>
+              No more sorrw
+            </td>
             <td className={styles.track_details}>Linkin Park</td>
             <td className={styles.track_details}>Hyber theory</td>
             <td className={styles.track_details}>4:30</td>
             <td className={styles.track_details}>
-              <CiHeart className={styles.heart} size={20}/>
+              <CiHeart className={styles.heart} size={20} />
             </td>
           </tr>
           <tr>
             <td className={`${styles.track_details_img}`}>
               <img className={styles.song_img} src={"/table.jpg"} alt="Cover" />
             </td>
-            <td className={`${styles.track_details} ${styles.title_track}`}>No more sorrw</td>
+            <td className={`${styles.track_details} ${styles.title_track}`}>
+              No more sorrw
+            </td>
             <td className={styles.track_details}>Linkin Park</td>
             <td className={styles.track_details}>Hyber theory</td>
             <td className={styles.track_details}>4:30</td>
             <td className={styles.track_details}>
-              <CiHeart className={styles.heart} size={20}/>
+              <CiHeart className={styles.heart} size={20} />
             </td>
           </tr>
           <tr>
             <td className={`${styles.track_details_img}`}>
               <img className={styles.song_img} src={"/table.jpg"} alt="Cover" />
             </td>
-            <td className={`${styles.track_details} ${styles.title_track}`}>No more sorrw</td>
+            <td className={`${styles.track_details} ${styles.title_track}`}>
+              No more sorrw
+            </td>
             <td className={styles.track_details}>Linkin Park</td>
             <td className={styles.track_details}>Hyber theory</td>
             <td className={styles.track_details}>4:30</td>
             <td className={styles.track_details}>
-              <CiHeart className={styles.heart} size={20}/>
+              <CiHeart className={styles.heart} size={20} />
             </td>
           </tr>
           <tr>
             <td className={`${styles.track_details_img}`}>
               <img className={styles.song_img} src={"/table.jpg"} alt="Cover" />
             </td>
-            <td className={`${styles.track_details} ${styles.title_track}`}>No more sorrw</td>
+            <td className={`${styles.track_details} ${styles.title_track}`}>
+              No more sorrw
+            </td>
             <td className={styles.track_details}>Linkin Park</td>
             <td className={styles.track_details}>Hyber theory</td>
             <td className={styles.track_details}>4:30</td>
             <td className={styles.track_details}>
-              <CiHeart className={styles.heart} size={20}/>
+              <CiHeart className={styles.heart} size={20} />
             </td>
           </tr>
         </tbody>

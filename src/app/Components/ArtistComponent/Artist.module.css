@@ -112,3 +112,24 @@
   object-fit: cover;
   z-index: 0;
 }
+
+/* Mobile */
+
+@media screen and (max-width: 430px) {
+  .title {
+    font-size: 1em;
+  }
+
+  .sub_title {
+    font-size: 1em;
+  }
+
+  .section_name{
+    text-align: center;
+  }
+
+  .music_box{
+    width: 100%;
+  }
+}
+

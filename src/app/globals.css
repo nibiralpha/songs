@@ -42,3 +42,21 @@ body {
 .main {
   width: 100%;
 }
+
+/* Mobile */
+
+@media screen and (max-width: 430px) {
+  .content {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .header_area {
+    justify-content: start;
+    width: 100%;
+    /* margin-left: 230px; */
+    padding: 30px;
+    display: flex;
+    margin-left: 0;
+  }
+}

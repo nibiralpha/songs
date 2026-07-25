@@ -99,3 +99,15 @@
   object-fit: cover;
   z-index: 0;
 }
+
+/* Mobile */
+
+@media screen and (max-width: 430px) {
+  .title {
+    font-size: 1em;
+  }
+
+  .sub_title {
+    font-size: 1em;
+  }
+}

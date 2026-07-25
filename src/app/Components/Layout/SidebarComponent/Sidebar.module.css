@@ -72,3 +72,11 @@
 .active .name {
   color: #fff;
 }
+
+/* Mobile */
+
+@media screen and (max-width: 430px) {
+  .desktop_menu{
+    display: none;
+  }
+}
