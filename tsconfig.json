@@ -25,7 +25,7 @@
       "@Api/*": ["./src/app/Api/*"],
       "@Hooks/*": ["./src/app/Hooks/*"],
       "@Components/*": ["./src/app/Components/*"],
-      "@app-types/*": ["./src/app/types/*"],
+      "@app-types/*": ["./src/app/Types/*"],
       "@Services/*": ["./src/app/Services/*"],
       "@Constant/*": ["./src/app/Constant/*"],
       "@Helper/*": ["./src/app/Helper/*"],

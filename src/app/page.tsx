@@ -10,7 +10,7 @@ export default function HomePage() {
       <div className="">
         <div className={styles.sections}>
           <MusicBoxComponent
-            title={"Uploads for purchase"}
+            title={"Popular Songs"}
             data={[
               { title: "Linkin Park", album: "Hybirtheory" },
               { title: "Bonjovi", album: "Its my life" },
