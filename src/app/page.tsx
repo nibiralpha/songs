@@ -7,6 +7,8 @@ import ArtistComponent from "@/src/app/Components/ArtistComponent/ArtistComponen
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/Store";
 import useSongs from "@Hooks/useSongs";
+import { useEffect } from "react";
+import { fetchPopulerSongs } from "./Services/Home";
 
 export default function HomePage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -19,6 +21,14 @@ export default function HomePage() {
   };
 
   getInitData();
+
+  const fetchData = () => {
+    dispatch(fetchPopulerSongs());
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>

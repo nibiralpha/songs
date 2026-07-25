@@ -1,1 +1,1 @@
-export const BASEURL: string = `https://api.deezer.com/`;
+export const BASEURL: string = `https://api.deezer.com`;
