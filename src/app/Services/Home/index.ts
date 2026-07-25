@@ -5,18 +5,19 @@ import { getPopulerSongs } from "@Api/Songs";
 const fetchPopulerSongs = () => {
   return async (dispatch: Dispatch) => {
     try {
-    //   dispatch(startLoading(true));
+      //   dispatch(startLoading(true));
 
       const songsRes = await getPopulerSongs();
       const songsData = songsRes.data;
+      console.log(songsData);
 
-    //   dispatch(setCelebrityWorkData(data));
-    //   dispatch(startLoading(false));
+      //   dispatch(setCelebrityWorkData(data));
+      //   dispatch(startLoading(false));
 
       // dispatch(startLoading(false));
     } catch (error: unknown) {
       console.log(error);
-    //   dispatch(startLoading(true));
+      //   dispatch(startLoading(true));
 
       // dispatch(startLoading(false));
       // dispatch(getAllHeroesFailed(error))

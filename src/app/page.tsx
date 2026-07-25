@@ -1,9 +1,25 @@
+"use client";
+
 import MusicBoxComponent from "@Components/MusicBox/MusicBoxComponent";
 import styles from "./page.module.css";
 import NewTracksComponent from "@/src/app/Components/NewTracksComponent/NewTracksComponent";
 import ArtistComponent from "@/src/app/Components/ArtistComponent/ArtistComponent";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@redux/Store";
+import useSongs from "@Hooks/useSongs";
 
 export default function HomePage() {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const { populerSongs } = useSongs();
+
+  const getInitData = () => {
+    const populerSongsList = populerSongs;
+    console.log(populerSongsList);
+  };
+
+  getInitData();
+
   return (
     <>
       {/* <HeaderComponent /> */}
@@ -38,7 +54,7 @@ export default function HomePage() {
             spaceBetween={12}
           />
         </div>
-       
+
         <div className={styles.sections}>
           <NewTracksComponent
             title={"New Tracks"}

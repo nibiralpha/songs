@@ -1,6 +1,7 @@
 import "./globals.css";
 import Sidebar from "@Components/Layout/SidebarComponent/SidebarComponent";
 import Header from "@Components/Layout/HeaderComponent/HeaderComponent";
+import StoreProvider from "@redux/StoreProvider";
 
 export default function RootLayout({
   children,
@@ -10,19 +11,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="app">
-          <Sidebar />
+        <StoreProvider>
+          <div className="app">
+            <Sidebar />
 
-          <div className="main">
-            <div className="header_area">
-              <Header /> 
+            <div className="main">
+              <div className="header_area">
+                <Header />
+              </div>
+
+              <div className="content">{children}</div>
+
+              {/* <MusicPlayer /> */}
             </div>
-
-            <div className="content">{children}</div>
-
-            {/* <MusicPlayer /> */}
           </div>
-        </div>
+        </StoreProvider>
       </body>
     </html>
   );
