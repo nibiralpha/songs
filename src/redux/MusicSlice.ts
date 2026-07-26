@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TracksResponse } from "@app-types/PopulerSongs";
-// import { MoviesInterface } from "@app-types/MovieState";
+import { TrackData } from "@app-types/PopulerSongs";
+import { MusicInterface } from "@app-types/MusicState";
 
-// const initialState: MoviesInterface = {
-const initialState = {
+const initialState: MusicInterface = {
   populerSongs: {
     list: [],
     loading: true,
@@ -13,14 +12,23 @@ const initialState = {
 };
 
 export const MusicSlice = createSlice({
-  name: "movies",
+  name: "songs",
   initialState,
   reducers: {
-    setPopulerSongs: (state, action: PayloadAction<TracksResponse>) => {
-      return { ...state, populerSongs: action.payload.tracks };
+    setPopulerSongs: (state, action: PayloadAction<TrackData[]>) => {
+      return {
+        ...state,
+        populerSongs: { ...state.populerSongs, list: action.payload },
+      };
+    },
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      return {
+        ...state,
+        populerSongs: { ...state.populerSongs, loading: action.payload },
+      };
     },
   },
 });
 
-export const { setPopulerSongs } = MusicSlice.actions;
+export const { setPopulerSongs, setLoading } = MusicSlice.actions;
 export default MusicSlice.reducer;

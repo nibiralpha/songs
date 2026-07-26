@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import MusicSlice from "./MusicSlice";
 
 const rootReducer = combineReducers({
-  populerSongs: MusicSlice,
+  songs: MusicSlice,
 });
 
 export const store = configureStore({
