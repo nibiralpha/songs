@@ -37,14 +37,7 @@ export default function HomePage() {
         <div className={styles.sections}>
           <MusicBoxComponent
             title={"Popular Songs"}
-            data={[
-              { title: "Linkin Park", album: "Hybirtheory" },
-              { title: "Bonjovi", album: "Its my life" },
-              { title: "title 3", album: "test" },
-              { title: "title 4", album: "test" },
-              { title: "title 5", album: "test" },
-              { title: "title 6", album: "test" },
-            ]}
+            data={populerSongs.populerSongs.list}
             slidesPerView={4}
             spaceBetween={12}
           />

@@ -10,10 +10,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import { FaHeart, FaPlay } from "react-icons/fa";
-
+import { TrackData } from "@app-types/PopulerSongs";
 interface Props {
   title: string;
-  data: [];
+  data: TrackData[];
   slidesPerView: number;
   spaceBetween: number;
 }
@@ -54,7 +54,7 @@ export default function MusicBoxComponent({
             <div className={styles.music_box}>
               <div className={styles.img_container}>
                 <img
-                  src={"/320x320.jpg"}
+                  src={box.artist?.picture_medium}
                   className={styles.album_img}
                   alt={box.title}
                 />
@@ -69,7 +69,7 @@ export default function MusicBoxComponent({
               </div>
               <div className={styles.desc}>
                 <div className={styles.title}>{box.title}</div>
-                <div className={styles.sub_title}>{box.album}</div>
+                <div className={styles.sub_title}>{box.artist?.name}</div>
               </div>
             </div>
           </SwiperSlide>

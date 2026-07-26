@@ -10,7 +10,6 @@ const fetchPopulerSongs = () => {
 
       const songsRes = await getPopulerSongs();
       const songsData = songsRes?.data?.tracks?.data;
-      console.log("songs", songsData);
 
       dispatch(setPopulerSongs(songsData));
 
