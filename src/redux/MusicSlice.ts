@@ -9,6 +9,12 @@ const initialState: MusicInterface = {
     // error: false,
     // errorResponse: {},
   },
+  trendingSongs: {
+    list: [],
+    loading: true,
+    // error: false,
+    // errorResponse: {},
+  },
 };
 
 export const MusicSlice = createSlice({
@@ -21,6 +27,12 @@ export const MusicSlice = createSlice({
         populerSongs: { ...state.populerSongs, list: action.payload },
       };
     },
+    setTrendingSongs: (state, action: PayloadAction<TrackData[]>) => {
+      return {
+        ...state,
+        trendingSongs: { ...state.trendingSongs, list: action.payload },
+      };
+    },
     setLoading: (state, action: PayloadAction<boolean>) => {
       return {
         ...state,
@@ -30,5 +42,5 @@ export const MusicSlice = createSlice({
   },
 });
 
-export const { setPopulerSongs, setLoading } = MusicSlice.actions;
+export const { setPopulerSongs, setTrendingSongs, setLoading } = MusicSlice.actions;
 export default MusicSlice.reducer;

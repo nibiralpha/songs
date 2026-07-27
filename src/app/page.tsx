@@ -8,22 +8,22 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/Store";
 import useSongs from "@Hooks/useSongs";
 import { useEffect } from "react";
-import { fetchPopulerSongs } from "./Services/Home";
+import { fetchPopulerSongs, fetchTrendingSongs } from "@Services/Home";
 
 export default function HomePage() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { populerSongs } = useSongs();
+  const { populerSongs, trendingSongs } = useSongs();
 
-  const getInitData = () => {
-    const populerSongsList = populerSongs;
-    console.log(populerSongsList);
-  };
+  // const getInitData = () => {
+  //   const populerSongsList = populerSongs;
+  // };
 
-  getInitData();
+  // getInitData();
 
   const fetchData = () => {
     dispatch(fetchPopulerSongs());
+    dispatch(fetchTrendingSongs());
   };
 
   useEffect(() => {
@@ -44,15 +44,8 @@ export default function HomePage() {
         </div>
         <div className={styles.sections}>
           <MusicBoxComponent
-            title={"The Hits"}
-            data={[
-              { title: "Linkin Park", album: "Hybirtheory" },
-              { title: "Bonjovi", album: "Its my life" },
-              { title: "title 3", album: "test" },
-              { title: "title 4", album: "test" },
-              { title: "title 5", album: "test" },
-              { title: "title 6", album: "test" },
-            ]}
+            title={"Trending Songs"}
+            data={trendingSongs.trendingSongs.list}
             slidesPerView={4}
             spaceBetween={12}
           />

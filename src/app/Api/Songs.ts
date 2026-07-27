@@ -7,4 +7,9 @@ const getPopulerSongs = async (): Promise<AxiosResponse<TracksResponse>> => {
   return response;
 };
 
-export { getPopulerSongs };
+const getTrendingSongs = async (): Promise<AxiosResponse<TracksResponse>> => {
+  const response = await axios.get<TracksResponse>(`${BASEURL}/api/trending`);
+  return response;
+};
+
+export { getPopulerSongs, getTrendingSongs };
