@@ -1,7 +1,12 @@
 // import { startLoading } from "@redux/celebritySlice";
 import { Dispatch } from "@reduxjs/toolkit";
 import { getPopulerSongs, getSongsByCategory } from "@Api/Songs";
-import { setLoading, setPopSongs, setPopulerSongs } from "@/src/redux/MusicSlice";
+import {
+  setClassicalSongs,
+  setLoading,
+  setPopSongs,
+  setPopulerSongs,
+} from "@/src/redux/MusicSlice";
 import { Genre, Genres } from "@app-types/Genre";
 
 const fetchPopulerSongs = () => {
@@ -35,7 +40,12 @@ const fetchSongsByCategory = (category: Genre) => {
       const songsRes = await getSongsByCategory(categoryId);
       const songsData = songsRes?.data?.tracks?.data;
 
-      dispatch(setPopSongs(songsData));
+      if (category === "Pop") {
+        dispatch(setPopSongs(songsData));
+      } else if (category === "Classical") {
+        dispatch(setClassicalSongs(songsData));
+      }
+
       dispatch(setLoading(false));
     } catch (error) {
       // dispatch(getAllHeroesFailed(error))

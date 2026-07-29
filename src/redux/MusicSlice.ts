@@ -15,6 +15,12 @@ const initialState: MusicInterface = {
     // error: false,
     // errorResponse: {},
   },
+  classicalSongs: {
+    list: [],
+    loading: true,
+    // error: false,
+    // errorResponse: {},
+  },
 };
 
 export const MusicSlice = createSlice({
@@ -45,8 +51,27 @@ export const MusicSlice = createSlice({
         popSongs: { ...state.popSongs, loading: action.payload },
       };
     },
+    setClassicalSongs: (state, action: PayloadAction<TrackData[]>) => {
+      return {
+        ...state,
+        classicalSongs: { ...state.classicalSongs, list: action.payload },
+      };
+    },
+    setClassicalSongsLoading: (state, action: PayloadAction<boolean>) => {
+      return {
+        ...state,
+        classicalSongs: { ...state.classicalSongs, loading: action.payload },
+      };
+    },
   },
 });
 
-export const { setPopulerSongs, setPopSongs, setLoading, setPopSongsLoading } = MusicSlice.actions;
+export const {
+  setPopulerSongs,
+  setPopSongs,
+  setLoading,
+  setPopSongsLoading,
+  setClassicalSongs,
+  setClassicalSongsLoading,
+} = MusicSlice.actions;
 export default MusicSlice.reducer;

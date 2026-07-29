@@ -13,7 +13,7 @@ import { fetchPopulerSongs, fetchSongsByCategory } from "@Services/Home";
 export default function HomePage() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { populerSongs, popSongs } = useSongs();
+  const { populerSongs, popSongs, classicalSongs } = useSongs();
 
   // const getInitData = () => {
   //   const populerSongsList = populerSongs;
@@ -24,6 +24,7 @@ export default function HomePage() {
   const fetchData = () => {
     dispatch(fetchPopulerSongs());
     dispatch(fetchSongsByCategory("Pop"));
+    dispatch(fetchSongsByCategory("Classical"));
   };
 
   useEffect(() => {
@@ -98,15 +99,8 @@ export default function HomePage() {
 
         <div className={styles.sections}>
           <MusicBoxComponent
-            title={"New Album"}
-            data={[
-              { title: "Linkin Park", album: "Hybirtheory" },
-              { title: "Bonjovi", album: "Its my life" },
-              { title: "title 3", album: "test" },
-              { title: "title 4", album: "test" },
-              { title: "title 5", album: "test" },
-              { title: "title 6", album: "test" },
-            ]}
+            title={"Classical Songs"}
+            data={classicalSongs.classicalSongs.list}
             slidesPerView={4}
             spaceBetween={12}
           />
