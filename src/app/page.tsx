@@ -9,11 +9,14 @@ import { AppDispatch } from "@redux/Store";
 import useSongs from "@Hooks/useSongs";
 import { useEffect } from "react";
 import { fetchPopulerSongs, fetchSongsByCategory } from "@Services/Home";
+import { fetchArtist } from "@Services/Artist";
+import useArtist from "@Hooks/useArtist";
 
 export default function HomePage() {
   const dispatch = useDispatch<AppDispatch>();
 
   const { populerSongs, popSongs, classicalSongs } = useSongs();
+  const { artist } = useArtist();
 
   // const getInitData = () => {
   //   const populerSongsList = populerSongs;
@@ -25,6 +28,7 @@ export default function HomePage() {
     dispatch(fetchPopulerSongs());
     dispatch(fetchSongsByCategory("Pop"));
     dispatch(fetchSongsByCategory("Classical"));
+    dispatch(fetchArtist());
   };
 
   useEffect(() => {
@@ -108,17 +112,10 @@ export default function HomePage() {
         <div className={styles.sections}>
           <ArtistComponent
             title={"Populer Artist"}
-            data={[
-              { title: "Linkin Park", album: "Hybirtheory" },
-              { title: "Bonjovi", album: "Its my life" },
-              { title: "title 3", album: "test" },
-              { title: "title 4", album: "test" },
-              { title: "title 5", album: "test" },
-              { title: "title 6", album: "test" },
-            ]}
+            data={artist.artist.list}
             slidesPerView={4}
             spaceBetween={12}
-          />
+          />  
         </div>
       </div>
     </>

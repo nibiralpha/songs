@@ -10,10 +10,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import { FaHeart, FaPlay } from "react-icons/fa";
+import { Artist } from "@app-types/Artist";
 
 interface Props {
   title: string;
-  data: [];
+  data: Artist[]
   slidesPerView: number;
   spaceBetween: number;
 }
@@ -49,14 +50,14 @@ export default function ArtistComponent({
           },
         }}
       >
-        {data.map((box, i) => (
+        {data?.map((artist, i) => (
           <SwiperSlide key={i}>
             <div className={styles.music_box}>
               <div className={styles.img_container}>
                 <img
-                  src={"/320x320.jpg"}
+                  src={artist.picture_medium}
                   className={styles.album_img}
-                  alt={box.title}
+                  alt={artist.name}
                 />
                 <div className={styles.actions}>
                   <div className={styles.action_button}>
@@ -65,7 +66,7 @@ export default function ArtistComponent({
                 </div>
               </div>
               <div className={styles.desc}>
-                <div className={styles.title}>{box.title}</div>
+                <div className={styles.title}>{artist.name}</div>
                </div>
             </div>
           </SwiperSlide>
