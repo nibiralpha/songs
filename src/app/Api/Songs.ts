@@ -7,9 +7,11 @@ const getPopulerSongs = async (): Promise<AxiosResponse<TracksResponse>> => {
   return response;
 };
 
-const getTrendingSongs = async (): Promise<AxiosResponse<TracksResponse>> => {
-  const response = await axios.get<TracksResponse>(`${BASEURL}/api/trending`);
+const getSongsByCategory = async (
+  categoryID: number,
+): Promise<AxiosResponse<TracksResponse>> => {
+  const response = await axios.get<TracksResponse>(`${BASEURL}/api/song_by_category/${categoryID}`);
   return response;
 };
 
-export { getPopulerSongs, getTrendingSongs };
+export { getPopulerSongs, getSongsByCategory };

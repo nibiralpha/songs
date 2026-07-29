@@ -2,7 +2,7 @@ import { TrackData } from "./PopulerSongs";
 
 export interface MusicInterface {
   populerSongs: MusicStateInterface,
-  trendingSongs: MusicStateInterface
+  popSongs: MusicStateInterface
 }
 
 export interface MusicStateInterface {

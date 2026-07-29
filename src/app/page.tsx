@@ -8,12 +8,12 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/Store";
 import useSongs from "@Hooks/useSongs";
 import { useEffect } from "react";
-import { fetchPopulerSongs, fetchTrendingSongs } from "@Services/Home";
+import { fetchPopulerSongs, fetchSongsByCategory } from "@Services/Home";
 
 export default function HomePage() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { populerSongs, trendingSongs } = useSongs();
+  const { populerSongs, popSongs } = useSongs();
 
   // const getInitData = () => {
   //   const populerSongsList = populerSongs;
@@ -23,7 +23,7 @@ export default function HomePage() {
 
   const fetchData = () => {
     dispatch(fetchPopulerSongs());
-    dispatch(fetchTrendingSongs());
+    dispatch(fetchSongsByCategory("Pop"));
   };
 
   useEffect(() => {
@@ -44,8 +44,8 @@ export default function HomePage() {
         </div>
         <div className={styles.sections}>
           <MusicBoxComponent
-            title={"Trending Songs"}
-            data={trendingSongs.trendingSongs.list}
+            title={"Pop Songs"}
+            data={popSongs.popSongs.list}
             slidesPerView={4}
             spaceBetween={12}
           />
