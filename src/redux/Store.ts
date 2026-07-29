@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import MusicSlice from "./MusicSlice";
+import ArtistSlice from "./ArtistSlice";
 
 const rootReducer = combineReducers({
   songs: MusicSlice,
+  artist: ArtistSlice,
 });
 
 export const store = configureStore({

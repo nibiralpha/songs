@@ -37,8 +37,8 @@ export default function HomePage() {
       <div className="">
         <div className={styles.sections}>
           <MusicBoxComponent
-            title={"Popular Songs"}
-            data={populerSongs.populerSongs.list}
+            title={"Trending Songs"}
+            data={populerSongs.list}
             slidesPerView={4}
             spaceBetween={12}
           />
@@ -46,7 +46,7 @@ export default function HomePage() {
         <div className={styles.sections}>
           <MusicBoxComponent
             title={"Pop Songs"}
-            data={popSongs.popSongs.list}
+            data={popSongs.list}
             slidesPerView={4}
             spaceBetween={12}
           />
@@ -100,7 +100,7 @@ export default function HomePage() {
         <div className={styles.sections}>
           <MusicBoxComponent
             title={"Classical Songs"}
-            data={classicalSongs.classicalSongs.list}
+            data={classicalSongs.list}
             slidesPerView={4}
             spaceBetween={12}
           />
