@@ -15,8 +15,10 @@ import {
 } from "@Services/Home";
 import { fetchArtist } from "@Services/Artist";
 import useArtist from "@Hooks/useArtist";
-import { fetchPlaylistByID } from "./Services/Playlists";
+import { fetchPlaylistByID } from "@Services/Playlists";
 import usePlaylist from "@Hooks/usePlaylist";
+import PlaylistComponent from "./Components/MusicBox/PlaylistComponent";
+import { PlaylistID } from "@Constant/PlaylistID";
 
 export default function HomePage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -31,9 +33,6 @@ export default function HomePage() {
 
   // getInitData();
 
-  console.log(playlists1);
-  
-
   const fetchData = () => {
     dispatch(fetchPopulerSongs());
     dispatch(fetchSongsByCategory("Pop"));
@@ -42,7 +41,7 @@ export default function HomePage() {
     dispatch(fetchSongsByGenra("Rock"));
 
     // playlist
-    dispatch(fetchPlaylistByID(1282495565));
+    dispatch(fetchPlaylistByID(PlaylistID.Fresh_pop));
   };
 
   useEffect(() => {
@@ -61,6 +60,16 @@ export default function HomePage() {
             spaceBetween={12}
           />
         </div>
+
+        <div className={styles.sections}>
+          <PlaylistComponent
+            title={playlists1?.data?.title}
+            data={playlists1}
+            slidesPerView={4}
+            spaceBetween={12}
+          />
+        </div>
+
         <div className={styles.sections}>
           <MusicBoxComponent
             title={"Pop Songs"}
@@ -87,6 +96,7 @@ export default function HomePage() {
             spaceBetween={12}
           />
         </div>
+
         <div className={styles.sections}>
           <ArtistComponent
             title={"Populer Artist"}
