@@ -8,14 +8,21 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/Store";
 import useSongs from "@Hooks/useSongs";
 import { useEffect } from "react";
-import { fetchPopulerSongs, fetchSongsByCategory, fetchSongsByGenra } from "@Services/Home";
+import {
+  fetchPopulerSongs,
+  fetchSongsByCategory,
+  fetchSongsByGenra,
+} from "@Services/Home";
 import { fetchArtist } from "@Services/Artist";
 import useArtist from "@Hooks/useArtist";
+import { fetchPlaylistByID } from "./Services/Playlists";
+import usePlaylist from "@Hooks/usePlaylist";
 
 export default function HomePage() {
   const dispatch = useDispatch<AppDispatch>();
 
   const { populerSongs, popSongs, classicalSongs, tracks } = useSongs();
+  const { playlists1 } = usePlaylist();
   const { artist } = useArtist();
 
   // const getInitData = () => {
@@ -24,12 +31,18 @@ export default function HomePage() {
 
   // getInitData();
 
+  console.log(playlists1);
+  
+
   const fetchData = () => {
     dispatch(fetchPopulerSongs());
     dispatch(fetchSongsByCategory("Pop"));
     dispatch(fetchSongsByCategory("Classical"));
     dispatch(fetchArtist());
     dispatch(fetchSongsByGenra("Rock"));
+
+    // playlist
+    dispatch(fetchPlaylistByID(1282495565));
   };
 
   useEffect(() => {
@@ -80,7 +93,7 @@ export default function HomePage() {
             data={artist.artist.list}
             slidesPerView={4}
             spaceBetween={12}
-          />  
+          />
         </div>
       </div>
     </>

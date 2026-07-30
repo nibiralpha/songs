@@ -82,3 +82,16 @@ export interface PlaylistResponse {
     data: PlaylistTrack[];
   };
 }
+
+export interface PlaylistResponse extends PlaylistDescription {
+  tracks: {
+    data: PlaylistTrack[];
+  };
+}
+
+export interface PlaylistData {
+  description: PlaylistDescription
+  tracks: {
+    data: PlaylistTrack[];
+  };
+}

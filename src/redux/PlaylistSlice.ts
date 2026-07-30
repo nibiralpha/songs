@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PlaylistInterface } from "@app-types/PlaylistState";
-import { PlaylistDescription, PlaylistResponse } from "@app-types/Playlist";
+import {
+  PlaylistData,
+  PlaylistDescription,
+  PlaylistResponse,
+} from "@app-types/Playlist";
 
 const initialState: PlaylistInterface = {
   playlist1: {
@@ -18,18 +22,17 @@ const initialState: PlaylistInterface = {
   //   },
 };
 
-export const MusicSlice = createSlice({
+export const PlaylistSlice = createSlice({
   name: "songs",
   initialState,
   reducers: {
-    setPlaylist1: (state, action: PayloadAction<PlaylistResponse>) => {
+    setPlaylist1: (state, action: PayloadAction<PlaylistData>) => {
       return {
         ...state,
         playlist1: {
           ...state.playlist1,
-          // FIX: Extract the internal tracks array from the payload object
           list: action.payload.tracks?.data || [],
-          data: action.payload.PlaylistDescription
+          data: action.payload.description,
         },
       };
     },
@@ -42,5 +45,5 @@ export const MusicSlice = createSlice({
   },
 });
 
-export const { setPlaylist1, setPlaylist1Loading } = MusicSlice.actions;
-export default MusicSlice.reducer;
+export const { setPlaylist1, setPlaylist1Loading } = PlaylistSlice.actions;
+export default PlaylistSlice.reducer;
