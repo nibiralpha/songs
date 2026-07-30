@@ -1,11 +1,17 @@
 // import { startLoading } from "@redux/celebritySlice";
 import { Dispatch } from "@reduxjs/toolkit";
-import { getPopulerSongs, getSongsByCategory } from "@Api/Songs";
+import {
+  getPopulerSongs,
+  getSongsByCategory,
+  getSongsByGenra,
+} from "@Api/Songs";
 import {
   setClassicalSongs,
   setLoading,
   setPopSongs,
   setPopulerSongs,
+  setTracks,
+  setTracksLoading,
 } from "@/src/redux/MusicSlice";
 import { Genre, Genres } from "@app-types/Genre";
 
@@ -57,4 +63,24 @@ const fetchSongsByCategory = (category: Genre) => {
   };
 };
 
-export { fetchPopulerSongs, fetchSongsByCategory };
+const fetchSongsByGenra = (category: Genre) => {
+  return async (dispatch: Dispatch) => {
+    try {
+      dispatch(setTracksLoading(true));
+
+      const songsRes = await getSongsByGenra(category);
+      const songsData = songsRes?.data.data;
+
+      dispatch(setTracks(songsData));
+
+      dispatch(setTracksLoading(false));
+    } catch (error) {
+      // dispatch(getAllHeroesFailed(error))
+      // return Promise.reject(error?.response?.data);
+
+      dispatch(setTracksLoading(false));
+      throw error;
+    }
+  };
+};
+export { fetchPopulerSongs, fetchSongsByCategory, fetchSongsByGenra };

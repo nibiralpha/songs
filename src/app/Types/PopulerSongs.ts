@@ -49,3 +49,17 @@ export interface TracksResponse {
     data: TrackData[];
   };
 }
+
+export type SearchArtist = Omit<Artist, "radio">;
+
+export interface SearchTrack extends Omit<TrackData, "position" | "artist"> {
+  readable: boolean; 
+  isrc: string; 
+  artist: SearchArtist;
+}
+
+export interface SearchResponse {
+  data: SearchTrack[];
+  total: number;
+  next: string | null;
+}

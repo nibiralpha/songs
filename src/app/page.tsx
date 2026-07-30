@@ -8,14 +8,14 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/Store";
 import useSongs from "@Hooks/useSongs";
 import { useEffect } from "react";
-import { fetchPopulerSongs, fetchSongsByCategory } from "@Services/Home";
+import { fetchPopulerSongs, fetchSongsByCategory, fetchSongsByGenra } from "@Services/Home";
 import { fetchArtist } from "@Services/Artist";
 import useArtist from "@Hooks/useArtist";
 
 export default function HomePage() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { populerSongs, popSongs, classicalSongs } = useSongs();
+  const { populerSongs, popSongs, classicalSongs, tracks } = useSongs();
   const { artist } = useArtist();
 
   // const getInitData = () => {
@@ -29,6 +29,7 @@ export default function HomePage() {
     dispatch(fetchSongsByCategory("Pop"));
     dispatch(fetchSongsByCategory("Classical"));
     dispatch(fetchArtist());
+    dispatch(fetchSongsByGenra("Rock"));
   };
 
   useEffect(() => {
@@ -58,44 +59,8 @@ export default function HomePage() {
 
         <div className={styles.sections}>
           <NewTracksComponent
-            title={"New Tracks"}
-            data={[
-              {
-                img: "",
-                title: "Good reason",
-                artist: "Linkin Park",
-                album: "Daughter from hell",
-                time: "4:80",
-              },
-              {
-                img: "",
-                title: "Good reason",
-                artist: "Linkin Park",
-                album: "Daughter from hell",
-                time: "4:80",
-              },
-              {
-                img: "",
-                title: "Good reason",
-                artist: "Linkin Park",
-                album: "Daughter from hell",
-                time: "4:80",
-              },
-              {
-                img: "",
-                title: "Good reason",
-                artist: "Linkin Park",
-                album: "Daughter from hell",
-                time: "4:80",
-              },
-              {
-                img: "",
-                title: "Good reason",
-                artist: "Linkin Park",
-                album: "Daughter from hell",
-                time: "4:80",
-              },
-            ]}
+            title={"Random Tracks"}
+            data={tracks.list}
             slidesPerView={4}
             spaceBetween={12}
           />
@@ -103,7 +68,7 @@ export default function HomePage() {
 
         <div className={styles.sections}>
           <MusicBoxComponent
-            title={"Classical Songs"}
+            title={"Classical Music"}
             data={classicalSongs.list}
             slidesPerView={4}
             spaceBetween={12}

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TrackData } from "@app-types/PopulerSongs";
+import { SearchTrack, TrackData } from "@app-types/PopulerSongs";
 import { MusicInterface } from "@app-types/MusicState";
 
 const initialState: MusicInterface = {
@@ -20,6 +20,10 @@ const initialState: MusicInterface = {
     loading: true,
     // error: false,
     // errorResponse: {},
+  },
+  tracks: {
+    list: [],
+    loading: true,
   },
 };
 
@@ -63,6 +67,18 @@ export const MusicSlice = createSlice({
         classicalSongs: { ...state.classicalSongs, loading: action.payload },
       };
     },
+    setTracks: (state, action: PayloadAction<SearchTrack[]>) => {
+      return {
+        ...state,
+        tracks: { ...state.tracks, list: action.payload },
+      };
+    },
+    setTracksLoading: (state, action: PayloadAction<boolean>) => {
+      return {
+        ...state,
+        tracks: { ...state.tracks, loading: action.payload },
+      };
+    },
   },
 });
 
@@ -73,5 +89,7 @@ export const {
   setPopSongsLoading,
   setClassicalSongs,
   setClassicalSongsLoading,
+  setTracks,
+  setTracksLoading,
 } = MusicSlice.actions;
 export default MusicSlice.reducer;

@@ -11,10 +11,12 @@ import "swiper/css/navigation";
 
 import { CiHeart } from "react-icons/ci";
 import { FaPlay } from "react-icons/fa";
+import { SearchTrack } from "@app-types/PopulerSongs";
+import { formatTrackDuration } from "@Helper/Functions";
 
 interface Props {
   title: string;
-  data: any[]; // Changed from [] to any[] to avoid strict type errors
+  data: SearchTrack[];
   slidesPerView: number;
   spaceBetween: number;
 }
@@ -52,63 +54,29 @@ export default function ArtistComponent({
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className={`${styles.track_details_img}`}>
-              <img className={styles.song_img} src={"/table.jpg"} alt="Cover" />
-            </td>
+          {data.map((track) => {
+            return (
+              <tr key={track.id}>
+                <td className={`${styles.track_details_img}`}>
+                  <img
+                    className={styles.song_img}
+                    src={track.album.cover_small}
+                    alt={track.album.cover_small}
+                  />
+                </td>
 
-            <td className={`${styles.track_details} ${styles.title_track}`}>
-              No more sorrw
-            </td>
-            <td className={styles.track_details}>Linkin Park</td>
-            <td className={styles.track_details}>Hyber theory</td>
-            <td className={styles.track_details}>4:30</td>
-            <td className={styles.track_details}>
-              <CiHeart className={styles.heart} size={20} />
-            </td>
-          </tr>
-          <tr>
-            <td className={`${styles.track_details_img}`}>
-              <img className={styles.song_img} src={"/table.jpg"} alt="Cover" />
-            </td>
-            <td className={`${styles.track_details} ${styles.title_track}`}>
-              No more sorrw
-            </td>
-            <td className={styles.track_details}>Linkin Park</td>
-            <td className={styles.track_details}>Hyber theory</td>
-            <td className={styles.track_details}>4:30</td>
-            <td className={styles.track_details}>
-              <CiHeart className={styles.heart} size={20} />
-            </td>
-          </tr>
-          <tr>
-            <td className={`${styles.track_details_img}`}>
-              <img className={styles.song_img} src={"/table.jpg"} alt="Cover" />
-            </td>
-            <td className={`${styles.track_details} ${styles.title_track}`}>
-              No more sorrw
-            </td>
-            <td className={styles.track_details}>Linkin Park</td>
-            <td className={styles.track_details}>Hyber theory</td>
-            <td className={styles.track_details}>4:30</td>
-            <td className={styles.track_details}>
-              <CiHeart className={styles.heart} size={20} />
-            </td>
-          </tr>
-          <tr>
-            <td className={`${styles.track_details_img}`}>
-              <img className={styles.song_img} src={"/table.jpg"} alt="Cover" />
-            </td>
-            <td className={`${styles.track_details} ${styles.title_track}`}>
-              No more sorrw
-            </td>
-            <td className={styles.track_details}>Linkin Park</td>
-            <td className={styles.track_details}>Hyber theory</td>
-            <td className={styles.track_details}>4:30</td>
-            <td className={styles.track_details}>
-              <CiHeart className={styles.heart} size={20} />
-            </td>
-          </tr>
+                <td className={`${styles.track_details} ${styles.title_track}`}>
+                  {track.title}
+                </td>
+                <td className={styles.track_details}>{track?.artist?.name}</td>
+                <td className={styles.track_details}>{track?.album?.title}</td>
+                <td className={styles.track_details}>{formatTrackDuration(track?.duration)}</td>
+                <td className={styles.track_details}>
+                  <CiHeart className={styles.heart} size={20} />
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </>

@@ -1,13 +1,20 @@
-import { TrackData } from "./PopulerSongs";
+import { SearchTrack, TrackData } from "./PopulerSongs";
 
 export interface MusicInterface {
   populerSongs: MusicStateInterface,
   popSongs: MusicStateInterface,
-  classicalSongs: MusicStateInterface
+  classicalSongs: MusicStateInterface,
+  tracks: SingleSongsStateInterface
 }
 
 export interface MusicStateInterface {
   list: TrackData[];
+  loading: boolean;
+  // error: boolean;
+  // errorResponse: object;
+}
+export interface SingleSongsStateInterface {
+  list: SearchTrack[];
   loading: boolean;
   // error: boolean;
   // errorResponse: object;
