@@ -1,36 +1,35 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import { getPlaylistTracksByID } from "@Api/Playlist";
-import { setFresh_pop } from "@/src/redux/PlaylistSlice";
-import { PlaylistData } from "@app-types/Playlist";
+import { setBatchPlaylists } from "@/src/redux/PlaylistSlice";
+// import { PlaylistData } from "@app-types/Playlist";
 
-const fetchPlaylistByID = (id: number) => {
+const fetchPlaylistByID = (ids: number[]) => {
   return async (dispatch: Dispatch) => {
     try {
-      //   dispatch(setLoading(true));
+      const responses = await Promise.all(
+        ids.map(async (id) => {
+          const playListRes = await getPlaylistTracksByID(id);
+          const playlistData = playListRes?.data;
 
-      const playListRes = await getPlaylistTracksByID(id);
-      const playlistData = playListRes?.data;
+          const { tracks, ...playlistDescription } = playlistData;
 
-      const { tracks, ...playlistDescription } = playlistData;
+          return {
+            id,
+            data: {
+              description: playlistDescription,
+              tracks: {
+                data: tracks?.data || [],
+              },
+            },
+          };
+        }),
+      );
 
-      const data: PlaylistData = {
-        description: playlistDescription,
-        tracks: {
-          data: tracks?.data,
-        },
-      };
-
-      dispatch(setFresh_pop(data));
-
-      //   dispatch(setLoading(false));
+      dispatch(setBatchPlaylists(responses));
     } catch (error: unknown) {
-      console.log(error);
-      //   dispatch(setLoading(false));
-      // dispatch(getAllHeroesFailed(error))
-      // return Promise.reject(error?.response?.data);
+      console.error("Error fetching batch playlists:", error);
       throw error;
     }
   };
 };
-
 export { fetchPlaylistByID };

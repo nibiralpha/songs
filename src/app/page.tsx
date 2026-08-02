@@ -24,7 +24,11 @@ export default function HomePage() {
   const dispatch = useDispatch<AppDispatch>();
 
   const { populerSongs, popSongs, classicalSongs, tracks } = useSongs();
-  const { Fresh_pop } = usePlaylist();
+
+  const freshPop = usePlaylist(PlaylistID.Fresh_pop);
+  const freshSoul = usePlaylist(PlaylistID.Fresh_Soul);
+  const raderWeekly = usePlaylist(PlaylistID.Radar_Weekly);
+
   const { artist } = useArtist();
 
   // const getInitData = () => {
@@ -40,8 +44,14 @@ export default function HomePage() {
     dispatch(fetchArtist());
     dispatch(fetchSongsByGenra("Rock"));
 
+    const targetPlaylistIDs = [
+      PlaylistID.Fresh_pop,
+      PlaylistID.Fresh_Soul,
+      PlaylistID.Radar_Weekly,
+    ];
+
     // playlist
-    dispatch(fetchPlaylistByID(PlaylistID.Fresh_pop));
+    dispatch(fetchPlaylistByID(targetPlaylistIDs));
   };
 
   useEffect(() => {
@@ -63,8 +73,25 @@ export default function HomePage() {
 
         <div className={styles.sections}>
           <PlaylistComponent
-            title={Fresh_pop?.data?.title}
-            data={Fresh_pop}
+            title={freshPop?.data?.title}
+            data={freshPop}
+            slidesPerView={4}
+            spaceBetween={12}
+          />
+        </div>
+        
+        <div className={styles.sections}>
+          <PlaylistComponent
+            title={freshSoul?.data?.title}
+            data={freshSoul}
+            slidesPerView={4}
+            spaceBetween={12}
+          />
+        </div>
+        <div className={styles.sections}>
+          <PlaylistComponent
+            title={raderWeekly?.data?.title}
+            data={raderWeekly}
             slidesPerView={4}
             spaceBetween={12}
           />

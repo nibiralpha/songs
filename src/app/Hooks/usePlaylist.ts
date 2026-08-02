@@ -1,12 +1,15 @@
 import { useSelector } from "react-redux";
 import { RootState } from "@/src/redux/Store";
 
-const usePlaylist = () => {
-  const Fresh_pop = useSelector(
-    (state: RootState) => state.playlist.Fresh_pop,
+const usePlaylist = (playlistId: string | number) => {
+  const playlist = useSelector(
+    (state: RootState) => state.playlist[playlistId],
   );
+
   return {
-    Fresh_pop,
+    list: playlist?.list || [],
+    data: playlist?.data || null,
+    loading: playlist?.loading ?? true,
   };
 };
 
