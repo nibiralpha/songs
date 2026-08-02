@@ -54,7 +54,7 @@ export default function MusicBoxComponent({
             <div className={styles.music_box}>
               <div className={styles.img_container}>
                 <img
-                  src={box.album?.cover_big}
+                  src={box.album?.cover_big !== null ? box.album?.cover_big : "./no-img.png"}
                   className={styles.album_img}
                   alt={box.title}
                 />

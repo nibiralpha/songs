@@ -54,7 +54,7 @@ export default function PlaylistComponent({
             <div className={styles.music_box}>
               <div className={styles.img_container}>
                 <img
-                  src={track.album?.cover_medium}
+                  src={track.album?.cover_medium !== null ? track.album?.cover_medium : "./no-img.png"}
                   className={styles.album_img}
                   alt={track.title}
                 />
