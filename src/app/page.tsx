@@ -24,7 +24,7 @@ export default function HomePage() {
   const dispatch = useDispatch<AppDispatch>();
 
   const { populerSongs, popSongs, classicalSongs, tracks } = useSongs();
-  const { playlists1 } = usePlaylist();
+  const { Fresh_pop } = usePlaylist();
   const { artist } = useArtist();
 
   // const getInitData = () => {
@@ -63,8 +63,8 @@ export default function HomePage() {
 
         <div className={styles.sections}>
           <PlaylistComponent
-            title={playlists1?.data?.title}
-            data={playlists1}
+            title={Fresh_pop?.data?.title}
+            data={Fresh_pop}
             slidesPerView={4}
             spaceBetween={12}
           />

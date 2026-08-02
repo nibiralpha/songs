@@ -2,11 +2,11 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/src/redux/Store";
 
 const usePlaylist = () => {
-  const playlists1 = useSelector(
-    (state: RootState) => state.playlist.playlist1,
+  const Fresh_pop = useSelector(
+    (state: RootState) => state.playlist.Fresh_pop,
   );
   return {
-    playlists1,
+    Fresh_pop,
   };
 };
 

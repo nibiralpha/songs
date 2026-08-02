@@ -1,7 +1,7 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import { getPlaylistTracksByID } from "@Api/Playlist";
-import { setPlaylist1 } from "@/src/redux/PlaylistSlice";
-import { PlaylistData } from "../../Types/Playlist";
+import { setFresh_pop } from "@/src/redux/PlaylistSlice";
+import { PlaylistData } from "@app-types/Playlist";
 
 const fetchPlaylistByID = (id: number) => {
   return async (dispatch: Dispatch) => {
@@ -16,11 +16,11 @@ const fetchPlaylistByID = (id: number) => {
       const data: PlaylistData = {
         description: playlistDescription,
         tracks: {
-          data: tracks.data,
+          data: tracks?.data,
         },
       };
 
-      dispatch(setPlaylist1(data));
+      dispatch(setFresh_pop(data));
 
       //   dispatch(setLoading(false));
     } catch (error: unknown) {

@@ -7,7 +7,7 @@ import {
 } from "@app-types/Playlist";
 
 const initialState: PlaylistInterface = {
-  playlist1: {
+  Fresh_pop: {
     list: [],
     data: {} as PlaylistDescription,
     loading: true,
@@ -26,24 +26,24 @@ export const PlaylistSlice = createSlice({
   name: "songs",
   initialState,
   reducers: {
-    setPlaylist1: (state, action: PayloadAction<PlaylistData>) => {
+    setFresh_pop: (state, action: PayloadAction<PlaylistData>) => {
       return {
         ...state,
-        playlist1: {
-          ...state.playlist1,
+        Fresh_pop: {
+          ...state.Fresh_pop,
           list: action.payload.tracks?.data || [],
           data: action.payload.description,
         },
       };
     },
-    setPlaylist1Loading: (state, action: PayloadAction<boolean>) => {
+    setFresh_popLoading: (state, action: PayloadAction<boolean>) => {
       return {
         ...state,
-        playlist1: { ...state.playlist1, loading: action.payload },
+        Fresh_pop: { ...state.Fresh_pop, loading: action.payload },
       };
     },
   },
 });
 
-export const { setPlaylist1, setPlaylist1Loading } = PlaylistSlice.actions;
+export const { setFresh_pop, setFresh_popLoading } = PlaylistSlice.actions;
 export default PlaylistSlice.reducer;

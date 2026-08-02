@@ -1,7 +1,7 @@
 import { PlaylistDescription, PlaylistTrack } from "./Playlist";
 
 export interface PlaylistInterface {
-  playlist1: PlaylistStateInterface;
+  Fresh_pop: PlaylistStateInterface;
 }
 
 export interface PlaylistStateInterface {
