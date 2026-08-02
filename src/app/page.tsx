@@ -28,6 +28,7 @@ export default function HomePage() {
   const freshPop = usePlaylist(PlaylistID.Fresh_pop);
   const freshSoul = usePlaylist(PlaylistID.Fresh_Soul);
   const raderWeekly = usePlaylist(PlaylistID.Radar_Weekly);
+  const newAlternative = usePlaylist(PlaylistID.new_alternative);
 
   const { artist } = useArtist();
 
@@ -48,6 +49,7 @@ export default function HomePage() {
       PlaylistID.Fresh_pop,
       PlaylistID.Fresh_Soul,
       PlaylistID.Radar_Weekly,
+      PlaylistID.new_alternative,
     ];
 
     // playlist
@@ -106,10 +108,19 @@ export default function HomePage() {
           />
         </div>
 
-        <div className={styles.sections}>
+        {/* <div className={styles.sections}>
           <NewTracksComponent
             title={"Random Tracks"}
             data={tracks.list}
+            slidesPerView={4}
+            spaceBetween={12}
+          />
+        </div> */}
+        <div className={styles.sections}>
+          <NewTracksComponent
+            title={newAlternative?.data?.title}
+            data={newAlternative}
+            showDefault={5}
             slidesPerView={4}
             spaceBetween={12}
           />

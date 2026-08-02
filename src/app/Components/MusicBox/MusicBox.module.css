@@ -100,6 +100,20 @@
   z-index: 0;
 }
 
+.title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  word-break: break-word;
+
+  line-height: 1.2rem;
+  max-height: 2.4rem;
+}
+
 /* Mobile */
 
 @media screen and (max-width: 430px) {
@@ -109,5 +123,16 @@
 
   .sub_title {
     font-size: 1em;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    display: block !important;
+    overflow: visible !important;
+    max-height: none !important;
+    -webkit-line-clamp: unset !important;
+    text-overflow: clip !important;
+    white-space: normal !important;
   }
 }

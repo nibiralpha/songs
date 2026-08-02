@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 
 import { FaHeart, FaPlay } from "react-icons/fa";
 import { PlaylistData } from "@app-types/Playlist";
-import { PlaylistStateInterface } from "../../Types/PlaylistState";
+import { PlaylistStateInterface } from "@app-types/PlaylistState";
 interface Props {
   title: string;
   data: PlaylistStateInterface;

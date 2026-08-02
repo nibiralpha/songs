@@ -13,19 +13,23 @@ import { CiHeart } from "react-icons/ci";
 import { FaPlay } from "react-icons/fa";
 import { SearchTrack } from "@app-types/PopulerSongs";
 import { formatTrackDuration } from "@Helper/Functions";
+import { PlaylistStateInterface } from "@app-types/PlaylistState";
 
 interface Props {
   title: string;
-  data: SearchTrack[];
+  // data: SearchTrack[];
+  data: PlaylistStateInterface;
   slidesPerView: number;
   spaceBetween: number;
+  showDefault: number;
 }
 
-export default function ArtistComponent({
+export default function NewTracksComponent({
   title,
   data,
   slidesPerView,
   spaceBetween,
+  showDefault
 }: Readonly<Props>) {
   return (
     <>
@@ -54,13 +58,13 @@ export default function ArtistComponent({
           </tr>
         </thead>
         <tbody>
-          {data.map((track) => {
+          {data?.list?.slice(0, showDefault).map((track) => {
             return (
               <tr key={track.id}>
                 <td className={`${styles.track_details_img}`}>
                   <img
                     className={styles.song_img}
-                    src={track.album.cover_small}
+                    src={track.album.cover_small !== null ? track.album.cover_small : './no-img.png'} 
                     alt={track.album.cover_small}
                   />
                 </td>
