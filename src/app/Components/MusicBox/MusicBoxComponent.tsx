@@ -32,7 +32,11 @@ export default function MusicBoxComponent({
 }: Readonly<Props>) {
   return (
     <>
-      <p className={styles.section_name}>{title}</p>
+      {loading ? (
+        <Skeleton width={200} height={20} style={{ marginBottom: "15px" }} />
+      ) : (
+        <p className={styles.section_name}>{title}</p>
+      )}
 
       {loading ? (
         <div className={styles.Skeleton}>

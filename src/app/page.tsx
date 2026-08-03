@@ -153,6 +153,7 @@ export default function HomePage() {
             data={artist.artist.list}
             slidesPerView={4}
             spaceBetween={12}
+            loading={artist.artist.loading}
           />
         </div>
       </div>

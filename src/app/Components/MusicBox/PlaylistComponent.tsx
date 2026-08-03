@@ -33,8 +33,12 @@ export default function PlaylistComponent({
 }: Readonly<Props>) {
   return (
     <>
-      {/* <HeaderComponent /> */}
-      <p className={styles.section_name}>{title}</p>
+      {loading ? (
+        <Skeleton width={200} height={20} style={{ marginBottom: "15px" }} />
+      ) : (
+        <p className={styles.section_name}>{title}</p>
+      )}
+
       {loading ? (
         <div className={styles.Skeleton}>
           {Array.from({ length: 4 }).map((_, index) => (

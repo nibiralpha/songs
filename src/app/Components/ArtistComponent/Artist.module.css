@@ -113,6 +113,16 @@
   z-index: 0;
 }
 
+.Skeleton {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.Skeleton_div {
+  width: 225px;
+}
+
 /* Mobile */
 
 @media screen and (max-width: 430px) {

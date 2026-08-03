@@ -12,11 +12,15 @@ import "swiper/css/navigation";
 import { FaHeart, FaPlay } from "react-icons/fa";
 import { Artist } from "@app-types/Artist";
 
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
 interface Props {
   title: string;
-  data: Artist[]
+  data: Artist[];
   slidesPerView: number;
   spaceBetween: number;
+  loading: boolean;
 }
 
 export default function ArtistComponent({
@@ -24,54 +28,71 @@ export default function ArtistComponent({
   data,
   slidesPerView,
   spaceBetween,
+  loading,
 }: Readonly<Props>) {
   return (
     <>
       {/* <HeaderComponent /> */}
-      <p className={styles.section_name}>{title}</p>
-      <Swiper
-        navigation={true}
-        //   modules={[Navigation]}
-        slidesPerView={slidesPerView}
-        spaceBetween={spaceBetween}
-        className="mySwiper"
-        breakpoints={{
-          0: {
-            slidesPerView: 1,
-          },
-          430: {
-            slidesPerView: 1,
-          },
-          768: {
-            slidesPerView: 3,
-          },
-          1024: {
-            slidesPerView: slidesPerView,
-          },
-        }}
-      >
-        {data?.map((artist, i) => (
-          <SwiperSlide key={i}>
-            <div className={styles.music_box}>
-              <div className={styles.img_container}>
-                <img
-                  src={artist.picture_medium}
-                  className={styles.album_img}
-                  alt={artist.name}
-                />
-                <div className={styles.actions}>
-                  <div className={styles.action_button}>
-                    <FaPlay className={styles.action_icon} size={16} />
+      {loading ? (
+        <Skeleton width={200} height={20} style={{ marginBottom: "30px" }} />
+      ) : (
+        <p className={styles.section_name}>{title}</p>
+      )}
+
+      {loading ? (
+        <div className={styles.Skeleton}>
+          {Array.from({ length: 4 }).map((_, index) => (
+            <div key={index} className={styles.Skeleton_div}>
+              <Skeleton circle={true} height={270} />
+              <Skeleton count={1} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <Swiper
+          navigation={true}
+          //   modules={[Navigation]}
+          slidesPerView={slidesPerView}
+          spaceBetween={spaceBetween}
+          className="mySwiper"
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+            },
+            430: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 3,
+            },
+            1024: {
+              slidesPerView: slidesPerView,
+            },
+          }}
+        >
+          {data?.map((artist, i) => (
+            <SwiperSlide key={i}>
+              <div className={styles.music_box}>
+                <div className={styles.img_container}>
+                  <img
+                    src={artist.picture_medium}
+                    className={styles.album_img}
+                    alt={artist.name}
+                  />
+                  <div className={styles.actions}>
+                    <div className={styles.action_button}>
+                      <FaPlay className={styles.action_icon} size={16} />
+                    </div>
                   </div>
                 </div>
+                <div className={styles.desc}>
+                  <div className={styles.title}>{artist.name}</div>
+                </div>
               </div>
-              <div className={styles.desc}>
-                <div className={styles.title}>{artist.name}</div>
-               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
     </>
   );
 }
