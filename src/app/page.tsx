@@ -70,6 +70,7 @@ export default function HomePage() {
             data={populerSongs.list}
             slidesPerView={4}
             spaceBetween={12}
+            showDefault={20}
           />
         </div>
 
@@ -79,15 +80,17 @@ export default function HomePage() {
             data={freshPop}
             slidesPerView={4}
             spaceBetween={12}
+            showDefault={20}
           />
         </div>
-        
+
         <div className={styles.sections}>
           <PlaylistComponent
             title={freshSoul?.data?.title}
             data={freshSoul}
             slidesPerView={4}
             spaceBetween={12}
+            showDefault={20}
           />
         </div>
         <div className={styles.sections}>
@@ -96,6 +99,7 @@ export default function HomePage() {
             data={raderWeekly}
             slidesPerView={4}
             spaceBetween={12}
+            showDefault={20}
           />
         </div>
 
@@ -105,6 +109,7 @@ export default function HomePage() {
             data={popSongs.list}
             slidesPerView={4}
             spaceBetween={12}
+            showDefault={20}
           />
         </div>
 
@@ -132,6 +137,7 @@ export default function HomePage() {
             data={classicalSongs.list}
             slidesPerView={4}
             spaceBetween={12}
+            showDefault={20}
           />
         </div>
 

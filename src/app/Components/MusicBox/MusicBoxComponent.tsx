@@ -16,6 +16,7 @@ interface Props {
   data: TrackData[];
   slidesPerView: number;
   spaceBetween: number;
+  showDefault: number;
 }
 
 export default function MusicBoxComponent({
@@ -23,6 +24,7 @@ export default function MusicBoxComponent({
   data,
   slidesPerView,
   spaceBetween,
+  showDefault,
 }: Readonly<Props>) {
   return (
     <>
@@ -49,12 +51,16 @@ export default function MusicBoxComponent({
           },
         }}
       >
-        {data.map((box, i) => (
+        {data?.slice(0, showDefault).map((box, i) => (
           <SwiperSlide key={i}>
             <div className={styles.music_box}>
               <div className={styles.img_container}>
                 <img
-                  src={box.album?.cover_big !== null ? box.album?.cover_big : "./no-img.png"}
+                  src={
+                    box.album?.cover_big !== null
+                      ? box.album?.cover_big
+                      : "./no-img.png"
+                  }
                   className={styles.album_img}
                   alt={box.title}
                 />

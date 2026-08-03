@@ -16,6 +16,7 @@ interface Props {
   data: PlaylistStateInterface;
   slidesPerView: number;
   spaceBetween: number;
+  showDefault: number;
 }
 
 export default function PlaylistComponent({
@@ -23,6 +24,7 @@ export default function PlaylistComponent({
   data,
   slidesPerView,
   spaceBetween,
+  showDefault
 }: Readonly<Props>) {
   return (
     <>
@@ -49,7 +51,7 @@ export default function PlaylistComponent({
           },
         }}
       >
-        {data?.list?.map((track, i) => (
+        {data?.list?.slice(0, showDefault)?.map((track, i) => (
           <SwiperSlide key={i}>
             <div className={styles.music_box}>
               <div className={styles.img_container}>
