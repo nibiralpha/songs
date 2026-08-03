@@ -68,6 +68,7 @@ export default function HomePage() {
           <MusicBoxComponent
             title={"Trending Songs"}
             data={populerSongs.list}
+            loading={populerSongs.loading}
             slidesPerView={4}
             spaceBetween={12}
             showDefault={20}
@@ -78,6 +79,7 @@ export default function HomePage() {
           <PlaylistComponent
             title={freshPop?.data?.title}
             data={freshPop}
+            loading={freshPop.loading}
             slidesPerView={4}
             spaceBetween={12}
             showDefault={20}
@@ -88,6 +90,7 @@ export default function HomePage() {
           <PlaylistComponent
             title={freshSoul?.data?.title}
             data={freshSoul}
+            loading={freshSoul.loading}
             slidesPerView={4}
             spaceBetween={12}
             showDefault={20}
@@ -97,6 +100,7 @@ export default function HomePage() {
           <PlaylistComponent
             title={raderWeekly?.data?.title}
             data={raderWeekly}
+            loading={raderWeekly.loading}
             slidesPerView={4}
             spaceBetween={12}
             showDefault={20}
@@ -107,6 +111,7 @@ export default function HomePage() {
           <MusicBoxComponent
             title={"Pop Songs"}
             data={popSongs.list}
+            loading={populerSongs.loading}
             slidesPerView={4}
             spaceBetween={12}
             showDefault={20}
@@ -135,6 +140,7 @@ export default function HomePage() {
           <MusicBoxComponent
             title={"Classical Music"}
             data={classicalSongs.list}
+            loading={classicalSongs.loading}
             slidesPerView={4}
             spaceBetween={12}
             showDefault={20}

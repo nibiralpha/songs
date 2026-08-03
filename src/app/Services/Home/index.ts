@@ -7,6 +7,7 @@ import {
 } from "@Api/Songs";
 import {
   setClassicalSongs,
+  setClassicalSongsLoading,
   setLoading,
   setPopSongs,
   setPopulerSongs,
@@ -39,7 +40,11 @@ const fetchPopulerSongs = () => {
 const fetchSongsByCategory = (category: Genre) => {
   return async (dispatch: Dispatch) => {
     try {
-      dispatch(setLoading(true));
+      if (category === "Pop") {
+        dispatch(setLoading(true));
+      } else if (category === "Classical") {
+        dispatch(setClassicalSongsLoading(true));
+      }
 
       const categoryId = Genres[category];
 
@@ -48,11 +53,11 @@ const fetchSongsByCategory = (category: Genre) => {
 
       if (category === "Pop") {
         dispatch(setPopSongs(songsData));
+        dispatch(setLoading(false));
       } else if (category === "Classical") {
         dispatch(setClassicalSongs(songsData));
+        dispatch(setClassicalSongsLoading(false));
       }
-
-      dispatch(setLoading(false));
     } catch (error) {
       // dispatch(getAllHeroesFailed(error))
       // return Promise.reject(error?.response?.data);
