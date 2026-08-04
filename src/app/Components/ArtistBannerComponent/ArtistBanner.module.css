@@ -19,16 +19,49 @@
   font-weight: 600;
 }
 
-.fans{
-    font-weight: 400;
-    color: #a7a7a7;
+.fans {
+  font-weight: 400;
+  color: #a7a7a7;
 }
 
-.button_area{
+.button_area {
   display: flex;
   margin-top: 30px;
 }
 
-.first_button{
-  margin-right: 10px
+.first_button {
+  margin-right: 10px;
 }
+
+/* Mobile */
+
+@media screen and (max-width: 430px) {
+  .artist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+  }
+
+  .artish_img_area {
+    margin-right: 0;
+    width: 60%;
+  }
+
+  .artist_playlist_name {
+    font-weight: 600;
+    font-size: 2.5em;
+    text-align: center;
+    line-height: 45px;
+    margin-top: 20px;
+  }
+
+  .fans{
+    text-align: center;
+  }
+}
+/* TAB */
+
+/* @media (min-width: 768px) and (max-width: 1024px) {
+} */
