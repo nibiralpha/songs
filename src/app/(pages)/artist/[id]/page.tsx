@@ -15,7 +15,7 @@ import {
 } from "@/src/app/Services/Home";
 import { PlaylistID } from "@/src/app/Constant/PlaylistID";
 import { fetchPlaylistByID } from "@/src/app/Services/Playlists";
-import { fetchArtist, fetchArtistByID } from "@/src/app/Services/Artist";
+import { fetchArtist, fetchArtistByID, fetchArtistTracks } from "@/src/app/Services/Artist";
 import ArtistTracksComponent from "@/src/app/Components/NewTracksComponent/ArtistTracksComponent";
 import AlbumComponent from "@/src/app/Components/MusicBox/AlbumComponent";
 import { TrackData } from "@/src/app/Types/PopulerSongs";
@@ -236,7 +236,7 @@ export default function Artist() {
   ];
 
   const newAlternative = usePlaylist(PlaylistID.new_alternative);
-  const { artistDetails } = useArtist();
+  const { artistDetails, artistSongs } = useArtist();
 
   const fetchData = () => {
     const targetPlaylistIDs = [PlaylistID.new_alternative];
@@ -245,6 +245,7 @@ export default function Artist() {
     dispatch(fetchPlaylistByID(targetPlaylistIDs));
 
     dispatch(fetchArtistByID(id));
+    dispatch(fetchArtistTracks(id));
   };
 
   useEffect(() => {
@@ -259,7 +260,7 @@ export default function Artist() {
       <div className={styles.sections}>
         <ArtistTracksComponent
           title={"Tracks"}
-          data={newAlternative}
+          data={artistSongs.data}
           showDefault={10}
           slidesPerView={4}
           spaceBetween={12}

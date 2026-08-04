@@ -1,7 +1,7 @@
 // import { startLoading } from "@redux/celebritySlice";
 import { Dispatch } from "@reduxjs/toolkit";
-import { getArtist, getArtistByID } from "@Api/Artist";
-import { setArtist, setArtistDetail, setArtistDetailLoading, setLoading } from "@/src/redux/ArtistSlice";
+import { getArtist, getArtistByID, getArtistTopSongsByID } from "@Api/Artist";
+import { setArtist, setArtistDetail, setArtistDetailLoading, setArtistSongs, setArtistSongsLoading, setLoading } from "@/src/redux/ArtistSlice";
 
 const fetchArtist = () => {
   return async (dispatch: Dispatch) => {
@@ -45,4 +45,26 @@ const fetchArtistByID = (id: number) => {
   };
 };
 
-export { fetchArtist, fetchArtistByID };
+const fetchArtistTracks = (id: number) => {
+  return async (dispatch: Dispatch) => {
+    try {
+
+      dispatch(setArtistSongsLoading(true));
+
+      const artistTrackRes = await getArtistTopSongsByID(id);
+      const artistTrackData = artistTrackRes?.data?.data;      
+      
+      dispatch(setArtistSongs(artistTrackData));
+
+      dispatch(setArtistSongsLoading(false));
+    } catch (error: unknown) {
+      console.log(error);
+      dispatch(setArtistSongsLoading(false));
+      // dispatch(getAllHeroesFailed(error))
+      // return Promise.reject(error?.response?.data);
+      throw error;
+    }
+  };
+};
+
+export { fetchArtist, fetchArtistByID, fetchArtistTracks };

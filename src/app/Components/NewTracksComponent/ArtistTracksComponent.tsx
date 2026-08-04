@@ -14,11 +14,13 @@ import { FaPlay } from "react-icons/fa";
 import { SearchTrack } from "@app-types/PopulerSongs";
 import { formatTrackDuration } from "@Helper/Functions";
 import { PlaylistStateInterface } from "@app-types/PlaylistState";
+import { ArtistSongsDetailStateInterface } from "@app-types/ArtistState";
+import { DeezerTrack } from "@app-types/Artist";
 
 interface Props {
   title: string;
   // data: SearchTrack[];
-  data: PlaylistStateInterface;
+  data: DeezerTrack[];
   slidesPerView: number;
   spaceBetween: number;
   showDefault: number;
@@ -61,7 +63,7 @@ export default function ArtistTracksComponent({
           </tr>
         </thead>
         <tbody>
-          {data?.list?.slice(0, showDefault).map((track) => {
+          {data?.slice(0, showDefault).map((track) => {
             return (
               <tr key={track.id}>
                 <td className={`${styles.track_details_img}`}>

@@ -1,6 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Artist, ArtistDetailResponse, ArtistDetails } from "@app-types/Artist";
-import { ArtistDetailStateInterface, ArtistInterface } from "@app-types/ArtistState";
+import {
+  Artist,
+  ArtistDetailResponse,
+  ArtistDetails,
+  DeezerTrack,
+} from "@app-types/Artist";
+import {
+  ArtistDetailStateInterface,
+  ArtistInterface,
+} from "@app-types/ArtistState";
 
 const initialState: ArtistInterface = {
   artist: {
@@ -11,8 +19,12 @@ const initialState: ArtistInterface = {
   },
   artistDetails: {
     data: null,
-    loading: true
-  } 
+    loading: true,
+  },
+  artistSongs: {
+    data: [],
+    loading: true,
+  },
 };
 
 export const ArtistSlice = createSlice({
@@ -37,14 +49,33 @@ export const ArtistSlice = createSlice({
         artistDetails: { ...state.artistDetails, data: action.payload },
       };
     },
-    setArtistDetailLoading: (state, action: PayloadAction<boolean>) => {      
+    setArtistDetailLoading: (state, action: PayloadAction<boolean>) => {
       return {
         ...state,
         artistDetails: { ...state.artistDetails, loading: action.payload },
       };
     },
+    setArtistSongs: (state, action: PayloadAction<DeezerTrack[]>) => {
+      return {
+        ...state,
+        artistSongs: { ...state.artistSongs, data: action.payload },
+      };
+    },
+    setArtistSongsLoading: (state, action: PayloadAction<boolean>) => {
+      return {
+        ...state,
+        artistSongs: { ...state.artistSongs, loading: action.payload },
+      };
+    },
   },
 });
 
-export const { setArtist, setLoading, setArtistDetail, setArtistDetailLoading } = ArtistSlice.actions;
+export const {
+  setArtist,
+  setLoading,
+  setArtistDetail,
+  setArtistDetailLoading,
+  setArtistSongs,
+  setArtistSongsLoading,
+} = ArtistSlice.actions;
 export default ArtistSlice.reducer;

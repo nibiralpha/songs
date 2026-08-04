@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { BASEURL } from "@Constant/Api";
-import { ArtistDetailResponse, ArtistResponse } from "@app-types/Artist";
+import { ArtistDetailResponse, ArtistResponse, DeezerTrackResponse } from "@app-types/Artist";
 
 const getArtist = async (): Promise<AxiosResponse<ArtistResponse>> => {
   const response = await axios.get<ArtistResponse>(`${BASEURL}/api/artist`);
@@ -16,4 +16,13 @@ const getArtistByID = async (
   return response;
 };
 
-export { getArtist, getArtistByID };
+const getArtistTopSongsByID = async (
+  id: number,
+): Promise<AxiosResponse<DeezerTrackResponse>> => {
+  const response = await axios.get<DeezerTrackResponse>(
+    `${BASEURL}/api/artist_top_songs/${id}`,
+  );
+  return response;
+};
+
+export { getArtist, getArtistByID, getArtistTopSongsByID };
