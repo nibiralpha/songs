@@ -20,11 +20,13 @@ import {
   fetchArtistAlbums,
   fetchArtistByID,
   fetchArtistTracks,
+  fetchRelatedArtist,
 } from "@/src/app/Services/Artist";
 import ArtistTracksComponent from "@/src/app/Components/NewTracksComponent/ArtistTracksComponent";
 import AlbumComponent from "@/src/app/Components/MusicBox/AlbumComponent";
 import { TrackData } from "@/src/app/Types/PopulerSongs";
 import useArtist from "@/src/app/Hooks/useArtist";
+import ArtistComponent from "@/src/app/Components/ArtistComponent/ArtistComponent";
 
 export default function Artist() {
   const dispatch = useDispatch<AppDispatch>();
@@ -241,7 +243,7 @@ export default function Artist() {
   ];
 
   const newAlternative = usePlaylist(PlaylistID.new_alternative);
-  const { artistDetails, artistSongs, artistAlbums } = useArtist();
+  const { artistDetails, artistSongs, artistAlbums, relatedArtist } = useArtist();
 
   const fetchData = () => {
     const targetPlaylistIDs = [PlaylistID.new_alternative];
@@ -252,6 +254,7 @@ export default function Artist() {
     dispatch(fetchArtistByID(id));
     dispatch(fetchArtistTracks(id));
     dispatch(fetchArtistAlbums(id));
+    dispatch(fetchRelatedArtist(id));
   };
 
   useEffect(() => {
@@ -284,20 +287,21 @@ export default function Artist() {
           spaceBetween={12}
         />
       </div>
-      <div className={styles.sections}>
+      {/* <div className={styles.sections}>
         <AlbumComponent
           title={"Top songs"}
-          data={fakeTracks}
+          data={artistAlbums.data}
           showDefault={5}
           slidesPerView={4}
           spaceBetween={12}
         />
-      </div>
+      </div> */}
       <div className={styles.sections}>
-        <AlbumComponent
+        <ArtistComponent
           title={"Related Artist"}
-          data={fakeTracks}
-          showDefault={5}
+          data={relatedArtist.data}
+          loading={false}
+          // showDefault={5}
           slidesPerView={4}
           spaceBetween={12}
         />

@@ -97,3 +97,11 @@ export interface DeezerAlbum {
   tracklist: string;
   type: "album";
 }
+
+export interface RelatedArtistApiResponse {
+  data: RelatedArtistResponse[];
+}
+
+export type RelatedArtistResponse = Omit<ArtistDetails, "share">;
+
+

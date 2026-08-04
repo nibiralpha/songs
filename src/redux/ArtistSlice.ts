@@ -4,10 +4,12 @@ import {
   ArtistDetailResponse,
   ArtistDetails,
   DeezerTrack,
+  RelatedArtistResponse,
 } from "@app-types/Artist";
 import {
   ArtistDetailStateInterface,
   ArtistInterface,
+  RelatedArtistInterface,
 } from "@app-types/ArtistState";
 import { ArtistAlbum } from "../app/Types/Album";
 
@@ -27,6 +29,10 @@ const initialState: ArtistInterface = {
     loading: true,
   },
   artistAlbum: {
+    data: [],
+    loading: true,
+  },
+  relatedArtist: {
     data: [],
     loading: true,
   },
@@ -84,6 +90,18 @@ export const ArtistSlice = createSlice({
         artistAlbum: { ...state.artistAlbum, loading: action.payload },
       };
     },
+    setRelatedArtist: (state, action: PayloadAction<RelatedArtistResponse[]>) => {
+      return {
+        ...state,
+        relatedArtist: { ...state.relatedArtist, data: action.payload },
+      };
+    },
+    setRelatedArtistLoading: (state, action: PayloadAction<boolean>) => {
+      return {
+        ...state,
+        relatedArtist: { ...state.relatedArtist, loading: action.payload },
+      };
+    },
   },
 });
 
@@ -95,6 +113,8 @@ export const {
   setArtistSongs,
   setArtistSongsLoading,
   setArtistAlbums,
-  setArtistAlbumsLoading
+  setArtistAlbumsLoading,
+  setRelatedArtist,
+  setRelatedArtistLoading
 } = ArtistSlice.actions;
 export default ArtistSlice.reducer;

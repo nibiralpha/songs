@@ -10,16 +10,17 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import { FaHeart, FaPlay } from "react-icons/fa";
-import { Artist } from "@app-types/Artist";
+import { Artist, ArtistDetails, RelatedArtistResponse } from "@app-types/Artist";
 
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 import { useRouter } from "next/navigation";
+import { RelatedArtistInterface } from "@app-types/ArtistState";
 
 interface Props {
   title: string;
-  data: Artist[];
+  data: Artist[] | RelatedArtistResponse[];
   slidesPerView: number;
   spaceBetween: number;
   loading: boolean;

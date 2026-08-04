@@ -1,11 +1,12 @@
 import { ArtistAlbum } from "./Album";
-import { Artist, ArtistDetails, DeezerTrack } from "./Artist";
+import { Artist, ArtistDetails, DeezerTrack, RelatedArtistResponse } from "./Artist";
 
 export interface ArtistInterface {
   artist: ArtistStateInterface,
   artistDetails: ArtistDetailStateInterface,
   artistSongs: ArtistSongsDetailStateInterface,
-  artistAlbum: ArtistAlbumInterface
+  artistAlbum: ArtistAlbumInterface,
+  relatedArtist: RelatedArtistInterface
 }
 
 export interface ArtistStateInterface {
@@ -31,6 +32,12 @@ export interface ArtistSongsDetailStateInterface {
 
 export interface ArtistAlbumInterface {
   data: ArtistAlbum[];
+  loading: boolean;
+  // error: boolean;
+  // errorResponse: object;
+}
+export interface RelatedArtistInterface {
+  data: RelatedArtistResponse[];
   loading: boolean;
   // error: boolean;
   // errorResponse: object;
