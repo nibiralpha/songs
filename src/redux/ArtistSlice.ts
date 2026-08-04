@@ -9,6 +9,7 @@ import {
   ArtistDetailStateInterface,
   ArtistInterface,
 } from "@app-types/ArtistState";
+import { ArtistAlbum } from "../app/Types/Album";
 
 const initialState: ArtistInterface = {
   artist: {
@@ -22,6 +23,10 @@ const initialState: ArtistInterface = {
     loading: true,
   },
   artistSongs: {
+    data: [],
+    loading: true,
+  },
+  artistAlbum: {
     data: [],
     loading: true,
   },
@@ -67,6 +72,18 @@ export const ArtistSlice = createSlice({
         artistSongs: { ...state.artistSongs, loading: action.payload },
       };
     },
+    setArtistAlbums: (state, action: PayloadAction<ArtistAlbum[]>) => {
+      return {
+        ...state,
+        artistAlbum: { ...state.artistAlbum, data: action.payload },
+      };
+    },
+    setArtistAlbumsLoading: (state, action: PayloadAction<boolean>) => {
+      return {
+        ...state,
+        artistAlbum: { ...state.artistAlbum, loading: action.payload },
+      };
+    },
   },
 });
 
@@ -77,5 +94,7 @@ export const {
   setArtistDetailLoading,
   setArtistSongs,
   setArtistSongsLoading,
+  setArtistAlbums,
+  setArtistAlbumsLoading
 } = ArtistSlice.actions;
 export default ArtistSlice.reducer;

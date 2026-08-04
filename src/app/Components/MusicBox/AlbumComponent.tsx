@@ -13,9 +13,10 @@ import { TrackData } from "@app-types/PopulerSongs";
 
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { ArtistAlbum } from "@app-types/Album";
 interface Props {
   title: string;
-  data: TrackData[];
+  data: ArtistAlbum[];
   slidesPerView: number;
   spaceBetween: number;
   showDefault?: number;
@@ -75,8 +76,8 @@ export default function AlbumComponent({
                 <div className={styles.img_container}>
                   <img
                     src={
-                      box.album?.cover_big !== null
-                        ? box.album?.cover_big
+                      box?.cover_medium !== null
+                        ? box.cover_medium
                         : "./no-img.png"
                     }
                     className={styles.album_img}
@@ -93,7 +94,7 @@ export default function AlbumComponent({
                 </div>
                 <div className={styles.desc}>
                   <div className={styles.title}>{box.title}</div>
-                  <div className={styles.sub_title}>{box.artist?.name}</div>
+                  <div className={styles.sub_title}>{box?.title}</div>
                 </div>
               </div>
             </SwiperSlide>

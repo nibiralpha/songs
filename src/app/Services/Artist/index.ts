@@ -1,7 +1,7 @@
 // import { startLoading } from "@redux/celebritySlice";
 import { Dispatch } from "@reduxjs/toolkit";
-import { getArtist, getArtistByID, getArtistTopSongsByID } from "@Api/Artist";
-import { setArtist, setArtistDetail, setArtistDetailLoading, setArtistSongs, setArtistSongsLoading, setLoading } from "@/src/redux/ArtistSlice";
+import { getArtist, getArtistAlbumByID, getArtistByID, getArtistTopSongsByID } from "@Api/Artist";
+import { setArtist, setArtistAlbums, setArtistAlbumsLoading, setArtistDetail, setArtistDetailLoading, setArtistSongs, setArtistSongsLoading, setLoading } from "@/src/redux/ArtistSlice";
 
 const fetchArtist = () => {
   return async (dispatch: Dispatch) => {
@@ -66,5 +66,26 @@ const fetchArtistTracks = (id: number) => {
     }
   };
 };
+const fetchArtistAlbums = (id: number) => {
+  return async (dispatch: Dispatch) => {
+    try {
 
-export { fetchArtist, fetchArtistByID, fetchArtistTracks };
+      dispatch(setArtistAlbumsLoading(true));
+
+      const artistAlbumRes = await getArtistAlbumByID(id);
+      const artistAlbumkData = artistAlbumRes?.data?.data;      
+      
+      dispatch(setArtistAlbums(artistAlbumkData));
+
+      dispatch(setArtistAlbumsLoading(false));
+    } catch (error: unknown) {
+      console.log(error);
+      dispatch(setArtistAlbumsLoading(false));
+      // dispatch(getAllHeroesFailed(error))
+      // return Promise.reject(error?.response?.data);
+      throw error;
+    }
+  };
+};
+
+export { fetchArtist, fetchArtistByID, fetchArtistTracks, fetchArtistAlbums };
