@@ -16,6 +16,7 @@ import {
 import { PlaylistID } from "@/src/app/Constant/PlaylistID";
 import { fetchPlaylistByID } from "@/src/app/Services/Playlists";
 import { fetchArtist } from "@/src/app/Services/Artist";
+import ArtistTracksComponent from "@/src/app/Components/NewTracksComponent/ArtistTracksComponent";
 
 export default function Artist() {
   const dispatch = useDispatch<AppDispatch>();
@@ -24,8 +25,6 @@ export default function Artist() {
   // const id = Number(params.id);
 
   const newAlternative = usePlaylist(PlaylistID.new_alternative);
-
-  console.log(newAlternative);
 
   const fetchData = () => {
     const targetPlaylistIDs = [PlaylistID.new_alternative];
@@ -39,11 +38,11 @@ export default function Artist() {
 
   return (
     <div className="content">
-      <div className={styles.sections}>
+      <div className={styles.first_sections}>
         <ArtistBannerComponent />
       </div>
       <div className={styles.sections}>
-        <NewTracksComponent
+        <ArtistTracksComponent
           title={"Tracks"}
           data={newAlternative}
           showDefault={5}
