@@ -1,7 +1,7 @@
 // import { startLoading } from "@redux/celebritySlice";
 import { Dispatch } from "@reduxjs/toolkit";
-import { getArtist } from "@Api/Artist";
-import { setArtist, setLoading } from "@/src/redux/ArtistSlice";
+import { getArtist, getArtistByID } from "@Api/Artist";
+import { setArtist, setArtistDetail, setArtistDetailLoading, setLoading } from "@/src/redux/ArtistSlice";
 
 const fetchArtist = () => {
   return async (dispatch: Dispatch) => {
@@ -23,5 +23,26 @@ const fetchArtist = () => {
     }
   };
 };
+const fetchArtistByID = (id: number) => {
+  return async (dispatch: Dispatch) => {
+    try {
 
-export { fetchArtist };
+      dispatch(setArtistDetailLoading(true));
+
+      const artistRes = await getArtistByID(id);
+      const artistData = artistRes?.data?.data;
+      
+      dispatch(setArtistDetail(artistData));
+
+      dispatch(setArtistDetailLoading(false));
+    } catch (error: unknown) {
+      console.log(error);
+      dispatch(setArtistDetailLoading(false));
+      // dispatch(getAllHeroesFailed(error))
+      // return Promise.reject(error?.response?.data);
+      throw error;
+    }
+  };
+};
+
+export { fetchArtist, fetchArtistByID };

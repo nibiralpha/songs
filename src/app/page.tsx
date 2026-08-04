@@ -150,10 +150,10 @@ export default function HomePage() {
         <div className={styles.sections}>
           <ArtistComponent
             title={"Populer Artist"}
-            data={artist.artist.list}
+            data={artist.list}
             slidesPerView={4}
             spaceBetween={12}
-            loading={artist.artist.loading}
+            loading={artist.loading}
           />
         </div>
       </div>

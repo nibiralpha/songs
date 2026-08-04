@@ -15,6 +15,8 @@ import { Artist } from "@app-types/Artist";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
+import { useRouter } from "next/navigation";
+
 interface Props {
   title: string;
   data: Artist[];
@@ -30,6 +32,12 @@ export default function ArtistComponent({
   spaceBetween,
   loading,
 }: Readonly<Props>) {
+  const router = useRouter();
+  
+  const changePage = (id: number) => {
+    router.push("/artist/" + id);
+  };
+
   return (
     <>
       {/* <HeaderComponent /> */}
@@ -86,7 +94,7 @@ export default function ArtistComponent({
                   </div>
                 </div>
                 <div className={styles.desc}>
-                  <div className={styles.title}>{artist.name}</div>
+                  <div onClick={() => changePage(artist.id)} className={styles.title}>{artist.name}</div>
                 </div>
               </div>
             </SwiperSlide>
