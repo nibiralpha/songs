@@ -63,7 +63,7 @@ export default function HomePage() {
   return (
     <>
       {/* <HeaderComponent /> */}
-      <div className="">
+      <div className="content">
         <div className={styles.sections}>
           <MusicBoxComponent
             title={"Trending Songs"}

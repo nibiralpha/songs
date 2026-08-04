@@ -21,9 +21,11 @@ body {
 }
 
 .content {
-  margin-left: 240px;
+  /* margin-left: 240px; */
+  margin-left: 228px;
   padding: 30px;
-  width: calc(100% - 240px);
+  /* width: calc(100% - 240px); */
+  width: calc(100% - 228px);
   /* min-height: 100vh; */
 }
 
@@ -33,10 +35,15 @@ body {
   display: flex;
   justify-content: end;
   padding: 20px 20px 0 0;
+  /* Important below */
+  /* position: absolute;  */
   /* width: 100%; */
   /* margin-left: 240px;
   padding: 30px;
   width: calc(100% - 240px); */
+
+  /* REMOVE THIS PART */
+  /* position: absolute; */
 }
 
 .main {

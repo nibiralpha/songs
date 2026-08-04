@@ -1,0 +1,34 @@
+.main_img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.artish_img_area {
+  width: 28%;
+  margin-right: 35px;
+}
+
+.artist {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.artist_playlist_name {
+  font-size: 3em;
+  font-weight: 600;
+}
+
+.fans{
+    font-weight: 400;
+    color: #a7a7a7;
+}
+
+.button_area{
+  display: flex;
+  margin-top: 30px;
+}
+
+.first_button{
+  margin-right: 10px
+}
