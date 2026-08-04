@@ -29,11 +29,14 @@ export default function ArtistTracksComponent({
   data,
   slidesPerView,
   spaceBetween,
-  showDefault
+  showDefault,
 }: Readonly<Props>) {
   return (
     <>
-      <p className={styles.section_name}>{title}</p>
+      <div className={styles.heading}>
+        <p className={styles.section_name}>{title}</p>
+        <p className={styles.show_all}>Show All</p>
+      </div>
       {/* Added styles.music_table to handle layout behavior */}
       <table className={styles.music_table}>
         <thead>
@@ -64,7 +67,11 @@ export default function ArtistTracksComponent({
                 <td className={`${styles.track_details_img}`}>
                   <img
                     className={styles.song_img}
-                    src={track.album.cover_small !== null ? track.album.cover_small : './no-img.png'} 
+                    src={
+                      track.album.cover_small !== null
+                        ? track.album.cover_small
+                        : "./no-img.png"
+                    }
                     alt={track.album.cover_small}
                   />
                 </td>
@@ -74,7 +81,9 @@ export default function ArtistTracksComponent({
                 </td>
                 {/* <td className={styles.track_details}>{track?.artist?.name}</td> */}
                 <td className={styles.track_details}>{track?.album?.title}</td>
-                <td className={styles.track_details}>{formatTrackDuration(track?.duration)}</td>
+                <td className={styles.track_details}>
+                  {formatTrackDuration(track?.duration)}
+                </td>
                 <td className={styles.track_details}>
                   <CiHeart className={styles.heart} size={20} />
                 </td>

@@ -103,3 +103,13 @@ tbody tr:hover {
 .track_details_img:hover {
   
 }
+
+.heading{
+  display: flex;
+  justify-content: space-between;
+}
+
+.show_all{
+  font-size: .8em;
+  color: #fff;
+}
