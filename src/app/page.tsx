@@ -29,6 +29,7 @@ export default function HomePage() {
   const freshSoul = usePlaylist(PlaylistID.Fresh_Soul);
   const raderWeekly = usePlaylist(PlaylistID.Radar_Weekly);
   const newAlternative = usePlaylist(PlaylistID.new_alternative);
+console.log(newAlternative);
 
   const { artist } = useArtist();
 
