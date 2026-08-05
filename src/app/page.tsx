@@ -19,6 +19,7 @@ import { fetchPlaylistByID } from "@Services/Playlists";
 import usePlaylist from "@Hooks/usePlaylist";
 import PlaylistComponent from "./Components/MusicBox/PlaylistComponent";
 import { PlaylistID } from "@Constant/PlaylistID";
+import { Genre, Genres } from "@app-types/Genre";
 
 export default function HomePage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -43,7 +44,7 @@ export default function HomePage() {
     dispatch(fetchSongsByCategory("Pop"));
     dispatch(fetchSongsByCategory("Classical"));
     dispatch(fetchArtist());
-    dispatch(fetchSongsByGenra("Rock"));
+    // dispatch(fetchSongsByGenra("Rock"));
 
     const targetPlaylistIDs = [
       PlaylistID.Fresh_pop,
@@ -67,11 +68,13 @@ export default function HomePage() {
         <div className={styles.sections}>
           <MusicBoxComponent
             title={"Trending Songs"}
+            id={Genres["Pop"]}
             data={populerSongs.list}
             loading={populerSongs.loading}
             slidesPerView={4}
             spaceBetween={12}
             showDefault={20}
+            showViewAll={true}
           />
         </div>
 
@@ -120,12 +123,14 @@ export default function HomePage() {
 
         <div className={styles.sections}>
           <MusicBoxComponent
+            id={Genres["Electronic"]}
             title={"Pop Songs"}
             data={popSongs.list}
             loading={populerSongs.loading}
             slidesPerView={4}
             spaceBetween={12}
             showDefault={20}
+            showViewAll={true}
           />
         </div>
 
@@ -137,16 +142,17 @@ export default function HomePage() {
             spaceBetween={12}
           />
         </div> */}
-        
 
         <div className={styles.sections}>
           <MusicBoxComponent
+            id={Genres["Classical"]}
             title={"Classical Music"}
             data={classicalSongs.list}
             loading={classicalSongs.loading}
             slidesPerView={4}
             spaceBetween={12}
             showDefault={20}
+            showViewAll={true}
           />
         </div>
 

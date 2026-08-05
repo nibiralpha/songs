@@ -13,4 +13,15 @@ export const Genres = {
   Country: 84,
 } as const;
 
+export interface GenreInterface {
+  id: number;
+  name: string;
+  picture: string;
+  picture_small: string;
+  picture_medium: string;
+  picture_big: string;
+  picture_xl: string;
+  type: "genre";
+}
+
 export type Genre = keyof typeof Genres;

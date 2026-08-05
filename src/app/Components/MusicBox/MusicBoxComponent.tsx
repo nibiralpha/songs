@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 interface Props {
+  id: number;
   title: string;
   data: TrackData[];
   slidesPerView: number;
@@ -25,6 +26,7 @@ interface Props {
 }
 
 export default function MusicBoxComponent({
+  id,
   title,
   data,
   slidesPerView,
@@ -35,8 +37,8 @@ export default function MusicBoxComponent({
 }: Readonly<Props>) {
   const router = useRouter();
 
-  const changePageToPlaylist = (id: number) => {
-    router.push("/playlist/" + id);
+  const changePageToPlaylist = () => {
+    router.push("/genra/" + id);
   };
 
   return (
@@ -46,14 +48,14 @@ export default function MusicBoxComponent({
       ) : (
         <div className={styles.heading}>
           <p
-            onClick={() => changePageToPlaylist(1)}
+            onClick={() => changePageToPlaylist()}
             className={styles.section_name}
           >
             {title}
           </p>
           {showViewAll && (
             <p
-              onClick={() => changePageToPlaylist(1)}
+              onClick={() => changePageToPlaylist()}
               className={styles.view_all}
             >
               View all
