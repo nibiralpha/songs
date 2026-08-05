@@ -114,6 +114,7 @@ export default function HomePage() {
             showDefault={5}
             slidesPerView={4}
             spaceBetween={12}
+            showViewAll={true}
           />
         </div>
 

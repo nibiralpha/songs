@@ -10,6 +10,7 @@ import "swiper/css/navigation";
 
 import { FaHeart, FaPlay } from "react-icons/fa";
 import { TrackData } from "@app-types/PopulerSongs";
+import { useRouter } from "next/navigation";
 
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -20,6 +21,7 @@ interface Props {
   spaceBetween: number;
   showDefault?: number;
   loading?: boolean;
+  showViewAll?: boolean;
 }
 
 export default function MusicBoxComponent({
@@ -29,13 +31,35 @@ export default function MusicBoxComponent({
   spaceBetween,
   showDefault,
   loading,
+  showViewAll,
 }: Readonly<Props>) {
+  const router = useRouter();
+
+  const changePageToPlaylist = (id: number) => {
+    router.push("/playlist/" + id);
+  };
+
   return (
     <>
       {loading ? (
         <Skeleton width={200} height={20} style={{ marginBottom: "15px" }} />
       ) : (
-        <p className={styles.section_name}>{title}</p>
+        <div className={styles.heading}>
+          <p
+            onClick={() => changePageToPlaylist(1)}
+            className={styles.section_name}
+          >
+            {title}
+          </p>
+          {showViewAll && (
+            <p
+              onClick={() => changePageToPlaylist(1)}
+              className={styles.view_all}
+            >
+              View all
+            </p>
+          )}
+        </div>
       )}
 
       {loading ? (

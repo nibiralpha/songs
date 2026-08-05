@@ -14,6 +14,8 @@ import { FaPlay } from "react-icons/fa";
 import { SearchTrack } from "@app-types/PopulerSongs";
 import { formatTrackDuration } from "@Helper/Functions";
 import { PlaylistStateInterface } from "@app-types/PlaylistState";
+import { useRouter } from "next/navigation";
+
 
 interface Props {
   title: string;
@@ -22,6 +24,7 @@ interface Props {
   slidesPerView: number;
   spaceBetween: number;
   showDefault: number;
+  showViewAll?: boolean;
 }
 
 export default function NewTracksComponent({
@@ -29,12 +32,32 @@ export default function NewTracksComponent({
   data,
   slidesPerView,
   spaceBetween,
-  showDefault
+  showDefault,
+  showViewAll
 }: Readonly<Props>) {
+    const router = useRouter();
+  
+  const changePageToPlaylist = (id: number) => {
+    router.push("/playlist/" + id);
+  };
   return (
     <>
-      <p className={styles.section_name}>{title}</p>
-      {/* Added styles.music_table to handle layout behavior */}
+      <div className={styles.heading}>
+        <p
+          onClick={() => changePageToPlaylist(data.data.id)}
+          className={styles.section_name}
+        >
+          {title}
+        </p>
+        {showViewAll && (
+          <p
+            onClick={() => changePageToPlaylist(data?.data?.id)}
+            className={styles.view_all}
+          >
+            View all
+          </p>
+        )}
+      </div>
       <table className={styles.music_table}>
         <thead>
           <tr className={styles.table_row}>
@@ -64,7 +87,11 @@ export default function NewTracksComponent({
                 <td className={`${styles.track_details_img}`}>
                   <img
                     className={styles.song_img}
-                    src={track.album.cover_small !== null ? track.album.cover_small : './no-img.png'} 
+                    src={
+                      track.album.cover_small !== null
+                        ? track.album.cover_small
+                        : "./no-img.png"
+                    }
                     alt={track.album.cover_small}
                   />
                 </td>
@@ -74,7 +101,9 @@ export default function NewTracksComponent({
                 </td>
                 <td className={styles.track_details}>{track?.artist?.name}</td>
                 <td className={styles.track_details}>{track?.album?.title}</td>
-                <td className={styles.track_details}>{formatTrackDuration(track?.duration)}</td>
+                <td className={styles.track_details}>
+                  {formatTrackDuration(track?.duration)}
+                </td>
                 <td className={styles.track_details}>
                   <CiHeart className={styles.heart} size={20} />
                 </td>
