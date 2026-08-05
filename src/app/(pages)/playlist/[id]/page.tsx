@@ -32,7 +32,7 @@ export default function Playlist() {
   const { list, data, loading } = usePlaylist(id);
 
   const fetchData = () => {
-    const targetPlaylistIDs = [1282495565];
+    const targetPlaylistIDs = [id];
     dispatch(fetchPlaylistByID(targetPlaylistIDs));
     // dispatch(fetchArtistTracks(id));
     // dispatch(fetchArtistAlbums(id));
