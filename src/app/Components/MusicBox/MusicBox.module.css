@@ -9,6 +9,11 @@
 .sub_title {
   font-size: 0.8em;
   color: #828282;
+  display: inline-block;
+}
+
+.sub_title:hover{
+  border-bottom: 1px solid #828282;
 }
 
 .album_img {
@@ -24,6 +29,7 @@
 .img_container {
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 
   /* border-radius: 8px;  */
 }
@@ -76,7 +82,7 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 1;
-  /* pointer-events: none; */
+  pointer-events: none;
 }
 
 .music_box:hover .img_container::after {
@@ -122,6 +128,23 @@
 
 .Skeleton_div {
   width: 225px;
+}
+
+.heading {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.view_all {
+  font-size: 0.8em;
+  color: #7c7c7c;
+}
+
+.view_all:hover{
+  cursor: pointer;
+  border-bottom: 1px solid #7c7c7c;
 }
 
 /* Mobile */

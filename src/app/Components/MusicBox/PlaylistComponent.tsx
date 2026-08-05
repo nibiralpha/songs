@@ -14,6 +14,7 @@ import { PlaylistStateInterface } from "@app-types/PlaylistState";
 
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useRouter } from "next/navigation";
 interface Props {
   title: string;
   data: PlaylistStateInterface;
@@ -31,12 +32,30 @@ export default function PlaylistComponent({
   showDefault,
   loading,
 }: Readonly<Props>) {
+  const router = useRouter();
+
+  const changePageToPlaylist = (id: number) => {
+    router.push("/playlist/" + id);
+  };
+  const changePageToArtist = (id: number) => {
+    router.push("/artist/" + id);
+  };
+
   return (
     <>
       {loading ? (
         <Skeleton width={200} height={20} style={{ marginBottom: "15px" }} />
       ) : (
-        <p className={styles.section_name}>{title}</p>
+        // <p className={styles.section_name}>{title}</p>
+        <div className={styles.heading}>
+          <p className={styles.section_name}>{title}</p>
+          <p
+            onClick={() => changePageToPlaylist(data?.data?.id)}
+            className={styles.view_all}
+          >
+            View all
+          </p>
+        </div>
       )}
 
       {loading ? (
@@ -82,6 +101,7 @@ export default function PlaylistComponent({
                     }
                     className={styles.album_img}
                     alt={track.title}
+                    // onClick={() => changePage(data?.data?.id)}
                   />
                   <div className={styles.actions}>
                     <div className={styles.action_button}>
@@ -94,7 +114,12 @@ export default function PlaylistComponent({
                 </div>
                 <div className={styles.desc}>
                   <div className={styles.title}>{track.title}</div>
-                  <div className={styles.sub_title}>{track.artist?.name}</div>
+                  <div
+                    onClick={() => changePageToArtist(track?.artist?.id)}
+                    className={styles.sub_title}
+                  >
+                    {track.artist?.name}
+                  </div>
                 </div>
               </div>
             </SwiperSlide>
