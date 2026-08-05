@@ -13,8 +13,9 @@ import PlaylistBannerComponent from "@/src/app/Components/ArtistBannerComponent/
 import PlaylistTrackComponent from "@/src/app/Components/NewTracksComponent/PlaylistTracksComponent";
 import CategoryBannerComponent from "@/src/app/Components/ArtistBannerComponent/CategoryBannerComponent";
 import { fetchGenraByID } from "@/src/app/Services/Genra";
+import GenraBannerComponent from "@/src/app/Components/ArtistBannerComponent/GenraBannerComponent";
 
-export default function Playlist() {
+export default function GenraPage() {
   const dispatch = useDispatch<AppDispatch>();
 
   const params = useParams();
@@ -35,9 +36,9 @@ export default function Playlist() {
 
   return (
     <div className="content">
-      {/* <div className={styles.first_sections}>
-        <CategoryBannerComponent data={data} loading={loading} />
-      </div> */}
+      <div className={styles.first_sections}>
+        <GenraBannerComponent data={genra.data} loading={genra.loading} />
+      </div>
       {/* <div className={styles.sections}>
         <PlaylistTrackComponent
           title={"Tracks"}
