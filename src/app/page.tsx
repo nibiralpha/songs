@@ -108,6 +108,16 @@ export default function HomePage() {
         </div>
 
         <div className={styles.sections}>
+          <NewTracksComponent
+            title={newAlternative?.data?.title}
+            data={newAlternative}
+            showDefault={5}
+            slidesPerView={4}
+            spaceBetween={12}
+          />
+        </div>
+
+        <div className={styles.sections}>
           <MusicBoxComponent
             title={"Pop Songs"}
             data={popSongs.list}
@@ -126,15 +136,7 @@ export default function HomePage() {
             spaceBetween={12}
           />
         </div> */}
-        <div className={styles.sections}>
-          <NewTracksComponent
-            title={newAlternative?.data?.title}
-            data={newAlternative}
-            showDefault={5}
-            slidesPerView={4}
-            spaceBetween={12}
-          />
-        </div>
+        
 
         <div className={styles.sections}>
           <MusicBoxComponent
