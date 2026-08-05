@@ -29,6 +29,7 @@ export default function PlaylistBannerComponent({
         <div className={styles.artist_content}>
           <div className={styles.artist_detail}>
             <div className={styles.artist_playlist_name}>{data?.title}</div>
+            <div className={styles.description}>{data?.description}</div>
             <div className={styles.fans}>{data?.fans?.toLocaleString() ?? "0"} Fans</div>
           </div>
           <div className={styles.button_area}>

@@ -48,7 +48,12 @@ export default function PlaylistComponent({
       ) : (
         // <p className={styles.section_name}>{title}</p>
         <div className={styles.heading}>
-          <p className={styles.section_name}>{title}</p>
+          <p
+            onClick={() => changePageToPlaylist(data?.data?.id)}
+            className={styles.section_name}
+          >
+            {title}
+          </p>
           <p
             onClick={() => changePageToPlaylist(data?.data?.id)}
             className={styles.view_all}

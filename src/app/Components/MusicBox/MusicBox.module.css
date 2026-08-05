@@ -26,6 +26,10 @@
   font-weight: 600;
 }
 
+.section_name:hover{
+  cursor: pointer
+}
+
 .img_container {
   position: relative;
   overflow: hidden;
@@ -131,7 +135,7 @@
 }
 
 .heading {
-  margin-bottom: 12px;
+  /* margin-bottom: 12px; */
   display: flex;
   align-items: center;
   justify-content: space-between;
