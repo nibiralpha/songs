@@ -17,6 +17,7 @@
 .artist_playlist_name {
   font-size: 3em;
   font-weight: 600;
+  line-height: 1.2em;
 }
 
 .fans {
@@ -33,7 +34,7 @@
   margin-right: 10px;
 }
 
-.description{
+.description {
   margin-bottom: 10px;
 }
 /* Mobile */
@@ -60,7 +61,7 @@
     margin-top: 20px;
   }
 
-  .fans{
+  .fans {
     text-align: center;
   }
 }

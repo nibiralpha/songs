@@ -21,6 +21,7 @@ import AlbumComponent from "@/src/app/Components/MusicBox/AlbumComponent";
 import useArtist from "@/src/app/Hooks/useArtist";
 import ArtistComponent from "@/src/app/Components/ArtistComponent/ArtistComponent";
 import PlaylistBannerComponent from "@/src/app/Components/ArtistBannerComponent/PlaylistBannerComponent";
+import PlaylistTrackComponent from "@/src/app/Components/NewTracksComponent/PlaylistTracksComponent";
 
 export default function Playlist() {
   const dispatch = useDispatch<AppDispatch>();
@@ -29,11 +30,9 @@ export default function Playlist() {
   const id = Number(params.id);
 
   const { list, data, loading } = usePlaylist(id);
-  
+
   const fetchData = () => {
-    const targetPlaylistIDs = [
-          1282495565
-        ];
+    const targetPlaylistIDs = [1282495565];
     dispatch(fetchPlaylistByID(targetPlaylistIDs));
     // dispatch(fetchArtistTracks(id));
     // dispatch(fetchArtistAlbums(id));
@@ -53,15 +52,15 @@ export default function Playlist() {
           // list={list}
         />
       </div>
-      {/* <div className={styles.sections}>
-        <ArtistTracksComponent
+      <div className={styles.sections}>
+        <PlaylistTrackComponent
           title={"Tracks"}
-          data={artistSongs.data}
-          showDefault={10}
+          data={list}
+          showDefault={list.length}
           slidesPerView={4}
           spaceBetween={12}
         />
-      </div> */}
+      </div>
       {/* <div className={styles.sections}>
         <AlbumComponent
           title={"Album"}
