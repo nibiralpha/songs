@@ -3,36 +3,29 @@
 import React from "react";
 import styles from "./NewTracks.module.css";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/navigation";
 
 import { CiHeart } from "react-icons/ci";
-import { FaPlay } from "react-icons/fa";
-import { SearchTrack } from "@app-types/PopulerSongs";
+import { TrackData } from "@app-types/PopulerSongs";
 import { formatTrackDuration } from "@Helper/Functions";
-import { PlaylistStateInterface } from "@app-types/PlaylistState";
-import { ArtistSongsDetailStateInterface } from "@app-types/ArtistState";
-import { DeezerTrack } from "@app-types/Artist";
-import { PlaylistTrack } from "@app-types/Playlist";
 
 interface Props {
   title: string;
-  // data: SearchTrack[];
-  data: PlaylistTrack[];
+  data: TrackData[];
+  loading: boolean;
   slidesPerView: number;
   spaceBetween: number;
   showDefault: number;
 }
 
-export default function PlaylistTrackComponent({
+export default function SongsTrackComponent({
   title,
   data,
   slidesPerView,
   spaceBetween,
   showDefault,
+  loading,
 }: Readonly<Props>) {
   return (
     <>

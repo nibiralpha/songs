@@ -11,7 +11,7 @@ import {
   ArtistInterface,
   RelatedArtistInterface,
 } from "@app-types/ArtistState";
-import { ArtistAlbum } from "../app/Types/Album";
+import { ArtistAlbum } from "@app-types/Album";
 
 const initialState: ArtistInterface = {
   artist: {

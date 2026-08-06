@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { BASEURL } from "@Constant/Api";
 import { ArtistDetailResponse, ArtistResponse, DeezerTrackResponse, RelatedArtistApiResponse, RelatedArtistResponse } from "@app-types/Artist";
-import { ArtistAlbumsResponse } from "../Types/Album";
+import { ArtistAlbumsResponse } from "@app-types/Album";
 
 const getArtist = async (): Promise<AxiosResponse<ArtistResponse>> => {
   const response = await axios.get<ArtistResponse>(`${BASEURL}/api/artist`);
