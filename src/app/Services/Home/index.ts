@@ -14,7 +14,7 @@ import {
   setTracks,
   setTracksLoading,
 } from "@/src/redux/MusicSlice";
-import { Genre, Genres } from "@app-types/Genre";
+import { GenreName, Genres } from "@app-types/Genre";
 
 const fetchPopulerSongs = () => {
   return async (dispatch: Dispatch) => {
@@ -37,7 +37,7 @@ const fetchPopulerSongs = () => {
   };
 };
 
-const fetchSongsByCategory = (category: Genre) => {
+const fetchSongsByCategory = (category: GenreName) => {
   return async (dispatch: Dispatch) => {
     try {
       if (category === "Pop") {
@@ -68,7 +68,7 @@ const fetchSongsByCategory = (category: Genre) => {
   };
 };
 
-const fetchSongsByGenra = (category: Genre) => {
+const fetchSongsByGenra = (category: GenreName) => {
   return async (dispatch: Dispatch) => {
     try {
       dispatch(setTracksLoading(true));

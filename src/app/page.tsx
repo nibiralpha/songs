@@ -19,7 +19,7 @@ import { fetchPlaylistByID } from "@Services/Playlists";
 import usePlaylist from "@Hooks/usePlaylist";
 import PlaylistComponent from "./Components/MusicBox/PlaylistComponent";
 import { PlaylistID } from "@Constant/PlaylistID";
-import { Genre, Genres } from "@app-types/Genre";
+import { GenreName, Genres } from "@app-types/Genre";
 
 export default function HomePage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -124,7 +124,7 @@ export default function HomePage() {
         <div className={styles.sections}>
           <MusicBoxComponent
             id={Genres["Electronic"]}
-            title={"Pop Songs"}
+            title={"Electronic"}
             data={popSongs.list}
             loading={populerSongs.loading}
             slidesPerView={4}

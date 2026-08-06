@@ -8,7 +8,7 @@ import { FaShuffle } from "react-icons/fa6";
 import { ArtistDetails } from "@app-types/Artist";
 import { ArtistDetailStateInterface } from "@app-types/ArtistState";
 import { PlaylistDescription, PlaylistTrack } from "@app-types/Playlist";
-import { GenreInterface } from "@app-types/Genre";
+import { GenraOrginalAndAppName, GenreInterface } from "@app-types/Genre";
 
 interface Props {
   data: GenreInterface;
@@ -18,6 +18,13 @@ export default function GenraBannerComponent({
   loading,
   data,
 }: Readonly<Props>) {
+  const genreId = data?.id;
+
+  const genreData =
+    genreId !== undefined && genreId in GenraOrginalAndAppName
+      ? GenraOrginalAndAppName[genreId as keyof typeof GenraOrginalAndAppName]
+      : undefined;
+
   return (
     <div className={styles.artist_component}>
       <div className={styles.artist}>
@@ -28,7 +35,8 @@ export default function GenraBannerComponent({
         </div>
         <div className={styles.artist_content}>
           <div className={styles.artist_detail}>
-            <div className={styles.artist_playlist_name}>{data?.name}</div>
+            {/* <div className={styles.artist_playlist_name}>{data?.name}</div> */}
+            <div className={styles.artist_playlist_name}>{genreData?.name}</div>
             {/* <div className={styles.description}>{data?.description}</div> */}
             {/* <div className={styles.fans}>{data?.fans?.toLocaleString() ?? "0"} Fans</div> */}
           </div>

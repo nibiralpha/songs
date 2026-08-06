@@ -14,20 +14,29 @@ import PlaylistTrackComponent from "@/src/app/Components/NewTracksComponent/Play
 import CategoryBannerComponent from "@/src/app/Components/ArtistBannerComponent/CategoryBannerComponent";
 import { fetchGenraByID } from "@/src/app/Services/Genra";
 import GenraBannerComponent from "@/src/app/Components/ArtistBannerComponent/GenraBannerComponent";
+import {
+  fetchSongsByCategory,
+  fetchSongsByGenra,
+} from "@/src/app/Services/Home";
+import { getGenreNameByValue } from "@/src/app/Helper/Functions";
+import { GenreValue } from "@/src/app/Types/Genre";
 
 export default function GenraPage() {
   const dispatch = useDispatch<AppDispatch>();
 
   const params = useParams();
-  const id = Number(params.id);
+  const id = Number(params.id) as GenreValue;
+  const genraName = getGenreNameByValue(id) || "Pop";
 
   // const { list, data, loading } = usePlaylist(id);
   const { genra } = useGenra();
-  
+
   const fetchData = () => {
     // const targetPlaylistIDs = [id];
-    // dispatch(fetchPlaylistByID(targetPlaylistIDs));
+    // dispatch(fetchPlaylistByID(genraName));
     dispatch(fetchGenraByID(id));
+    dispatch(fetchSongsByCategory(genraName))
+    
   };
 
   useEffect(() => {
