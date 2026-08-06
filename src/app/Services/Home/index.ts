@@ -14,7 +14,7 @@ import {
   setTracks,
   setTracksLoading,
 } from "@/src/redux/MusicSlice";
-import { GenreName, Genres } from "@app-types/Genre";
+import { GenreName, Genres } from "@Constant/Genra";
 
 const fetchPopulerSongs = () => {
   return async (dispatch: Dispatch) => {

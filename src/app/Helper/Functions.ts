@@ -1,4 +1,4 @@
-import { GenreName, Genres, GenreValue } from "@app-types/Genre";
+import { GenreName, Genres, GenreValue } from "@Constant/Genra";
 
 export const formatTrackDuration = (totalSeconds: number) => {
   const minutes = Math.floor(totalSeconds / 60);

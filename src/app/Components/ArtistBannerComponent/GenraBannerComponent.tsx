@@ -8,7 +8,8 @@ import { FaShuffle } from "react-icons/fa6";
 import { ArtistDetails } from "@app-types/Artist";
 import { ArtistDetailStateInterface } from "@app-types/ArtistState";
 import { PlaylistDescription, PlaylistTrack } from "@app-types/Playlist";
-import { GenraOrginalAndAppName, GenreInterface } from "@app-types/Genre";
+import { GenreInterface } from "@app-types/Genre";
+import { GenraOrginalAndAppName } from "@Constant/Genra";
 
 interface Props {
   data: GenreInterface;
