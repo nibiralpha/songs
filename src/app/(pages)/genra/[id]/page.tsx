@@ -8,18 +8,11 @@ import useGenra from "@Hooks/useGenra";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/Store";
 
-import { fetchPlaylistByID } from "@/src/app/Services/Playlists";
-import PlaylistBannerComponent from "@/src/app/Components/ArtistBannerComponent/PlaylistBannerComponent";
-import PlaylistTrackComponent from "@/src/app/Components/NewTracksComponent/PlaylistTracksComponent";
-import CategoryBannerComponent from "@/src/app/Components/ArtistBannerComponent/CategoryBannerComponent";
 import { fetchGenraByID } from "@/src/app/Services/Genra";
 import GenraBannerComponent from "@/src/app/Components/ArtistBannerComponent/GenraBannerComponent";
-import {
-  fetchSongsByCategory,
-  fetchSongsByGenra,
-} from "@/src/app/Services/Home";
+import { fetchSongsByCategory } from "@/src/app/Services/Home";
 import { getGenreNameByValue } from "@/src/app/Helper/Functions";
-import { GenreValue } from "@/src/app/Types/Genre";
+import { GenreValue } from "@Constant/Genra";
 
 export default function GenraPage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -35,8 +28,7 @@ export default function GenraPage() {
     // const targetPlaylistIDs = [id];
     // dispatch(fetchPlaylistByID(genraName));
     dispatch(fetchGenraByID(id));
-    dispatch(fetchSongsByCategory(genraName))
-    
+    dispatch(fetchSongsByCategory(genraName));
   };
 
   useEffect(() => {
