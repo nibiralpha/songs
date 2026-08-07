@@ -13,21 +13,6 @@ export const Genres = {
   Country: 84,
 } as const;
 
-// export const GenreObject = {
-//   All: 0,
-//   Pop: 132,
-//   Rock: 152,
-//   RapHipHop: 116,
-//   Dance: 113,
-//   Electronic: 106,
-//   Jazz: 129,
-//   Classical: 98,
-//   RnBSoul: 165,
-//   Reggae: 144,
-//   Latin: 197,
-//   Country: 84,
-// } as const;
-
 export const GenraOrginalAndAppName = {
   0: { originalName: "All", name: "Trending Songs" },
   84: { originalName: "Country", name: "Country Songs" },
@@ -42,8 +27,6 @@ export const GenraOrginalAndAppName = {
   165: { originalName: "RnBSoul", name: "RnBSoul Songs" },
   197: { originalName: "Latin", name: "Latin Songs" },
 } as const;
-
-// export type Genre = keyof typeof Genres;
 
 export type GenreValue = (typeof Genres)[keyof typeof Genres];
 export type GenreName = keyof typeof Genres;
