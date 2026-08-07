@@ -3,6 +3,11 @@
   border-radius: 2%;
 }
 
+.album_main_img {
+  width: 100%;
+  border-radius: 50%;
+}
+
 .artish_img_area {
   width: 28%;
   margin-right: 35px;

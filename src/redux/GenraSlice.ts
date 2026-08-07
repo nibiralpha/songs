@@ -12,7 +12,7 @@ const initialState: GenraStateInterface = {
 };
 
 export const GenraSlice = createSlice({
-  name: "artist",
+  name: "genra",
   initialState,
   reducers: {
     setGenra: (state, action: PayloadAction<GenreInterface>) => {

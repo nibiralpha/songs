@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import styles from "./Artist.module.css";
+import styles from "./Album.module.css";
 
 import { useParams } from "next/navigation";
 import ArtistBannerComponent from "@/src/app/Components/ArtistBannerComponent/ArtistBannerComponent";
@@ -20,6 +20,7 @@ import ArtistTracksComponent from "@/src/app/Components/NewTracksComponent/Artis
 import AlbumComponent from "@/src/app/Components/MusicBox/AlbumComponent";
 import useArtist from "@/src/app/Hooks/useArtist";
 import ArtistComponent from "@/src/app/Components/ArtistComponent/ArtistComponent";
+import AlbumBannerComponent from "@/src/app/Components/ArtistBannerComponent/AlbumBannerComponent";
 
 export default function Artist() {
   const dispatch = useDispatch<AppDispatch>();
@@ -44,7 +45,7 @@ export default function Artist() {
   return (
     <div className="content">
       <div className={styles.first_sections}>
-        <ArtistBannerComponent
+        <AlbumBannerComponent
           data={artistDetails.data}
           loading={artistDetails.loading}
         />
