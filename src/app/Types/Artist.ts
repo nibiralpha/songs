@@ -62,6 +62,8 @@ export interface DeezerTrack {
   type: "track";
 }
 
+export type DeezerTrackWithoutContributors = Omit<DeezerTrack, "contributors">;
+
 export interface DeezerContributor {
   id: number;
   name: string;

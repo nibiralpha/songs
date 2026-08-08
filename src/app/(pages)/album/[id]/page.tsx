@@ -23,6 +23,7 @@ import ArtistComponent from "@/src/app/Components/ArtistComponent/ArtistComponen
 import AlbumBannerComponent from "@/src/app/Components/ArtistBannerComponent/AlbumBannerComponent";
 import { fetchAbumDetail } from "@/src/app/Services/Album";
 import useAlbum from "@/src/app/Hooks/useAlbum";
+import AlbumTracksComponent from "@/src/app/Components/NewTracksComponent/AlbumTracks";
 
 export default function Artist() {
   const dispatch = useDispatch<AppDispatch>();
@@ -55,15 +56,15 @@ export default function Artist() {
         />
       </div>
       <div className={styles.sections}>
-        <ArtistTracksComponent
+        <AlbumTracksComponent
           title={"Tracks"}
-          data={artistSongs.data}
+          data={albums.data?.tracks?.data}
           showDefault={10}
           slidesPerView={4}
           spaceBetween={12}
         />
       </div>
-      <div className={styles.sections}>
+      {/* <div className={styles.sections}>
         <AlbumComponent
           title={"Album"}
           data={artistAlbums.data}
@@ -71,7 +72,7 @@ export default function Artist() {
           slidesPerView={4}
           spaceBetween={12}
         />
-      </div>
+      </div> */}
       {/* <div className={styles.sections}>
         <AlbumComponent
           title={"Top songs"}
@@ -81,7 +82,7 @@ export default function Artist() {
           spaceBetween={12}
         />
       </div> */}
-      <div className={styles.sections}>
+      {/* <div className={styles.sections}>
         <ArtistComponent
           title={"Related Artist"}
           data={relatedArtist.data}
@@ -90,7 +91,7 @@ export default function Artist() {
           slidesPerView={4}
           spaceBetween={12}
         />
-      </div>
+      </div> */}
     </div>
   );
 }
