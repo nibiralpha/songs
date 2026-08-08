@@ -22,6 +22,7 @@ import useArtist from "@/src/app/Hooks/useArtist";
 import ArtistComponent from "@/src/app/Components/ArtistComponent/ArtistComponent";
 import AlbumBannerComponent from "@/src/app/Components/ArtistBannerComponent/AlbumBannerComponent";
 import { fetchAbumDetail } from "@/src/app/Services/Album";
+import useAlbum from "@/src/app/Hooks/useAlbum";
 
 export default function Artist() {
   const dispatch = useDispatch<AppDispatch>();
@@ -31,9 +32,10 @@ export default function Artist() {
 
   const { artistDetails, artistSongs, artistAlbums, relatedArtist } =
     useArtist();
+  const { albums } = useAlbum();
 
   const fetchData = () => {
-    dispatch(fetchAbumDetail(id))
+    dispatch(fetchAbumDetail(id));
     // dispatch(fetchArtistByID(id));
     // dispatch(fetchArtistTracks(id));
     // dispatch(fetchArtistAlbums(id));
@@ -48,8 +50,8 @@ export default function Artist() {
     <div className="content">
       <div className={styles.first_sections}>
         <AlbumBannerComponent
-          data={artistDetails.data}
-          loading={artistDetails.loading}
+          data={albums.data}
+          loading={albums.loading}
         />
       </div>
       <div className={styles.sections}>
