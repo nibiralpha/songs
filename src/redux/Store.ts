@@ -3,12 +3,14 @@ import MusicSlice from "./MusicSlice";
 import ArtistSlice from "./ArtistSlice";
 import PlaylistSlice from "./PlaylistSlice";
 import GenraSlice from "./GenraSlice";
+import AlbumSlice from "./AlbumSlice";
 
 const rootReducer = combineReducers({
   songs: MusicSlice,
   artist: ArtistSlice,
   playlist: PlaylistSlice,
   genra: GenraSlice,
+  album: AlbumSlice,
 });
 
 export const store = configureStore({

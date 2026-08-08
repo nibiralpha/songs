@@ -12,7 +12,7 @@ export interface AlbumInterface {
 
 export interface AlbumStateInterface {
 //   tracks: DeezerTrack[];
-  data: AlbumDetailsResponse | null
+  data: AlbumDetailsResponse
   loading: boolean
 //   loading: boolean;
   // error: boolean;

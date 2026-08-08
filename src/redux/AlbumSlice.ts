@@ -4,7 +4,7 @@ import { AlbumInterface } from "@app-types/AlbumState";
 
 const initialState: AlbumInterface = {
   album: {
-    data: null,
+    data: {} as AlbumDetailsResponse,
     loading: true,
   },
 };
