@@ -21,6 +21,7 @@ import AlbumComponent from "@/src/app/Components/MusicBox/AlbumComponent";
 import useArtist from "@/src/app/Hooks/useArtist";
 import ArtistComponent from "@/src/app/Components/ArtistComponent/ArtistComponent";
 import AlbumBannerComponent from "@/src/app/Components/ArtistBannerComponent/AlbumBannerComponent";
+import { fetchAbumDetail } from "@/src/app/Services/Album";
 
 export default function Artist() {
   const dispatch = useDispatch<AppDispatch>();
@@ -32,10 +33,11 @@ export default function Artist() {
     useArtist();
 
   const fetchData = () => {
-    dispatch(fetchArtistByID(id));
-    dispatch(fetchArtistTracks(id));
-    dispatch(fetchArtistAlbums(id));
-    dispatch(fetchRelatedArtist(id));
+    dispatch(fetchAbumDetail(id))
+    // dispatch(fetchArtistByID(id));
+    // dispatch(fetchArtistTracks(id));
+    // dispatch(fetchArtistAlbums(id));
+    // dispatch(fetchRelatedArtist(id));
   };
 
   useEffect(() => {
