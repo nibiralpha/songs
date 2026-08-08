@@ -1,120 +1,32 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  Artist,
-  ArtistDetailResponse,
-  ArtistDetails,
-  DeezerTrack,
-  RelatedArtistResponse,
-} from "@app-types/Artist";
-import {
-  ArtistDetailStateInterface,
-  ArtistInterface,
-  RelatedArtistInterface,
-} from "@app-types/ArtistState";
-import { ArtistAlbum } from "@app-types/Album";
+import { AlbumDetailsResponse } from "@app-types/Album";
+import { AlbumInterface } from "@app-types/AlbumState";
 
-const initialState: ArtistInterface = {
-  artist: {
-    list: [],
-    loading: true,
-    // error: false,
-    // errorResponse: {},
-  },
-  artistDetails: {
+const initialState: AlbumInterface = {
+  album: {
     data: null,
-    loading: true,
-  },
-  artistSongs: {
-    data: [],
-    loading: true,
-  },
-  artistAlbum: {
-    data: [],
-    loading: true,
-  },
-  relatedArtist: {
-    data: [],
     loading: true,
   },
 };
 
-export const ArtistSlice = createSlice({
-  name: "artist",
+export const AlbumSlice = createSlice({
+  name: "album",
   initialState,
   reducers: {
-    setArtist: (state, action: PayloadAction<Artist[]>) => {
+    setAlbum: (state, action: PayloadAction<AlbumDetailsResponse>) => {
       return {
         ...state,
-        artist: { ...state.artist, list: action.payload },
+        album: { ...state.album, data: action.payload },
       };
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
       return {
         ...state,
-        artist: { ...state.artist, loading: action.payload },
-      };
-    },
-    setArtistDetail: (state, action: PayloadAction<ArtistDetails>) => {
-      return {
-        ...state,
-        artistDetails: { ...state.artistDetails, data: action.payload },
-      };
-    },
-    setArtistDetailLoading: (state, action: PayloadAction<boolean>) => {
-      return {
-        ...state,
-        artistDetails: { ...state.artistDetails, loading: action.payload },
-      };
-    },
-    setArtistSongs: (state, action: PayloadAction<DeezerTrack[]>) => {
-      return {
-        ...state,
-        artistSongs: { ...state.artistSongs, data: action.payload },
-      };
-    },
-    setArtistSongsLoading: (state, action: PayloadAction<boolean>) => {
-      return {
-        ...state,
-        artistSongs: { ...state.artistSongs, loading: action.payload },
-      };
-    },
-    setArtistAlbums: (state, action: PayloadAction<ArtistAlbum[]>) => {
-      return {
-        ...state,
-        artistAlbum: { ...state.artistAlbum, data: action.payload },
-      };
-    },
-    setArtistAlbumsLoading: (state, action: PayloadAction<boolean>) => {
-      return {
-        ...state,
-        artistAlbum: { ...state.artistAlbum, loading: action.payload },
-      };
-    },
-    setRelatedArtist: (state, action: PayloadAction<RelatedArtistResponse[]>) => {
-      return {
-        ...state,
-        relatedArtist: { ...state.relatedArtist, data: action.payload },
-      };
-    },
-    setRelatedArtistLoading: (state, action: PayloadAction<boolean>) => {
-      return {
-        ...state,
-        relatedArtist: { ...state.relatedArtist, loading: action.payload },
+        album: { ...state.album, loading: action.payload },
       };
     },
   },
 });
 
-export const {
-  setArtist,
-  setLoading,
-  setArtistDetail,
-  setArtistDetailLoading,
-  setArtistSongs,
-  setArtistSongsLoading,
-  setArtistAlbums,
-  setArtistAlbumsLoading,
-  setRelatedArtist,
-  setRelatedArtistLoading
-} = ArtistSlice.actions;
-export default ArtistSlice.reducer;
+export const { setAlbum, setLoading } = AlbumSlice.actions;
+export default AlbumSlice.reducer;
