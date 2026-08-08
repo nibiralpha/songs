@@ -1,38 +1,20 @@
-export interface AlbumResponse {
-  id: number;
-  title: string;
+export interface AlbumDetailsResponse extends ArtistAlbum {
   upc: string;
-  link: string;
   share: string;
 
-  cover: string;
-  cover_small: string;
-  cover_medium: string;
-  cover_big: string;
-  cover_xl: string;
-  md5_image: string;
-
-  genre_id: number;
   genres: DeezerGenreList;
 
   label: string;
   nb_tracks: number;
   duration: number;
-  fans: number;
-  release_date: string;
-  record_type: string;
 
   available: boolean;
-  tracklist: string;
 
-  explicit_lyrics: boolean;
   explicit_content_lyrics: number;
   explicit_content_cover: number;
 
   contributors: DeezerContributor[];
   artist: DeezerArtist;
-
-  type: "album";
 
   tracks: {
     data: DeezerTrack[];
@@ -54,22 +36,20 @@ export interface DeezerArtist {
   id: number;
   name: string;
 
-  picture?: string;
-  picture_small?: string;
-  picture_medium?: string;
-  picture_big?: string;
-  picture_xl?: string;
-
-  link?: string;
-  share?: string;
-
-  radio?: boolean;
+  picture: string;
+  picture_small: string;
+  picture_medium: string;
+  picture_big: string;
+  picture_xl: string;
 
   tracklist: string;
   type: "artist";
 }
 
 export interface DeezerContributor extends DeezerArtist {
+  link: string;
+  share: string;
+  radio: boolean;
   role: string;
 }
 
@@ -82,7 +62,6 @@ export interface DeezerTrack {
   title_version: string;
 
   link: string;
-
   duration: number;
   rank: number;
 
