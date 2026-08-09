@@ -6,7 +6,9 @@ export function useNavigate() {
   const router = useRouter();
 
   const navigate = (url: string) => {
-    window.dispatchEvent(new Event("navigation-start"));
+    window.dispatchEvent(
+      new Event("navigation-start")
+    );
 
     router.push(url);
   };

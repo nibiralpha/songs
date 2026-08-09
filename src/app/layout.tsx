@@ -5,7 +5,7 @@ import "./globals.css";
 import Sidebar from "@Components/Layout/SidebarComponent/SidebarComponent";
 import Header from "@Components/Layout/HeaderComponent/HeaderComponent";
 import StoreProvider from "@redux/StoreProvider";
-import NavigationLoader from "./NavigationLoader";
+import NavigationLoader from "@Components/NavigationLoaderComponent/NavigationLoaderComponent";
 
 export default function RootLayout({
   children,
