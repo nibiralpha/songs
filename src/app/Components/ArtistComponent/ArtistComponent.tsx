@@ -17,6 +17,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 import { useRouter } from "next/navigation";
 import { RelatedArtistInterface } from "@app-types/ArtistState";
+import { useNavigate } from "@Hooks/useNavigate";
 
 interface Props {
   title: string;
@@ -33,10 +34,10 @@ export default function ArtistComponent({
   spaceBetween,
   loading,
 }: Readonly<Props>) {
-  const router = useRouter();
+  const navigate = useNavigate();
   
   const changePage = (id: number) => {
-    router.push("/artist/" + id);
+    navigate("/artist/" + id);
   };
 
   return (

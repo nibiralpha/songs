@@ -14,6 +14,7 @@ import { TrackData } from "@app-types/PopulerSongs";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { ArtistAlbum } from "@app-types/Album";
+import { useNavigate } from "@Hooks/useNavigate";
 interface Props {
   title: string;
   data: ArtistAlbum[];
@@ -31,6 +32,12 @@ export default function AlbumComponent({
   showDefault,
   loading,
 }: Readonly<Props>) {
+  const navigate = useNavigate();
+
+  const changePage = (id: number) => {
+    navigate("/album/" + id);
+  };
+
   return (
     <>
       {loading ? (
@@ -93,8 +100,8 @@ export default function AlbumComponent({
                   </div>
                 </div>
                 <div className={styles.desc}>
-                  <div className={styles.title}>{box.title}</div>
-                  <div className={styles.sub_title}>{box?.title}</div>
+                  <div onClick={() => changePage(box.id)} className={styles.title}>{box.title}</div>
+                  {/* <div className={styles.sub_title}>{box?.title}</div> */}
                 </div>
               </div>
             </SwiperSlide>

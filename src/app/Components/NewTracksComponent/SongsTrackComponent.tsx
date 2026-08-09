@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import { CiHeart } from "react-icons/ci";
 import { TrackData } from "@app-types/PopulerSongs";
 import { formatTrackDuration } from "@Helper/Functions";
+import { useNavigate } from "@Hooks/useNavigate";
 
 interface Props {
   title: string;
@@ -27,6 +28,15 @@ export default function SongsTrackComponent({
   showDefault,
   loading,
 }: Readonly<Props>) {
+  const navigate = useNavigate();
+
+  const changePageToArtist = (id: number) => {
+    navigate(`/artist/${id}`);
+  };
+
+  const changePageToAlbum = (id: number) => {
+    navigate(`/album/${id}`);
+  };
   return (
     <>
       <div className={styles.heading}>
@@ -75,8 +85,16 @@ export default function SongsTrackComponent({
                 <td className={`${styles.track_details} ${styles.title_track}`}>
                   {track.title}
                 </td>
-                <td className={styles.track_details}>{track?.artist?.name}</td>
-                <td className={styles.track_details}>{track?.album?.title}</td>
+                <td className={`${styles.track_details} ${styles.mouse_hover}`}>
+                  <span onClick={() => changePageToArtist(track?.artist?.id)}>
+                    {track?.artist?.name}
+                  </span>
+                </td>
+                <td className={`${styles.track_details} ${styles.mouse_hover}`}>
+                  <span onClick={() => changePageToAlbum(track?.album?.id)}>
+                    {track?.album?.title}
+                  </span>
+                </td>
                 <td className={styles.track_details}>
                   {formatTrackDuration(track?.duration)}
                 </td>

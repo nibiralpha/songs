@@ -10,10 +10,12 @@ import "swiper/css/navigation";
 
 import { FaHeart, FaPlay } from "react-icons/fa";
 import { TrackData } from "@app-types/PopulerSongs";
-import { useRouter } from "next/navigation";
 
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+
+import { useNavigate } from "@Hooks/useNavigate";
+
 interface Props {
   id: number;
   title: string;
@@ -35,10 +37,13 @@ export default function MusicBoxComponent({
   loading,
   showViewAll,
 }: Readonly<Props>) {
-  const router = useRouter();
+  const navigate = useNavigate();
 
   const changePageToPlaylist = () => {
-    router.push("/genra/" + id);
+    navigate("/genra/" + id);
+  };
+  const changePageToArtist = (id: number) => {
+    navigate("/artist/" + id);
   };
 
   return (
@@ -119,7 +124,7 @@ export default function MusicBoxComponent({
                 </div>
                 <div className={styles.desc}>
                   <div className={styles.title}>{box.title}</div>
-                  <div className={styles.sub_title}>{box.artist?.name}</div>
+                  <div onClick={() => changePageToArtist(box.artist.id)} className={styles.sub_title}>{box.artist?.name}</div>
                 </div>
               </div>
             </SwiperSlide>

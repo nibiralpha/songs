@@ -104,6 +104,7 @@
 
 .desc:hover {
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .album_img {

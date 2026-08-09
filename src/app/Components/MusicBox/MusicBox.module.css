@@ -6,6 +6,11 @@
   font-size: 0.9em;
 }
 
+.title:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .sub_title {
   font-size: 0.8em;
   color: #828282;

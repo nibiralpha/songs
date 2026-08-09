@@ -127,3 +127,8 @@ tbody tr:hover {
   cursor: pointer;
   border-bottom: 1px solid #7c7c7c;
 }
+
+.mouse_hover:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}

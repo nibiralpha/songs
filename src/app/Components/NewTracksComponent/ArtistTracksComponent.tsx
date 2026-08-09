@@ -16,6 +16,7 @@ import { formatTrackDuration } from "@Helper/Functions";
 import { PlaylistStateInterface } from "@app-types/PlaylistState";
 import { ArtistSongsDetailStateInterface } from "@app-types/ArtistState";
 import { DeezerTrack } from "@app-types/Artist";
+import { useNavigate } from "@Hooks/useNavigate";
 
 interface Props {
   title: string;
@@ -33,6 +34,12 @@ export default function ArtistTracksComponent({
   spaceBetween,
   showDefault,
 }: Readonly<Props>) {
+  const navigate = useNavigate();
+
+  const changePageToAlbum = (id: number) => {
+    navigate(`/album/${id}`);
+  };
+
   return (
     <>
       <div className={styles.heading}>
@@ -81,8 +88,11 @@ export default function ArtistTracksComponent({
                 <td className={`${styles.track_details} ${styles.title_track}`}>
                   {track.title}
                 </td>
-                {/* <td className={styles.track_details}>{track?.artist?.name}</td> */}
-                <td className={styles.track_details}>{track?.album?.title}</td>
+                <td className={`${styles.track_details} ${styles.mouse_hover}`}>
+                  <span onClick={() => changePageToAlbum(track?.album?.id)}>
+                    {track?.album?.title}
+                  </span>
+                </td>
                 <td className={styles.track_details}>
                   {formatTrackDuration(track?.duration)}
                 </td>

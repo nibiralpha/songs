@@ -62,7 +62,7 @@ export default function Artist() {
         <AlbumComponent
           title={"Album"}
           data={artistAlbums.data}
-          showDefault={5}
+          showDefault={artistAlbums.data.length}
           slidesPerView={4}
           spaceBetween={12}
         />

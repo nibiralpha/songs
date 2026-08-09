@@ -15,6 +15,7 @@ import { PlaylistStateInterface } from "@app-types/PlaylistState";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useRouter } from "next/navigation";
+import { useNavigate } from "@Hooks/useNavigate";
 interface Props {
   title: string;
   data: PlaylistStateInterface;
@@ -32,13 +33,14 @@ export default function PlaylistComponent({
   showDefault,
   loading,
 }: Readonly<Props>) {
-  const router = useRouter();
+  const navigate = useNavigate();
 
   const changePageToPlaylist = (id: number) => {
-    router.push("/playlist/" + id);
+    navigate("/playlist/" + id);
   };
+
   const changePageToArtist = (id: number) => {
-    router.push("/artist/" + id);
+    navigate("/artist/" + id);
   };
 
   return (
