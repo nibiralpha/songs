@@ -41,6 +41,7 @@ export default function NewTracksComponent({
   const changePageToPlaylist = (id: number) => {
     navigate(`/playlist/${id}`);
   };
+
   return (
     <>
       <div className={styles.heading}>
