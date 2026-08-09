@@ -21,13 +21,22 @@ export default function ArtistBannerComponent({
       <div className={styles.artist}>
         <div className={styles.artish_img_area}>
           <div className={styles.artist_img}>
-            <img className={styles.main_img} src={data?.picture_medium} />
+            <img
+              className={styles.main_img}
+              src={
+                data?.picture_medium !== null
+                  ? data?.picture_medium
+                  : "/no-img.png"
+              }
+            />
           </div>
         </div>
         <div className={styles.artist_content}>
           <div className={styles.artist_detail}>
             <div className={styles.artist_playlist_name}>{data?.name}</div>
-            <div className={styles.fans}>{data?.nb_fan?.toLocaleString() ?? "0"} Fans</div>
+            <div className={styles.fans}>
+              {data?.nb_fan?.toLocaleString() ?? "0"} Fans
+            </div>
           </div>
           <div className={styles.button_area}>
             <div className={styles.first_button}>

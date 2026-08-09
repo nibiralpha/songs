@@ -10,7 +10,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import { FaHeart, FaPlay } from "react-icons/fa";
-import { Artist, ArtistDetails, RelatedArtistResponse } from "@app-types/Artist";
+import {
+  Artist,
+  ArtistDetails,
+  RelatedArtistResponse,
+} from "@app-types/Artist";
 
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -34,7 +38,7 @@ export default function ArtistComponent({
   loading,
 }: Readonly<Props>) {
   const router = useRouter();
-  
+
   const changePage = (id: number) => {
     router.push("/artist/" + id);
   };
@@ -84,7 +88,11 @@ export default function ArtistComponent({
               <div className={styles.music_box}>
                 <div className={styles.img_container}>
                   <img
-                    src={artist.picture_medium}
+                    src={
+                      artist.picture_medium !== null
+                        ? artist.picture_medium
+                        : "/no-img.png"
+                    }
                     className={styles.album_img}
                     alt={artist.name}
                   />
@@ -95,7 +103,12 @@ export default function ArtistComponent({
                   </div>
                 </div>
                 <div className={styles.desc}>
-                  <div onClick={() => changePage(artist.id)} className={styles.title}>{artist.name}</div>
+                  <div
+                    onClick={() => changePage(artist.id)}
+                    className={styles.title}
+                  >
+                    {artist.name}
+                  </div>
                 </div>
               </div>
             </SwiperSlide>

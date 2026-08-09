@@ -23,7 +23,7 @@ export default function PlaylistBannerComponent({
       <div className={styles.artist}>
         <div className={styles.artish_img_area}>
           <div className={styles.artist_img}>
-            <img className={styles.main_img} src={data?.picture_medium} />
+            <img className={styles.main_img} src={data?.picture_medium !== null ? data?.picture_medium : "/no-img.png"} />
           </div>
         </div>
         <div className={styles.artist_content}>

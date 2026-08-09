@@ -85,7 +85,7 @@ export default function AlbumComponent({
                     src={
                       box?.cover_medium !== null
                         ? box.cover_medium
-                        : "./no-img.png"
+                        : "/no-img.png"
                     }
                     className={styles.album_img}
                     alt={box.title}

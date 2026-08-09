@@ -108,7 +108,7 @@ export default function MusicBoxComponent({
                     src={
                       box.album?.cover_big !== null
                         ? box.album?.cover_big
-                        : "./no-img.png"
+                        : "/no-img.png"
                     }
                     className={styles.album_img}
                     alt={box.title}

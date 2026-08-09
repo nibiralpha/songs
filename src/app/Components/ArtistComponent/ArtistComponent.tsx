@@ -85,7 +85,7 @@ export default function ArtistComponent({
               <div className={styles.music_box}>
                 <div className={styles.img_container}>
                   <img
-                    src={artist.picture_medium}
+                    src={artist.picture_medium !== null ? artist.picture_medium : "/no-img.png"}
                     className={styles.album_img}
                     alt={artist.name}
                   />

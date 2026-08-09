@@ -104,7 +104,7 @@ export default function PlaylistComponent({
                     src={
                       track.album?.cover_medium !== null
                         ? track.album?.cover_medium
-                        : "./no-img.png"
+                        : "/no-img.png"
                     }
                     className={styles.album_img}
                     alt={track.title}

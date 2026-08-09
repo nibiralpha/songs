@@ -77,9 +77,9 @@ export default function AlbumTracksComponent({
                   <img
                     className={styles.song_img}
                     src={
-                      track.preview !== null
+                      track.album.cover_small !== null
                         ? track.album.cover_small
-                        : "./no-img.png"
+                        : "/no-img.png"
                     }
                     alt={track.album.cover_small}
                   />

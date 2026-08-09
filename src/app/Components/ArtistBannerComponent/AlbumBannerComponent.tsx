@@ -22,7 +22,7 @@ export default function AlbumBannerComponent({
       <div className={styles.artist}>
         <div className={styles.artish_img_area}>
           <div className={styles.artist_img}>
-            <img className={styles.album_main_img} src={data?.cover_medium} />
+            <img className={styles.album_main_img} src={data?.cover_medium !== null ? data?.cover_medium : '/no-img.png'} />
           </div>
         </div>
         <div className={styles.artist_content}>

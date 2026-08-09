@@ -76,7 +76,7 @@ export default function SongsTrackComponent({
                     src={
                       track.album.cover_small !== null
                         ? track.album.cover_small
-                        : "./no-img.png"
+                        : "/no-img.png"
                     }
                     alt={track.album.cover_small}
                   />

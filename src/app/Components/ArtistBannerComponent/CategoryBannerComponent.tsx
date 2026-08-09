@@ -23,14 +23,23 @@ export default function CategoryBannerComponent({
       <div className={styles.artist}>
         <div className={styles.artish_img_area}>
           <div className={styles.artist_img}>
-            <img className={styles.main_img} src={data?.picture_medium} />
+            <img
+              className={styles.main_img}
+              src={
+                data?.picture_medium !== null
+                  ? data?.picture_medium
+                  : "/no-img.png"
+              }
+            />
           </div>
         </div>
         <div className={styles.artist_content}>
           <div className={styles.artist_detail}>
             <div className={styles.artist_playlist_name}>{data?.title}</div>
             <div className={styles.description}>{data?.description}</div>
-            <div className={styles.fans}>{data?.fans?.toLocaleString() ?? "0"} Fans</div>
+            <div className={styles.fans}>
+              {data?.fans?.toLocaleString() ?? "0"} Fans
+            </div>
           </div>
           <div className={styles.button_area}>
             <div className={styles.first_button}>
