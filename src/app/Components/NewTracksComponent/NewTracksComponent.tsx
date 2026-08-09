@@ -15,7 +15,7 @@ import { SearchTrack } from "@app-types/PopulerSongs";
 import { formatTrackDuration } from "@Helper/Functions";
 import { PlaylistStateInterface } from "@app-types/PlaylistState";
 import { useRouter } from "next/navigation";
-
+import { useNavigate } from "@Hooks/useNavigate";
 
 interface Props {
   title: string;
@@ -33,12 +33,13 @@ export default function NewTracksComponent({
   slidesPerView,
   spaceBetween,
   showDefault,
-  showViewAll
+  showViewAll,
 }: Readonly<Props>) {
-    const router = useRouter();
-  
+  const router = useRouter();
+  const navigate = useNavigate();
+
   const changePageToPlaylist = (id: number) => {
-    router.push("/playlist/" + id);
+    navigate(`/playlist/${id}`);
   };
   return (
     <>
