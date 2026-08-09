@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-
+import styles from "./NavigationLoader.module.css";
 export default function NavigationLoader() {
   const pathname = usePathname();
 
@@ -86,5 +86,5 @@ export default function NavigationLoader() {
     };
   }, [pathname]);
 
-  return <div ref={loaderRef} className="navigation-loader" />;
+  return <div ref={loaderRef} className={styles.navigation_loader} />;
 }
