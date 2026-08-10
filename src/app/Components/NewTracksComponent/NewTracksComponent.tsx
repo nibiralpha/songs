@@ -50,22 +50,27 @@ export default function NewTracksComponent({
 
   return (
     <>
-      <div className={styles.heading}>
-        <p
-          onClick={() => changePageToPlaylist(data.data.id)}
-          className={styles.section_name}
-        >
-          {title}
-        </p>
-        {showViewAll && (
+      {data.loading ? (
+        <div></div>
+      ) : (
+        <div className={styles.heading}>
           <p
-            onClick={() => changePageToPlaylist(data?.data?.id)}
-            className={styles.view_all}
+            onClick={() => changePageToPlaylist(data.data.id)}
+            className={styles.section_name}
           >
-            View all
+            {title}
           </p>
-        )}
-      </div>
+          {showViewAll && (
+            <p
+              onClick={() => changePageToPlaylist(data?.data?.id)}
+              className={styles.view_all}
+            >
+              View all
+            </p>
+          )}
+        </div>
+      )}
+
       <table className={styles.music_table}>
         <thead>
           <tr className={styles.table_row}>
@@ -89,43 +94,81 @@ export default function NewTracksComponent({
           </tr>
         </thead>
         <tbody>
-          {data?.list?.slice(0, showDefault).map((track) => {
-            return (
-              <tr key={track.id}>
-                <td className={`${styles.track_details_img}`}>
-                  <img
-                    className={styles.song_img}
-                    src={
-                      track.album.cover_small !== null
-                        ? track.album.cover_small
-                        : "/no-img.png"
-                    }
-                    alt={track.album.cover_small}
-                  />
-                </td>
+          {data?.loading
+            ? Array.from({ length: 5 }).map((_, index) => (
+                <tr key={index}>
+                  <td className={styles.track_details_img}>
+                    <div className={styles.skeleton_img} />
+                  </td>
 
-                <td className={`${styles.track_details} ${styles.title_track}`}>
-                  {track.title}
-                </td>
-                <td className={`${styles.track_details} ${styles.mouse_hover}`}>
-                  <span onClick={() => changePageToArtist(track?.artist?.id)}>
-                    {track?.artist?.name}
-                  </span>
-                </td>
-                <td className={`${styles.track_details} ${styles.mouse_hover}`}>
-                  <span onClick={() => changePageToAlbum(track?.album?.id)}>
-                    {track?.album?.title}
-                  </span>
-                </td>
-                <td className={styles.track_details}>
-                  {formatTrackDuration(track?.duration)}
-                </td>
-                <td className={styles.track_details}>
-                  <CiHeart className={styles.heart} size={20} />
-                </td>
-              </tr>
-            );
-          })}
+                  <td
+                    className={`${styles.track_details} ${styles.title_track}`}
+                  >
+                    <div className={styles.skeleton_text} />
+                  </td>
+
+                  <td className={styles.track_details}>
+                    <div className={styles.skeleton_text} />
+                  </td>
+
+                  <td className={styles.track_details}>
+                    <div className={styles.skeleton_text} />
+                  </td>
+
+                  <td className={styles.track_details}>
+                    <div className={styles.skeleton_time} />
+                  </td>
+
+                  <td className={styles.track_details}>
+                    <div className={styles.skeleton_heart} />
+                  </td>
+                </tr>
+              ))
+            : data?.list?.slice(0, showDefault).map((track) => {
+                return (
+                  <tr key={track.id}>
+                    <td className={`${styles.track_details_img}`}>
+                      <img
+                        className={styles.song_img}
+                        src={
+                          track.album.cover_small !== null
+                            ? track.album.cover_small
+                            : "/no-img.png"
+                        }
+                        alt={track.album.cover_small}
+                      />
+                    </td>
+
+                    <td
+                      className={`${styles.track_details} ${styles.title_track}`}
+                    >
+                      {track.title}
+                    </td>
+                    <td
+                      className={`${styles.track_details} ${styles.mouse_hover}`}
+                    >
+                      <span
+                        onClick={() => changePageToArtist(track?.artist?.id)}
+                      >
+                        {track?.artist?.name}
+                      </span>
+                    </td>
+                    <td
+                      className={`${styles.track_details} ${styles.mouse_hover}`}
+                    >
+                      <span onClick={() => changePageToAlbum(track?.album?.id)}>
+                        {track?.album?.title}
+                      </span>
+                    </td>
+                    <td className={styles.track_details}>
+                      {formatTrackDuration(track?.duration)}
+                    </td>
+                    <td className={styles.track_details}>
+                      <CiHeart className={styles.heart} size={20} />
+                    </td>
+                  </tr>
+                );
+              })}
         </tbody>
       </table>
     </>

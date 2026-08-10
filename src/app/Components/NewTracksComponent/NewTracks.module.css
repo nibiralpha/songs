@@ -103,7 +103,7 @@ tbody tr:hover {
 .track_details_img:hover {
 }
 
-.section_name:hover{
+.section_name:hover {
   cursor: pointer;
 }
 
@@ -128,7 +128,55 @@ tbody tr:hover {
   border-bottom: 1px solid #7c7c7c;
 }
 
-.mouse_hover:hover{
+.mouse_hover:hover {
   cursor: pointer;
   text-decoration: underline;
 }
+
+/* SKELETON LOADING */
+.skeleton_img {
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  background: #e5e5e5;
+  animation: skeleton-loading 1.2s ease-in-out infinite;
+}
+
+.skeleton_text {
+  width: 80%;
+  height: 16px;
+  border-radius: 4px;
+  background: #e5e5e5;
+  animation: skeleton-loading 1.2s ease-in-out infinite;
+}
+
+.skeleton_time {
+  width: 45px;
+  height: 16px;
+  border-radius: 4px;
+  background: #e5e5e5;
+  animation: skeleton-loading 1.2s ease-in-out infinite;
+}
+
+.skeleton_heart {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #e5e5e5;
+  animation: skeleton-loading 1.2s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+/* SKELETON LOADING END*/
