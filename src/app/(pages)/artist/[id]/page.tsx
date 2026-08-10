@@ -66,6 +66,7 @@ export default function Artist() {
           showDefault={artistAlbums.data.length}
           slidesPerView={4}
           spaceBetween={12}
+          loading={artistAlbums.loading}
         />
       </div>
       {/* <div className={styles.sections}>
@@ -81,7 +82,7 @@ export default function Artist() {
         <ArtistComponent
           title={"Related Artist"}
           data={relatedArtist.data}
-          loading={false}
+          loading={relatedArtist.loading}
           // showDefault={5}
           slidesPerView={4}
           spaceBetween={12}
