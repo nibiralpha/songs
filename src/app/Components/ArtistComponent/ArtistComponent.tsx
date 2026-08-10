@@ -38,7 +38,7 @@ export default function ArtistComponent({
   
   const changePage = (id: number) => {
     navigate("/artist/" + id);
-  };
+  };  
 
   return (
     <>
