@@ -36,6 +36,7 @@ export default function Artist() {
         <AlbumTracksComponent
           title={"Tracks"}
           data={albums.data?.tracks?.data}
+          loading={albums.loading}
           showDefault={10}
           slidesPerView={4}
           spaceBetween={12}

@@ -53,6 +53,7 @@ export default function Artist() {
         <ArtistTracksComponent
           title={"Tracks"}
           data={artistSongs.data}
+          loading={artistSongs.loading}
           showDefault={10}
           slidesPerView={4}
           spaceBetween={12}

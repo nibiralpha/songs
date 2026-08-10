@@ -60,7 +60,8 @@ export default function GenraPage() {
         <SongsTrackComponent
           title={"Tracks"}
           data={songsList.list}
-          loading={songsList.loading}
+          loading={genra.loading}
+          // loading={songsList.loading}
           showDefault={songsList?.list.length}
           slidesPerView={4}
           spaceBetween={12}

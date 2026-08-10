@@ -39,6 +39,7 @@ export default function Playlist() {
       <div className={styles.sections}>
         <PlaylistTrackComponent
           title={"Tracks"}
+          loading={loading}
           data={list}
           showDefault={list.length}
           slidesPerView={4}
