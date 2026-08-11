@@ -24,7 +24,7 @@
 }
 
 .section_name {
-  margin-bottom: 12px;
+  /* margin-bottom: 40px; */
   font-size: 1.2em;
   font-weight: 600;
 }
@@ -51,15 +51,19 @@
   vertical-align: middle;
 }
 
-/* --- Table Width Rules --- */
-
 .music_table {
   width: 100%;
-  table-layout: fixed; /* Enforces strict adherence to your custom percentages */
+  table-layout: fixed;
   border-collapse: collapse;
 }
 
-/* Individual column setups */
+.music_table thead th {
+  padding-bottom: 10px;
+  text-align: left;
+  color: #afafb6;
+  /* font-size: .8em; */
+}
+
 .col_img {
   width: 5%;
 }
@@ -85,7 +89,9 @@ tbody tr:hover {
 }
 
 .title_track {
+  /* padding-left: 15px; */
   padding-left: 15px;
+  padding-right: 15px;
 }
 
 .track_details,
@@ -93,7 +99,7 @@ tbody tr:hover {
   padding-top: 6px;
   padding-bottom: 6px;
   vertical-align: middle;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .heart:hover {
@@ -111,6 +117,7 @@ tbody tr:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 40px;
 }
 
 .show_all {
@@ -133,7 +140,6 @@ tbody tr:hover {
   text-decoration: underline;
 }
 
-/* SKELETON LOADING */
 .skeleton_img {
   width: 45px;
   height: 45px;
@@ -179,4 +185,3 @@ tbody tr:hover {
     opacity: 0.5;
   }
 }
-/* SKELETON LOADING END*/

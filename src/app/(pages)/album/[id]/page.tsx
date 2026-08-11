@@ -9,7 +9,7 @@ import { AppDispatch } from "@redux/Store";
 import AlbumBannerComponent from "@/src/app/Components/ArtistBannerComponent/AlbumBannerComponent";
 import { fetchAbumDetail } from "@/src/app/Services/Album";
 import useAlbum from "@/src/app/Hooks/useAlbum";
-import AlbumTracksComponent from "@/src/app/Components/NewTracksComponent/AlbumTracks";
+import AlbumTracksComponent from "@/src/app/Components/NewTracksComponent/AlbumTracksComponent";
 
 export default function Artist() {
   const dispatch = useDispatch<AppDispatch>();

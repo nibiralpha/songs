@@ -51,15 +51,13 @@ export default function PlaylistTrackComponent({
       <div className={styles.heading}>
         <p className={styles.section_name}>{title}</p>
       </div>
-      {/* Added styles.music_table to handle layout behavior */}
       <table className={styles.music_table}>
         <thead>
           <tr className={styles.table_row}>
-            {/* Assigned column-specific width classes to the th tags */}
-            <th className={`${styles.table_head} ${styles.col_img}`}></th>
-            <th className={`${styles.table_head} ${styles.col_title}`}>
+            <th className={`${styles.table_head} ${styles.col_img}`}>
               <div className={styles.title}>TITLE</div>
             </th>
+            <th className={`${styles.table_head} ${styles.col_title}`}></th>
             <th className={`${styles.table_head} ${styles.col_artist}`}>
               <div className={styles.title}>ARTIST</div>
             </th>

@@ -48,9 +48,11 @@ export default function SongsTrackComponent({
         <thead>
           <tr className={styles.table_row}>
             {/* Assigned column-specific width classes to the th tags */}
-            <th className={`${styles.table_head} ${styles.col_img}`}></th>
-            <th className={`${styles.table_head} ${styles.col_title}`}>
+            <th className={`${styles.table_head} ${styles.col_img}`}>
               <div className={styles.title}>TITLE</div>
+            </th>
+            <th className={`${styles.table_head} ${styles.col_title}`}>
+              <div className={styles.title}></div>
             </th>
             <th className={`${styles.table_head} ${styles.col_artist}`}>
               <div className={styles.title}>ARTIST</div>

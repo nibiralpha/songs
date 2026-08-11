@@ -46,17 +46,19 @@ export default function AlbumTracksComponent({
     <>
       <div className={styles.heading}>
         <p className={styles.section_name}>{title}</p>
-        <p className={styles.show_all}>Show All</p>
+        {/* <p className={styles.show_all}>Show All</p> */}
       </div>
       <table className={styles.music_table}>
         <thead>
           <tr className={styles.table_row}>
-            <th className={`${styles.table_head} ${styles.col_img}`}></th>
-            <th className={`${styles.table_head} ${styles.col_title}`}>
+            <th className={`${styles.table_head} ${styles.col_img}`}>
               <div className={styles.title}>TITLE</div>
             </th>
+            <th className={`${styles.table_head} ${styles.col_title}`}>
+              {/* <div className={styles.title}></div> */}
+            </th>
             <th className={`${styles.table_head} ${styles.col_album}`}>
-              <div className={styles.title}>Artist</div>
+              <div className={styles.title}>ARTIST</div>
             </th>
             <th className={`${styles.table_head} ${styles.col_time}`}>
               <div className={styles.title}>TIME</div>
