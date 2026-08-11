@@ -9,9 +9,12 @@ import { AppDispatch } from "@redux/Store";
 
 import { fetchGenraByID } from "@/src/app/Services/Genra";
 import GenraBannerComponent from "@/src/app/Components/ArtistBannerComponent/GenraBannerComponent";
-import { fetchSongsByCategory } from "@/src/app/Services/Home";
+import {
+  fetchPopulerSongs,
+  fetchSongsByCategory,
+} from "@/src/app/Services/Home";
 import { getGenreNameByID } from "@/src/app/Helper/Functions";
-import { GenreValue } from "@Constant/Genra";
+import { Genres, GenreValue } from "@Constant/Genra";
 import useSongs from "@/src/app/Hooks/useSongs";
 import { MusicStateInterface } from "@/src/app/Types/MusicState";
 import SongsTrackComponent from "@/src/app/Components/NewTracksComponent/SongsTrackComponent";
@@ -27,15 +30,15 @@ export default function GenraPage() {
     list: [],
     loading: true,
   };
-  
+
   const { genra } = useGenra();
-  const { populerSongs, popSongs, classicalSongs } = useSongs();
+  const { populerSongs, classicalSongs, electronics } = useSongs();
 
   if (genraOrginalName === "Pop") {
     songsList = populerSongs;
   }
   if (genraOrginalName === "Electronic") {
-    songsList = popSongs;
+    songsList = electronics;
   }
   if (genraOrginalName === "Classical") {
     songsList = classicalSongs;
@@ -43,6 +46,9 @@ export default function GenraPage() {
 
   const fetchData = () => {
     dispatch(fetchGenraByID(id));
+    if (id == Genres.Pop) {
+      dispatch(fetchPopulerSongs());
+    }
     dispatch(fetchSongsByCategory(genraOrginalName));
   };
 

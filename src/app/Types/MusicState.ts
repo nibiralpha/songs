@@ -2,7 +2,8 @@ import { SearchTrack, TrackData } from "./PopulerSongs";
 
 export interface MusicInterface {
   populerSongs: MusicStateInterface,
-  popSongs: MusicStateInterface,
+  // popSongs: MusicStateInterface,
+  electronicSongs: MusicStateInterface,
   classicalSongs: MusicStateInterface,
   tracks: SingleSongsStateInterface
 }

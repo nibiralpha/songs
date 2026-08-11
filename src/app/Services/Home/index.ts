@@ -8,8 +8,10 @@ import {
 import {
   setClassicalSongs,
   setClassicalSongsLoading,
+  setElectronicLoading,
+  setElectronicSongs,
   setLoading,
-  setPopSongs,
+  // setPopSongs,
   setPopulerSongs,
   setTracks,
   setTracksLoading,
@@ -40,8 +42,8 @@ const fetchPopulerSongs = () => {
 const fetchSongsByCategory = (category: GenreName) => {
   return async (dispatch: Dispatch) => {
     try {
-      if (category === "Pop") {
-        dispatch(setLoading(true));
+      if (category === "Electronic") {
+        dispatch(setElectronicLoading(true));
       } else if (category === "Classical") {
         dispatch(setClassicalSongsLoading(true));
       }
@@ -51,9 +53,9 @@ const fetchSongsByCategory = (category: GenreName) => {
       const songsRes = await getSongsByCategory(categoryId);
       const songsData = songsRes?.data?.tracks?.data;
 
-      if (category === "Pop") {
-        dispatch(setPopSongs(songsData));
-        dispatch(setLoading(false));
+      if (category === "Electronic") {
+        dispatch(setElectronicSongs(songsData));
+        dispatch(setElectronicLoading(false));
       } else if (category === "Classical") {
         dispatch(setClassicalSongs(songsData));
         dispatch(setClassicalSongsLoading(false));

@@ -1,5 +1,5 @@
 export const Genres = {
-  All: 0,
+  // All: 0,
   Pop: 132,
   Rock: 152,
   RapHipHop: 116,
@@ -14,7 +14,7 @@ export const Genres = {
 } as const;
 
 export const GenraOrginalAndAppName = {
-  0: { originalName: "All", name: "Trending Songs" },
+  // 0: { originalName: "All", name: "Trending Songs" },
   84: { originalName: "Country", name: "Country Songs" },
   98: { originalName: "Classical", name: "Classical Music" },
   106: { originalName: "Electronic", name: "Electronic" },

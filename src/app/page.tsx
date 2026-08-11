@@ -24,7 +24,7 @@ import { GenreName, Genres } from "@Constant/Genra";
 export default function HomePage() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { populerSongs, popSongs, classicalSongs, tracks } = useSongs();
+  const { populerSongs, classicalSongs, tracks, electronics } = useSongs();
 
   const freshPop = usePlaylist(PlaylistID.Fresh_pop);
   const freshSoul = usePlaylist(PlaylistID.Fresh_Soul);
@@ -33,18 +33,12 @@ export default function HomePage() {
 
   const { artist } = useArtist();
 
-  // const getInitData = () => {
-  //   const populerSongsList = populerSongs;
-  // };
-
-  // getInitData();
-
   const fetchData = () => {
     dispatch(fetchPopulerSongs());
-    dispatch(fetchSongsByCategory("Pop"));
+    dispatch(fetchSongsByCategory("Electronic"));
     dispatch(fetchSongsByCategory("Classical"));
     dispatch(fetchArtist());
-    // dispatch(fetchSongsByGenra("Rock"));
+    dispatch(fetchSongsByGenra("Rock"));
 
     const targetPlaylistIDs = [
       PlaylistID.Fresh_pop,
@@ -125,23 +119,14 @@ export default function HomePage() {
           <MusicBoxComponent
             id={Genres["Electronic"]}
             title={"Electronic"}
-            data={popSongs.list}
-            loading={populerSongs.loading}
+            data={electronics.list}
+            loading={electronics.loading}
             slidesPerView={4}
             spaceBetween={12}
             showDefault={20}
             showViewAll={true}
           />
         </div>
-
-        {/* <div className={styles.sections}>
-          <NewTracksComponent
-            title={"Random Tracks"}
-            data={tracks.list}
-            slidesPerView={4}
-            spaceBetween={12}
-          />
-        </div> */}
 
         <div className={styles.sections}>
           <MusicBoxComponent

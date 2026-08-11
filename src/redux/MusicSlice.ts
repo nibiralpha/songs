@@ -9,7 +9,13 @@ const initialState: MusicInterface = {
     // error: false,
     // errorResponse: {},
   },
-  popSongs: {
+  // popSongs: {
+  //   list: [],
+  //   loading: true,
+  //   // error: false,
+  //   // errorResponse: {},
+  // },
+  electronicSongs: {
     list: [],
     loading: true,
     // error: false,
@@ -43,16 +49,28 @@ export const MusicSlice = createSlice({
         populerSongs: { ...state.populerSongs, loading: action.payload },
       };
     },
-    setPopSongs: (state, action: PayloadAction<TrackData[]>) => {
+    // setPopSongs: (state, action: PayloadAction<TrackData[]>) => {
+    //   return {
+    //     ...state,
+    //     popSongs: { ...state.popSongs, list: action.payload },
+    //   };
+    // },
+    // setPopSongsLoading: (state, action: PayloadAction<boolean>) => {
+    //   return {
+    //     ...state,
+    //     popSongs: { ...state.popSongs, loading: action.payload },
+    //   };
+    // },
+    setElectronicSongs: (state, action: PayloadAction<TrackData[]>) => {
       return {
         ...state,
-        popSongs: { ...state.popSongs, list: action.payload },
+        electronicSongs: { ...state.electronicSongs, list: action.payload },
       };
     },
-    setPopSongsLoading: (state, action: PayloadAction<boolean>) => {
+    setElectronicLoading: (state, action: PayloadAction<boolean>) => {
       return {
         ...state,
-        popSongs: { ...state.popSongs, loading: action.payload },
+        electronicSongs: { ...state.electronicSongs, loading: action.payload },
       };
     },
     setClassicalSongs: (state, action: PayloadAction<TrackData[]>) => {
@@ -84,12 +102,14 @@ export const MusicSlice = createSlice({
 
 export const {
   setPopulerSongs,
-  setPopSongs,
+  // setPopSongs,
   setLoading,
-  setPopSongsLoading,
+  // setPopSongsLoading,
   setClassicalSongs,
   setClassicalSongsLoading,
   setTracks,
   setTracksLoading,
+  setElectronicSongs,
+  setElectronicLoading,
 } = MusicSlice.actions;
 export default MusicSlice.reducer;
