@@ -185,3 +185,61 @@ tbody tr:hover {
     opacity: 0.5;
   }
 }
+
+.mobile_table {
+  display: none;
+}
+
+.desktop_table {
+  display: initial;
+}
+
+/* Mobile */
+
+@media screen and (max-width: 430px) {
+  .desktop_table {
+    display: none;
+  }
+
+  .mobile_table {
+    display: initial;
+  }
+
+  .mobile_main {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+  }
+
+  .mobile_img {
+    margin-right: 10px;
+  }
+
+  .mobile_title {
+    color: #fff;
+    font-weight: 600;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mobile_artist {
+    color: #676767;
+    font-weight: 600;
+    font-size: 13px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .heading {
+    margin-bottom: 20px;
+  }
+
+  .mobile_content_area {
+    min-width: 0;
+    flex: 1;
+  }
+}
