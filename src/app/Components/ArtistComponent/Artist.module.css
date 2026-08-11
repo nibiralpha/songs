@@ -124,6 +124,17 @@
   width: 225px;
 }
 
+.artist_skeleton {
+  width: 100%;
+}
+
+.skeleton_title {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
 /* Mobile */
 
 @media screen and (max-width: 430px) {
