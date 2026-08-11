@@ -178,6 +178,8 @@ export default function NewTracksComponent({
         </table>
       </div>
 
+      {/* MOBILE */}
+
       <div className={styles.mobile_table}>
         <div className={styles.mobile_list}>
           {data?.list?.slice(0, showDefault).map((track) => {
