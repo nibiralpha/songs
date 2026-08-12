@@ -17,7 +17,7 @@ import { getGenreNameByID } from "@/src/app/Helper/Functions";
 import { Genres, GenreValue } from "@Constant/Genra";
 import useSongs from "@/src/app/Hooks/useSongs";
 import { MusicStateInterface } from "@/src/app/Types/MusicState";
-import SongsTrackComponent from "@/src/app/Components/NewTracksComponent/SongsTrackComponent";
+import SongsTrackComponent from "@/src/app/Components/Tracks/SongsTrack/SongsTrackComponent";
 
 export default function GenraPage() {
   const dispatch = useDispatch<AppDispatch>();

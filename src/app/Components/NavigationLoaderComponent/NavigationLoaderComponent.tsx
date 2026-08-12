@@ -26,7 +26,6 @@ export default function NavigationLoader() {
 
       loadingRef.current = true;
 
-      // Force opacity back to visible when a new navigation sequence triggers
       if (loaderRef.current) {
         loaderRef.current.style.opacity = "1";
       }
@@ -80,7 +79,6 @@ export default function NavigationLoader() {
     finishTimerRef.current = window.setTimeout(() => {
       loadingRef.current = false;
 
-      // FIX: Instead of shrinking to 0% width, fade the element away at full 100% width
       if (loaderRef.current) {
         loaderRef.current.style.opacity = "0";
       }

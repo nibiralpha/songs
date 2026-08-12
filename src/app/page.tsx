@@ -2,7 +2,7 @@
 
 import MusicBoxComponent from "@Components/MusicBox/MusicBoxComponent";
 import styles from "./page.module.css";
-import NewTracksComponent from "@/src/app/Components/NewTracksComponent/NewTracksComponent";
+import NewTracksComponent from "@/src/app/Components/Tracks/NewTracks/NewTracksComponent";
 import ArtistComponent from "@/src/app/Components/ArtistComponent/ArtistComponent";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/Store";

@@ -16,7 +16,7 @@ import {
   fetchArtistTracks,
   fetchRelatedArtist,
 } from "@/src/app/Services/Artist";
-import ArtistTracksComponent from "@/src/app/Components/NewTracksComponent/ArtistTracksComponent";
+import ArtistTracksComponent from "@/src/app/Components/Tracks/ArtistTracks/ArtistTracksComponent";
 import AlbumComponent from "@/src/app/Components/MusicBox/AlbumComponent";
 import useArtist from "@/src/app/Hooks/useArtist";
 import ArtistComponent from "@/src/app/Components/ArtistComponent/ArtistComponent";

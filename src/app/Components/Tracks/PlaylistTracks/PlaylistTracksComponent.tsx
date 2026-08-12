@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import styles from "./NewTracks.module.css";
+import styles from "../Css/Tracks.module.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -14,31 +14,31 @@ import { FaPlay } from "react-icons/fa";
 import { SearchTrack } from "@app-types/PopulerSongs";
 import { formatTrackDuration } from "@Helper/Functions";
 import { PlaylistStateInterface } from "@app-types/PlaylistState";
+import { ArtistSongsDetailStateInterface } from "@app-types/ArtistState";
+import { DeezerTrack } from "@app-types/Artist";
+import { PlaylistTrack } from "@app-types/Playlist";
 import { useNavigate } from "@Hooks/useNavigate";
+import { ListSkeletonComponent } from "../ListSkeletonComponent/ListSkelatonComponent";
 
 interface Props {
   title: string;
+  loading: boolean;
   // data: SearchTrack[];
-  data: PlaylistStateInterface;
+  data: PlaylistTrack[];
   slidesPerView: number;
   spaceBetween: number;
   showDefault: number;
-  showViewAll?: boolean;
 }
 
-export default function NewTracksComponent({
+export default function PlaylistTrackComponent({
   title,
   data,
+  loading,
   slidesPerView,
   spaceBetween,
   showDefault,
-  showViewAll,
 }: Readonly<Props>) {
   const navigate = useNavigate();
-
-  const changePageToPlaylist = (id: number) => {
-    navigate(`/playlist/${id}`);
-  };
 
   const changePageToArtist = (id: number) => {
     navigate(`/artist/${id}`);
@@ -47,41 +47,20 @@ export default function NewTracksComponent({
   const changePageToAlbum = (id: number) => {
     navigate(`/album/${id}`);
   };
-
   return (
     <>
-      {data.loading ? (
-        <div></div>
-      ) : (
-        <div className={styles.heading}>
-          <p
-            onClick={() => changePageToPlaylist(data.data.id)}
-            className={styles.section_name}
-          >
-            {title}
-          </p>
-          {showViewAll && (
-            <p
-              onClick={() => changePageToPlaylist(data?.data?.id)}
-              className={styles.view_all}
-            >
-              View all
-            </p>
-          )}
-        </div>
-      )}
+      <div className={styles.heading}>
+        <p className={styles.section_name}>{title}</p>
+      </div>
 
       <div className={styles.desktop_table}>
         <table className={styles.music_table}>
           <thead>
             <tr className={styles.table_row}>
-              {/* Assigned column-specific width classes to the th tags */}
               <th className={`${styles.table_head} ${styles.col_img}`}>
                 <div className={styles.title}>TITLE</div>
               </th>
-              <th className={`${styles.table_head} ${styles.col_title}`}>
-                {/* <div className={styles.title}>TITLE</div> */}
-              </th>
+              <th className={`${styles.table_head} ${styles.col_title}`}></th>
               <th className={`${styles.table_head} ${styles.col_artist}`}>
                 <div className={styles.title}>ARTIST</div>
               </th>
@@ -97,7 +76,7 @@ export default function NewTracksComponent({
             </tr>
           </thead>
           <tbody>
-            {data?.loading
+            {loading
               ? Array.from({ length: 5 }).map((_, index) => (
                   <tr key={index}>
                     <td className={styles.track_details_img}>
@@ -127,7 +106,7 @@ export default function NewTracksComponent({
                     </td>
                   </tr>
                 ))
-              : data?.list?.slice(0, showDefault).map((track) => {
+              : data?.slice(0, showDefault).map((track) => {
                   return (
                     <tr key={track.id}>
                       <td className={`${styles.track_details_img}`}>
@@ -179,44 +158,47 @@ export default function NewTracksComponent({
       </div>
 
       {/* MOBILE */}
-
-      <div className={styles.mobile_table}>
-        <div className={styles.mobile_list}>
-          {data?.list?.slice(0, showDefault).map((track) => {
-            return (
-              <div className={styles.mobile_main} key={track.id}>
-                <div className={styles.mobile_img_area}>
-                  <div className={styles.mobile_img}>
-                    <img
-                      className={styles.song_img}
-                      src={
-                        track.album.cover_small !== null
-                          ? track.album.cover_small
-                          : "/no-img.png"
-                      }
-                      alt={track.album.cover_small}
-                    />
+      {loading ? (
+        <ListSkeletonComponent count={5} />
+      ) : (
+        <div className={styles.mobile_table}>
+          <div className={styles.mobile_list}>
+            {data?.slice(0, showDefault).map((track) => {
+              return (
+                <div className={styles.mobile_main} key={track.id}>
+                  <div className={styles.mobile_img_area}>
+                    <div className={styles.mobile_img}>
+                      <img
+                        className={styles.song_img}
+                        src={
+                          track.album.cover_small !== null
+                            ? track.album.cover_small
+                            : "/no-img.png"
+                        }
+                        alt={track.album.cover_small}
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.mobile_content_area}>
+                    <div
+                      onClick={() => changePageToAlbum(track?.album?.id)}
+                      className={styles.mobile_title}
+                    >
+                      {track?.title}
+                    </div>
+                    <div
+                      onClick={() => changePageToArtist(track?.artist?.id)}
+                      className={styles.mobile_artist}
+                    >
+                      {track?.artist?.name}
+                    </div>
                   </div>
                 </div>
-                <div className={styles.mobile_content_area}>
-                  <div
-                    onClick={() => changePageToAlbum(track?.album?.id)}
-                    className={styles.mobile_title}
-                  >
-                    {track?.title}
-                  </div>
-                  <div
-                    onClick={() => changePageToArtist(track?.artist?.id)}
-                    className={styles.mobile_artist}
-                  >
-                    {track?.artist?.name}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
