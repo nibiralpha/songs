@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import styles from "./MusicBox.module.css";
+import styles from "../Css/Music.module.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import styles from "./Artist.module.css";
 
 import { useParams } from "next/navigation";
-import ArtistBannerComponent from "@/src/app/Components/Banner/ArtistBanner/ArtistBannerComponent";
+import ArtistBannerComponent from "@/src/app/Components/Banner/ArtistBannerComponent/ArtistBannerComponent";
 import usePlaylist from "@/src/app/Hooks/usePlaylist";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/Store";
@@ -16,8 +16,8 @@ import {
   fetchArtistTracks,
   fetchRelatedArtist,
 } from "@/src/app/Services/Artist";
-import ArtistTracksComponent from "@/src/app/Components/Tracks/ArtistTracks/ArtistTracksComponent";
-import AlbumComponent from "@/src/app/Components/MusicBox/AlbumComponent";
+import ArtistTracksComponent from "@/src/app/Components/Tracks/ArtistTracksComponent/ArtistTracksComponent";
+import AlbumComponent from "@/src/app/Components/MusicBox/AlbumComponent/AlbumComponent";
 import useArtist from "@/src/app/Hooks/useArtist";
 import ArtistComponent from "@/src/app/Components/ArtistComponent/ArtistComponent";
 

@@ -1,8 +1,8 @@
 "use client";
 
-import MusicBoxComponent from "@Components/MusicBox/MusicBoxComponent";
+import MusicBoxComponent from "@Components/MusicBox/MusicBoxComponent/MusicBoxComponent";
 import styles from "./page.module.css";
-import NewTracksComponent from "@/src/app/Components/Tracks/NewTracks/NewTracksComponent";
+import NewTracksComponent from "@/src/app/Components/Tracks/NewTracksComponent/NewTracksComponent";
 import ArtistComponent from "@/src/app/Components/ArtistComponent/ArtistComponent";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/Store";
@@ -17,7 +17,7 @@ import { fetchArtist } from "@Services/Artist";
 import useArtist from "@Hooks/useArtist";
 import { fetchPlaylistByID } from "@Services/Playlists";
 import usePlaylist from "@Hooks/usePlaylist";
-import PlaylistComponent from "./Components/MusicBox/PlaylistComponent";
+import PlaylistComponent from "./Components/MusicBox/PlaylistComponent/PlaylistComponent";
 import { PlaylistID } from "@Constant/PlaylistID";
 import { GenreName, Genres } from "@Constant/Genra";
 

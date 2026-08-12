@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/Store";
 
 import { fetchGenraByID } from "@/src/app/Services/Genra";
-import GenraBannerComponent from "@/src/app/Components/Banner/GenreBanner/GenraBannerComponent";
+import GenraBannerComponent from "@/src/app/Components/Banner/GenreBannerComponent/GenraBannerComponent";
 import {
   fetchPopulerSongs,
   fetchSongsByCategory,
@@ -17,7 +17,7 @@ import { getGenreNameByID } from "@/src/app/Helper/Functions";
 import { Genres, GenreValue } from "@Constant/Genra";
 import useSongs from "@/src/app/Hooks/useSongs";
 import { MusicStateInterface } from "@/src/app/Types/MusicState";
-import SongsTrackComponent from "@/src/app/Components/Tracks/SongsTrack/SongsTrackComponent";
+import SongsTrackComponent from "@/src/app/Components/Tracks/SongsTrackComponent/SongsTrackComponent";
 
 export default function GenraPage() {
   const dispatch = useDispatch<AppDispatch>();
