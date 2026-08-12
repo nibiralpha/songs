@@ -2,7 +2,7 @@
 
 import React from "react";
 import styles from "../Css/Banner.module.css";
-import Button from "@Components/Button/ButtonComponent";
+import Button from "@/src/app/Components/ButtonComponent/ButtonComponent";
 import { FaPlay } from "react-icons/fa";
 import { FaShuffle } from "react-icons/fa6";
 import { ArtistDetails } from "@app-types/Artist";
