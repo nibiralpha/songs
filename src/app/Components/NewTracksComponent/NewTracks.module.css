@@ -211,6 +211,12 @@ tbody tr:hover {
     padding: 5px 0;
   }
 
+  .skeleton_mobile_main {
+    display: flex;
+    align-items: flex-start;
+    padding: 5px 0;
+  }
+
   .mobile_img {
     margin-right: 10px;
   }
