@@ -42,6 +42,18 @@
 .description {
   margin-bottom: 10px;
 }
+
+.react_one,
+.react_two {
+  display: inline;
+}
+
+/* SKELETON */
+
+.skeleton_main_img {
+  height: 250px;
+}
+
 /* Mobile */
 
 @media screen and (max-width: 430px) {
@@ -70,8 +82,14 @@
     text-align: center;
   }
 
-  .description{
+  .description {
     text-align: center;
+  }
+
+  /* SKELETON */
+
+  .skeleton_main_img {
+    height: 200px;
   }
 }
 /* TAB */
