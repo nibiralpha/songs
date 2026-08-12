@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/Store";
 
 import { fetchGenraByID } from "@/src/app/Services/Genra";
-import GenraBannerComponent from "@/src/app/Components/ArtistBannerComponent/GenraBannerComponent";
+import GenraBannerComponent from "@/src/app/Components/Banner/GenreBanner/GenraBannerComponent";
 import {
   fetchPopulerSongs,
   fetchSongsByCategory,

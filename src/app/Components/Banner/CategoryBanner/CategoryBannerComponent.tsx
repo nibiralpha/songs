@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import styles from "./ArtistBanner.module.css";
+import styles from "../Css/Banner.module.css";
 import Button from "@Components/Button/ButtonComponent";
 // import { Play } from "lucide-react";
 import { FaPlay } from "react-icons/fa";

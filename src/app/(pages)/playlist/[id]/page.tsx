@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/Store";
 
 import { fetchPlaylistByID } from "@/src/app/Services/Playlists";
-import PlaylistBannerComponent from "@/src/app/Components/ArtistBannerComponent/PlaylistBannerComponent";
+import PlaylistBannerComponent from "@/src/app/Components/Banner/PlaylistBanner/PlaylistBannerComponent";
 import PlaylistTrackComponent from "@/src/app/Components/NewTracksComponent/PlaylistTracksComponent";
 
 export default function Playlist() {

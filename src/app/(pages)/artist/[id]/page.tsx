@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import styles from "./Artist.module.css";
 
 import { useParams } from "next/navigation";
-import ArtistBannerComponent from "@/src/app/Components/ArtistBannerComponent/ArtistBannerComponent";
+import ArtistBannerComponent from "@/src/app/Components/Banner/ArtistBanner/ArtistBannerComponent";
 import usePlaylist from "@/src/app/Hooks/usePlaylist";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/Store";

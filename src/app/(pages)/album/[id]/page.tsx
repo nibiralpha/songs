@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/Store";
 
-import AlbumBannerComponent from "@/src/app/Components/ArtistBannerComponent/AlbumBannerComponent";
+import AlbumBannerComponent from "@/src/app/Components/Banner/AlbumBanner/AlbumBannerComponent";
 import { fetchAbumDetail } from "@/src/app/Services/Album";
 import useAlbum from "@/src/app/Hooks/useAlbum";
 import AlbumTracksComponent from "@/src/app/Components/NewTracksComponent/AlbumTracksComponent";

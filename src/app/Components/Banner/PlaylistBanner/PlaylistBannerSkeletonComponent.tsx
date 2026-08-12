@@ -3,7 +3,7 @@ import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-import styles from "./ArtistBanner.module.css";
+import styles from "../Css/Banner.module.css";
 
 export function PlaylistBannerSkeletonComponent() {
   return (
