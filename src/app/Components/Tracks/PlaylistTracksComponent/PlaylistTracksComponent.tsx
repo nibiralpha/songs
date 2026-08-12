@@ -18,7 +18,7 @@ import { ArtistSongsDetailStateInterface } from "@app-types/ArtistState";
 import { DeezerTrack } from "@app-types/Artist";
 import { PlaylistTrack } from "@app-types/Playlist";
 import { useNavigate } from "@Hooks/useNavigate";
-import { ListSkeletonComponent } from "../ListSkeletonComponent/ListSkelatonComponent";
+import { ListSkeletonComponent } from "@Components/Tracks/ListSkeletonComponent/ListSkelatonComponent";
 
 interface Props {
   title: string;

@@ -5,12 +5,8 @@ import Button from "@/src/app/Components/ButtonComponent/ButtonComponent";
 // import { Play } from "lucide-react";
 import { FaPlay } from "react-icons/fa";
 import { FaShuffle } from "react-icons/fa6";
-import { ArtistDetails } from "@app-types/Artist";
-import { ArtistDetailStateInterface } from "@app-types/ArtistState";
-import { PlaylistDescription, PlaylistTrack } from "@app-types/Playlist";
 import { GenreInterface } from "@app-types/Genre";
 import { GenraOrginalAndAppName } from "@Constant/Genra";
-import ContentLoader from "react-content-loader";
 import { GenraBannerSkeletonComponent } from "./GenraBannerSkeletonComponent.tsx";
 
 interface Props {

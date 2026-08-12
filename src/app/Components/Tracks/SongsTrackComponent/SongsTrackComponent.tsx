@@ -10,6 +10,7 @@ import { CiHeart } from "react-icons/ci";
 import { TrackData } from "@app-types/PopulerSongs";
 import { formatTrackDuration } from "@Helper/Functions";
 import { useNavigate } from "@Hooks/useNavigate";
+import { ListSkeletonComponent } from "@Components/Tracks/ListSkeletonComponent/ListSkelatonComponent";
 
 interface Props {
   title: string;
@@ -150,44 +151,47 @@ export default function SongsTrackComponent({
       </div>
 
       {/* MOBILE */}
-
-      <div className={styles.mobile_table}>
-        <div className={styles.mobile_list}>
-          {data?.slice(0, showDefault).map((track) => {
-            return (
-              <div className={styles.mobile_main} key={track.id}>
-                <div className={styles.mobile_img_area}>
-                  <div className={styles.mobile_img}>
-                    <img
-                      className={styles.song_img}
-                      src={
-                        track.album.cover_small !== null
-                          ? track.album.cover_small
-                          : "/no-img.png"
-                      }
-                      alt={track.album.cover_small}
-                    />
+      {loading ? (
+        <ListSkeletonComponent count={5} />
+      ) : (
+        <div className={styles.mobile_table}>
+          <div className={styles.mobile_list}>
+            {data?.slice(0, showDefault).map((track) => {
+              return (
+                <div className={styles.mobile_main} key={track.id}>
+                  <div className={styles.mobile_img_area}>
+                    <div className={styles.mobile_img}>
+                      <img
+                        className={styles.song_img}
+                        src={
+                          track.album.cover_small !== null
+                            ? track.album.cover_small
+                            : "/no-img.png"
+                        }
+                        alt={track.album.cover_small}
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.mobile_content_area}>
+                    <div
+                      onClick={() => changePageToAlbum(track?.album?.id)}
+                      className={styles.mobile_title}
+                    >
+                      {track?.title}
+                    </div>
+                    <div
+                      onClick={() => changePageToArtist(track?.artist?.id)}
+                      className={styles.mobile_artist}
+                    >
+                      {track?.artist?.name}
+                    </div>
                   </div>
                 </div>
-                <div className={styles.mobile_content_area}>
-                  <div
-                    onClick={() => changePageToAlbum(track?.album?.id)}
-                    className={styles.mobile_title}
-                  >
-                    {track?.title}
-                  </div>
-                  <div
-                    onClick={() => changePageToArtist(track?.artist?.id)}
-                    className={styles.mobile_artist}
-                  >
-                    {track?.artist?.name}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
