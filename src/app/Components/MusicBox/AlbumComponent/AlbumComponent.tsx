@@ -15,6 +15,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { ArtistAlbum } from "@app-types/Album";
 import { useNavigate } from "@Hooks/useNavigate";
+import { useResponsiveSlides } from "@/src/app/Hooks/useResponsiveSlides";
 interface Props {
   title: string;
   data: ArtistAlbum[];
@@ -38,6 +39,8 @@ export default function AlbumComponent({
     navigate("/album/" + id);
   };
 
+  const responsiveSlides = useResponsiveSlides();
+
   return (
     <>
       {loading ? (
@@ -48,7 +51,7 @@ export default function AlbumComponent({
 
       {loading ? (
         <div className={styles.Skeleton}>
-          {Array.from({ length: 4 }).map((_, index) => (
+          {Array.from({ length: responsiveSlides }).map((_, index) => (
             <div key={index} className={styles.Skeleton_div}>
               <Skeleton height={270} />
               <Skeleton count={1} />
