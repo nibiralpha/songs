@@ -7,7 +7,7 @@ import { FaPlay } from "react-icons/fa";
 import { FaShuffle } from "react-icons/fa6";
 import { GenreInterface } from "@app-types/Genre";
 import { GenraOrginalAndAppName } from "@Constant/Genra";
-import { GenraBannerSkeletonComponent } from "./GenraBannerSkeletonComponent.tsx";
+import { GenraBannerSkeletonComponent } from "./GenraBannerSkeletonComponent";
 
 interface Props {
   data: GenreInterface;
