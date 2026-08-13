@@ -174,7 +174,7 @@ export default function SongsTrackComponent({
                   </div>
                   <div className={styles.mobile_content_area}>
                     <div
-                      onClick={() => changePageToAlbum(track?.album?.id)}
+                      // onClick={() => changePageToAlbum(track?.album?.id)}
                       className={styles.mobile_title}
                     >
                       {track?.title}

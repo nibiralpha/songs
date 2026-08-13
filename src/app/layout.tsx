@@ -1,11 +1,20 @@
-"use client";
-
+import type { Metadata,Viewport } from "next";
 import "./globals.css";
-
 import Sidebar from "@Components/Layout/SidebarComponent/SidebarComponent";
 import Header from "@Components/Layout/HeaderComponent/HeaderComponent";
 import StoreProvider from "@redux/StoreProvider";
 import NavigationLoader from "@Components/NavigationLoaderComponent/NavigationLoaderComponent";
+
+export const metadata: Metadata = {
+  title: "Music App",
+  description: "A app for music lover",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 
 export default function RootLayout({
   children,
