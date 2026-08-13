@@ -158,4 +158,29 @@
     justify-content: center;
     align-items: center;
   } */
+
+  /* .circle_skelaton{
+    display: flex;
+    justify-content: center;
+   } */
+
+  .Skeleton_circle {
+    display: flex;
+    justify-content: center;
+  }
+
+  .Skeleton_div {
+    /* width: 100%; */
+    height: auto;
+    padding: 0 40px;
+    /* border-radius: 50%; */
+    width: 300px;
+    /* height: 300px; */
+  }
+
+  .Skeleton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
