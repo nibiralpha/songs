@@ -4,6 +4,7 @@ import Sidebar from "@Components/Layout/SidebarComponent/SidebarComponent";
 import Header from "@Components/Layout/HeaderComponent/HeaderComponent";
 import StoreProvider from "@redux/StoreProvider";
 import NavigationLoader from "@Components/NavigationLoaderComponent/NavigationLoaderComponent";
+import MusicPlayer from "@Components/MusicPlayerComponent/MusicPlayerComponent";
 
 export const metadata: Metadata = {
   title: "Music App",
@@ -36,7 +37,7 @@ export default function RootLayout({
               </div>
 
               <div>{children}</div>
-               {/* <MusicPlayer /> */}
+               <MusicPlayer />
             </div>
           </div>
         </StoreProvider>
