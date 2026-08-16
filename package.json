@@ -28,6 +28,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "react-select": "^5.10.2",
     "react-shimmer-effects": "^1.0.4",
     "shimmer-effects-react": "^1.0.6",
     "tailwindcss": "^4",

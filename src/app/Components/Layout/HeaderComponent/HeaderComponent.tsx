@@ -8,7 +8,6 @@ import SearchComponent from "@Components/SearchComponent/SearchComponent";
 export default function HeaderComponent() {
   return (
     <div className={styles.header}>
-      {/* Header 1 */}
       <SearchComponent />
     </div>
   );

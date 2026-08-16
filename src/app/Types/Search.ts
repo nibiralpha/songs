@@ -1,12 +1,6 @@
-import {
-  Artist,
-  DeezerContributor,
-} from "./Artist";
+import { Artist, DeezerContributor } from "./Artist";
 
-import {
-  ArtistAlbum,
-} from "./Album";
-
+import { ArtistAlbum } from "./Album";
 
 export interface DeezerSearchResponse {
   tracks: DeezerSearchTrackResponse;
@@ -14,7 +8,6 @@ export interface DeezerSearchResponse {
   artists: DeezerSearchArtistResponse;
   playlists: DeezerSearchPlaylistResponse;
 }
-
 
 export interface DeezerSearchTrackResponse {
   data: DeezerSearchTrack[];
@@ -130,4 +123,11 @@ export interface DeezerSearchPlaylist {
   creation_date?: string;
 
   type: "playlist";
+}
+
+export interface SearchOption {
+  value: number;
+  label: string;
+  image: string | null;
+  type: "track" | "album" | "artist" | "playlist";
 }

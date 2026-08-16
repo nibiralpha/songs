@@ -1,9 +1,80 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Search, X } from "lucide-react";
 import styles from "./Search.module.css";
+import Select from "react-select";
+import { components, DropdownIndicatorProps } from "react-select";
+import { DeezerSearchResponse, SearchOption } from "@app-types/Search";
+import { useRouter } from "next/navigation";
 
-export default function SearchComponent() {
-  const [query, setQuery] = useState("");
+interface SearchComponent {
+  onChange?: (value: string) => void;
+  data?: DeezerSearchResponse;
+}
+
+const SearchIcon = (props: DropdownIndicatorProps<SearchOption, false>) => (
+  <components.DropdownIndicator {...props}>
+    <Search size={18} />
+  </components.DropdownIndicator>
+);
+
+export default function SearchComponent({
+  onChange,
+  data,
+}: Readonly<SearchComponent>) {
+  const router = useRouter();
+  const searchTimer: number = 1000;
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const [search, setSearch] = useState<string>("");
+  // const [query, setQuery] = useState("");
+
+  const onChangeKeyword = (value: string) => {
+    setSearch(value);
+
+    if (timerRef.current !== null) {
+      clearTimeout(timerRef.current);
+    }
+
+    timerRef.current = setTimeout(() => {
+      if (onChange) {
+        onChange(value);
+      }
+    }, searchTimer);
+  };
+
+  const searchData = async (input: string) => {
+    onChangeKeyword(input);
+  };
+
+  const options: SearchOption[] = [
+    ...(data?.tracks.data.map((item) => ({
+      value: item.id,
+      label: item.title,
+      image: item.album.cover_medium,
+      type: "track" as const,
+    })) ?? []),
+
+    ...(data?.albums.data.map((item) => ({
+      value: item.id,
+      label: item.title,
+      image: item.cover_medium,
+      type: "album" as const,
+    })) ?? []),
+
+    ...(data?.artists.data.map((item) => ({
+      value: item.id,
+      label: item.name,
+      image: item.picture_medium,
+      type: "artist" as const,
+    })) ?? []),
+
+    ...(data?.playlists.data.map((item) => ({
+      value: item.id,
+      label: item.title,
+      image: item.picture_medium,
+      type: "playlist" as const,
+    })) ?? []),
+  ];
 
   return (
     <div className="relative w-[250] max-w-md">
@@ -13,23 +84,68 @@ export default function SearchComponent() {
         <Search className="w-5 h-5 text-gray-400" />
       </div>
 
-      <input
-        name="search"
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search"
-        className={`w-full h-[35px] text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${styles["search-pad"]}`}
-      />
+      <div className={styles.search_select}>
+        <Select
+          placeholder="Search..."
+          instanceId="movie-search"
+          inputValue={search}
+          openMenuOnFocus={true}
+          isSearchable={true}
+          options={options}
+          onInputChange={(value, { action }) => {
+            if (action === "input-change") {
+              searchData(value);
+            }
+            return value;
+          }}
+          // onFocus={(event) => {
+          //   searchMovies(search);
+          // }}
+          components={{
+            DropdownIndicator: SearchIcon,
+            IndicatorSeparator: null,
+          }}
+          formatOptionLabel={(option: SearchOption) => {
+            return (
+              <div
+                style={{
+                  display: "flex",
+                  gap: 10,
+                  alignItems: "center",
+                }}
+                // onClick={() => changePage(option.type, option.value)}
+              >
+                <img
+                  src={option.image ? `/image` : "/no_image.jpg"}
+                  width={40}
+                  height={55}
+                  style={{
+                    objectFit: "cover",
+                    borderRadius: 4,
+                  }}
+                  alt=""
+                />
 
-      {query && (
+                <div className={styles.options}>
+                  <div className={styles.text_background}>{option.label}</div>
+                  <small className={styles.text_background}>
+                    {option.type}
+                  </small>
+                </div>
+              </div>
+            );
+          }}
+        />
+      </div>
+
+      {/* {query && (
         <button
           onClick={() => setQuery("")}
           className="absolute inset-y-0 right-0 flex items-center pr-[10px] hover:text-gray-600 text-gray-400 transition-colors"
         >
           <X className="w-4 h-4" />
         </button>
-      )}
+      )} */}
     </div>
   );
 }
