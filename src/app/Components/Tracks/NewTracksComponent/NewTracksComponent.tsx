@@ -3,15 +3,11 @@
 import React from "react";
 import styles from "../Css/Tracks.module.css";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/navigation";
 
 import { CiHeart } from "react-icons/ci";
 import { FaPlay } from "react-icons/fa";
-import { SearchTrack } from "@app-types/PopulerSongs";
 import { formatTrackDuration } from "@Helper/Functions";
 import { PlaylistStateInterface } from "@app-types/PlaylistState";
 import { useNavigate } from "@Hooks/useNavigate";
@@ -129,7 +125,7 @@ export default function NewTracksComponent({
                 ))
               : data?.list?.slice(0, showDefault).map((track) => {
                   return (
-                    <tr key={track.id}>
+                    <tr className={styles.table_row} key={track.id}>
                       <td className={`${styles.track_details_img}`}>
                         <img
                           className={styles.song_img}
@@ -140,6 +136,10 @@ export default function NewTracksComponent({
                           }
                           alt={track.album.cover_small}
                         />
+
+                        <div className={styles.play_overlay}>
+                          <FaPlay size={13} />
+                        </div>
                       </td>
 
                       <td

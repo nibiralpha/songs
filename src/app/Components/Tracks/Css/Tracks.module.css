@@ -102,6 +102,26 @@ tbody tr:hover {
   font-weight: 500;
 }
 
+.track_details_img {
+  position: relative;
+}
+
+.play_overlay {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.table_row:hover .play_overlay {
+  display: initial;
+}
+
+.play_overlay:hover{
+  cursor: pointer;
+}
+
 .heart:hover {
   cursor: pointer;
 }
