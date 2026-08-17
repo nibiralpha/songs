@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Search, X } from "lucide-react";
 import styles from "./Search.module.css";
-import Select from "react-select";
+import Select, { SingleValueProps } from "react-select";
 import { components, DropdownIndicatorProps } from "react-select";
 import { DeezerSearchResponse, SearchOption } from "@app-types/Search";
 import { useRouter } from "next/navigation";
@@ -104,6 +104,20 @@ export default function SearchComponent({
     }
   };
 
+  const SingleValue = ({ data }: SingleValueProps<SearchOption>) => {
+    return (
+      <div
+        style={{
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+        }}
+      >
+        {data.label}
+      </div>
+    );
+  };
+
   return (
     <div className="relative w-[250] max-w-md">
       <div
@@ -122,6 +136,7 @@ export default function SearchComponent({
               ...base,
               zIndex: 99,
             }),
+
             option: (base, state) => ({
               ...base,
               backgroundColor: state.isSelected
@@ -129,8 +144,10 @@ export default function SearchComponent({
                 : state.isFocused
                   ? "#f0f0f0"
                   : "white",
+
               color: state.isSelected ? "white" : "black",
               cursor: "pointer",
+
               ":active": {
                 backgroundColor: "#2684ff",
               },
@@ -139,27 +156,40 @@ export default function SearchComponent({
           classNamePrefix="search"
           placeholder="Search..."
           instanceId="songs-search"
-          // inputValue={search}
           openMenuOnFocus={true}
           isSearchable={true}
           options={options}
           onChange={(option) => {
-            option !== null ? changePage(option.type, option.id) : "";
+            if (option) {
+              changePage(option.type, option.id);
+            }
           }}
           onInputChange={(value, { action }) => {
             if (action === "input-change") {
               searchData(value);
             }
+
             return value;
           }}
-          // onFocus={(event) => {
-          //   searchData(search);
-          // }}
           components={{
             DropdownIndicator: SearchIcon,
             IndicatorSeparator: null,
           }}
-          formatOptionLabel={(option: SearchOption) => {
+          formatOptionLabel={(option: SearchOption, { context }) => {
+            if (context === "value") {
+              return (
+                <div
+                  style={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {option.label}
+                </div>
+              );
+            }
+
             return (
               <div
                 style={{
@@ -167,10 +197,9 @@ export default function SearchComponent({
                   gap: 10,
                   alignItems: "center",
                 }}
-                // onClick={() => changePage(option.type, option.id)}
               >
                 <img
-                  src={option.image ? option?.image : "/no-img.png"}
+                  src={option.image ? option.image : "/no-img.png"}
                   width={40}
                   height={55}
                   style={{
@@ -182,12 +211,14 @@ export default function SearchComponent({
 
                 <div className={styles.options}>
                   <div className={styles.text_background}>{option.label}</div>
-                  {option?.type == "album" && (
+
+                  {option.type === "album" && (
                     <small className={styles.text_background}>
-                      {option?.name}
+                      {option.name}
                       <br />
                     </small>
                   )}
+
                   <small className={styles.text_background}>
                     {option.type}
                   </small>
