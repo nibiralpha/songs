@@ -11,17 +11,21 @@ import { fetchSearchResult } from "@/src/app/Services/Search";
 export default function HeaderComponent() {
   const dispatch = useDispatch<AppDispatch>();
 
-    const searchResult = useSelector(
+  const searchResult = useSelector(
     (state: RootState) => state.search.data || {},
   );
 
   const onSearch = (searchedData: string) => {
-    dispatch(fetchSearchResult(searchedData));
+    if (searchedData !== "") dispatch(fetchSearchResult(searchedData));
   };
 
   return (
     <div className={styles.header}>
-      <SearchComponent onChange={onSearch} />
+      <SearchComponent
+        onChange={onSearch}
+        result={searchResult.data}
+        loading={searchResult.loading}
+      />
     </div>
   );
 }

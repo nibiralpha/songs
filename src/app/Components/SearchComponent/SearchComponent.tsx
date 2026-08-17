@@ -8,7 +8,9 @@ import { useRouter } from "next/navigation";
 
 interface SearchComponent {
   onChange?: (value: string) => void;
-  data?: DeezerSearchResponse;
+  data?: DeezerSearchResponse | undefined;
+  result?: DeezerSearchResponse | undefined;
+  loading?: boolean;
 }
 
 const SearchIcon = (props: DropdownIndicatorProps<SearchOption, false>) => (
@@ -19,6 +21,7 @@ const SearchIcon = (props: DropdownIndicatorProps<SearchOption, false>) => (
 
 export default function SearchComponent({
   onChange,
+  result,
   data,
 }: Readonly<SearchComponent>) {
   const router = useRouter();
@@ -45,36 +48,44 @@ export default function SearchComponent({
   const searchData = async (input: string) => {
     onChangeKeyword(input);
   };
+  
 
   const options: SearchOption[] = [
-    ...(data?.tracks.data.map((item) => ({
-      value: item.id,
-      label: item.title,
-      image: item.album.cover_medium,
-      type: "track" as const,
-    })) ?? []),
+    // ...(result?.tracks?.map((item) => ({
+    //   id: item.id,
+    //   label: item.title,
+    //   image: item.album.cover_medium,
+    //   artistName: item?.artist?.name,
+    //   type: "track" as const,
+    // })) ?? []),
 
-    ...(data?.albums.data.map((item) => ({
-      value: item.id,
+    ...(result?.albums?.map((item) => ({
+      id: item.id,
       label: item.title,
-      image: item.cover_medium,
+      image: item?.cover_medium,
+      artistName: item?.artist?.name,
       type: "album" as const,
     })) ?? []),
 
-    ...(data?.artists.data.map((item) => ({
-      value: item.id,
-      label: item.name,
-      image: item.picture_medium,
-      type: "artist" as const,
-    })) ?? []),
+    // ...(result?.artists?.map((item) => ({
+    //   id: item.id,
+    //   label: item?.artist?.name,
+    //   image: item?.artist?.picture_medium,
+    //   artistName: item?.artist?.name,
+    //   type: "artist" as const,
+    // })) ?? []),
 
-    ...(data?.playlists.data.map((item) => ({
-      value: item.id,
-      label: item.title,
-      image: item.picture_medium,
-      type: "playlist" as const,
-    })) ?? []),
+    // ...(result?.playlists?.map((item) => ({
+    //   id: item.id,
+    //   label: item.title,
+    //   image: item?.artist?.picture_medium,
+    //   artistName: item?.artist?.name,
+    //   type: "playlist" as const,
+    // })) ?? []),
   ];
+
+  console.log(options);
+  
 
   return (
     <div className="relative w-[250] max-w-md">
@@ -86,9 +97,19 @@ export default function SearchComponent({
 
       <div className={styles.search_select}>
         <Select
+          menuPortalTarget={
+            typeof document !== "undefined" ? document.body : null
+          }
+          styles={{
+            menuPortal: (base) => ({
+              ...base,
+              zIndex: 99,
+            }),
+          }}
+          classNamePrefix="search"
           placeholder="Search..."
-          instanceId="movie-search"
-          inputValue={search}
+          instanceId="songs-search"
+          // inputValue={search}
           openMenuOnFocus={true}
           isSearchable={true}
           options={options}
@@ -98,9 +119,9 @@ export default function SearchComponent({
             }
             return value;
           }}
-          // onFocus={(event) => {
-          //   searchMovies(search);
-          // }}
+          onFocus={(event) => {
+            searchData(search);
+          }}
           components={{
             DropdownIndicator: SearchIcon,
             IndicatorSeparator: null,
@@ -115,8 +136,9 @@ export default function SearchComponent({
                 }}
                 // onClick={() => changePage(option.type, option.value)}
               >
+                {/* {console.log("zzzzzzzzzzzzz",result, option.image, option.value, option.label, option.type)} */}
                 <img
-                  src={option.image ? `/image` : "/no_image.jpg"}
+                  src={option.image ? option?.image : "/no-img.png"}
                   width={40}
                   height={55}
                   style={{
@@ -128,6 +150,9 @@ export default function SearchComponent({
 
                 <div className={styles.options}>
                   <div className={styles.text_background}>{option.label}</div>
+                  <small className={styles.text_background}>
+                    {option?.artistName}
+                  </small> <br />
                   <small className={styles.text_background}>
                     {option.type}
                   </small>

@@ -3,10 +3,10 @@ import { Artist, DeezerContributor } from "./Artist";
 import { ArtistAlbum } from "./Album";
 
 export interface DeezerSearchResponse {
-  tracks: DeezerSearchTrackResponse;
-  albums: DeezerSearchAlbumResponse;
-  artists: DeezerSearchArtistResponse;
-  playlists: DeezerSearchPlaylistResponse;
+  tracks: DeezerSearchTrack[];
+  albums: DeezerSearchTrackAlbum[];
+  artists: DeezerSearchTrack[];
+  playlists: DeezerSearchTrack[];
 }
 
 export interface DeezerSearchTrackResponse {
@@ -75,6 +75,7 @@ export interface DeezerSearchTrackAlbum {
   tracklist: string;
 
   type: "album";
+  artist: Artist
 }
 
 export interface DeezerSearchArtistResponse {
@@ -126,8 +127,9 @@ export interface DeezerSearchPlaylist {
 }
 
 export interface SearchOption {
-  value: number;
+  id: number;
   label: string;
   image: string | null;
+  artistName?: string;
   type: "track" | "album" | "artist" | "playlist";
 }
