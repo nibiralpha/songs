@@ -56,6 +56,7 @@ export default function SearchComponent({
   const options: SearchOption[] = [
     ...(result?.tracks?.map((item) => ({
       id: item.id,
+      value: `${item.type}-${item.id}`,
       label: item?.title,
       image: item?.album?.cover_small,
       name: item?.title,
@@ -64,6 +65,7 @@ export default function SearchComponent({
 
     ...(result?.albums?.map((item) => ({
       id: item.id,
+      value: `${item.type}-${item.id}`,
       label: item.title,
       image: item?.cover_medium,
       name: item?.artist?.name,
@@ -72,6 +74,7 @@ export default function SearchComponent({
 
     ...(result?.artists?.map((item) => ({
       id: item.id,
+      value: `${item.type}-${item.id}`,
       label: item?.name,
       image: item?.picture_small,
       name: item?.name,
@@ -92,11 +95,11 @@ export default function SearchComponent({
       navigate("/artist/" + id);
     }
 
-    if(type == "album"){
+    if (type == "album") {
       navigate("/album/" + id);
     }
 
-    if(type == "artist"){
+    if (type == "artist") {
       navigate("/artist/" + id);
     }
   };
@@ -119,6 +122,19 @@ export default function SearchComponent({
               ...base,
               zIndex: 99,
             }),
+            option: (base, state) => ({
+              ...base,
+              backgroundColor: state.isSelected
+                ? "#2684ff"
+                : state.isFocused
+                  ? "#f0f0f0"
+                  : "white",
+              color: state.isSelected ? "white" : "black",
+              cursor: "pointer",
+              ":active": {
+                backgroundColor: "#2684ff",
+              },
+            }),
           }}
           classNamePrefix="search"
           placeholder="Search..."
@@ -127,15 +143,18 @@ export default function SearchComponent({
           openMenuOnFocus={true}
           isSearchable={true}
           options={options}
+          onChange={(option) => {
+            option !== null ? changePage(option.type, option.id) : "";
+          }}
           onInputChange={(value, { action }) => {
             if (action === "input-change") {
               searchData(value);
             }
             return value;
           }}
-          onFocus={(event) => {
-            searchData(search);
-          }}
+          // onFocus={(event) => {
+          //   searchData(search);
+          // }}
           components={{
             DropdownIndicator: SearchIcon,
             IndicatorSeparator: null,
@@ -148,7 +167,7 @@ export default function SearchComponent({
                   gap: 10,
                   alignItems: "center",
                 }}
-                onClick={() => changePage(option.type, option.id)}
+                // onClick={() => changePage(option.type, option.id)}
               >
                 <img
                   src={option.image ? option?.image : "/no-img.png"}
