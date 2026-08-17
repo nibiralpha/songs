@@ -16,6 +16,7 @@ export default function AlbumPage() {
 
   const params = useParams();
   const id = Number(params.id);
+  const trackId = Number(params.trackId);
 
   const { albums } = useAlbum();
 
@@ -36,6 +37,7 @@ export default function AlbumPage() {
         <AlbumTracksComponent
           title={"Tracks"}
           data={albums.data?.tracks?.data}
+          trackId={trackId}
           loading={albums.loading}
           showDefault={10}
           slidesPerView={4}

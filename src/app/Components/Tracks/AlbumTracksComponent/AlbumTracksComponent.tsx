@@ -27,6 +27,7 @@ interface Props {
   slidesPerView: number;
   spaceBetween: number;
   showDefault: number;
+  trackId?: number;
 }
 
 export default function AlbumTracksComponent({
@@ -36,6 +37,7 @@ export default function AlbumTracksComponent({
   slidesPerView,
   spaceBetween,
   showDefault,
+  trackId,
 }: Readonly<Props>) {
   const navigate = useNavigate();
 
@@ -99,7 +101,12 @@ export default function AlbumTracksComponent({
                 ))
               : data?.slice(0, showDefault).map((track) => {
                   return (
-                    <tr key={track.id}>
+                    <tr
+                      className={
+                        trackId === track.id ? styles.active_track : ""
+                      }
+                      key={track.id}
+                    >
                       <td className={`${styles.track_details_img}`}>
                         <img
                           className={styles.song_img}

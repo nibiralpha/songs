@@ -88,6 +88,10 @@ tbody tr:hover {
   background-color: #151515;
 }
 
+.active_track{
+  background-color: #151515;
+}
+
 .title_track {
   /* padding-left: 15px; */
   padding-left: 15px;
