@@ -5,8 +5,8 @@ import { ArtistAlbum } from "./Album";
 export interface DeezerSearchResponse {
   tracks: DeezerSearchTrack[];
   albums: DeezerSearchTrackAlbum[];
-  artists: DeezerSearchTrack[];
-  playlists: DeezerSearchTrack[];
+  artists: DeezerSearchTrackArtist[];
+  // playlists: DeezerSearchTrack[];
 }
 
 export interface DeezerSearchTrackResponse {
@@ -130,6 +130,6 @@ export interface SearchOption {
   id: number;
   label: string;
   image: string | null;
-  artistName?: string;
+  name?: string;
   type: "track" | "album" | "artist" | "playlist";
 }

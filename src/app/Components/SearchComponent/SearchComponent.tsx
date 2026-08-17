@@ -5,7 +5,9 @@ import Select from "react-select";
 import { components, DropdownIndicatorProps } from "react-select";
 import { DeezerSearchResponse, SearchOption } from "@app-types/Search";
 import { useRouter } from "next/navigation";
+import { useNavigate } from "@Hooks/useNavigate";
 
+export type SearchResultType = "track" | "album" | "artist" | "playlist";
 interface SearchComponent {
   onChange?: (value: string) => void;
   data?: DeezerSearchResponse | undefined;
@@ -24,6 +26,8 @@ export default function SearchComponent({
   result,
   data,
 }: Readonly<SearchComponent>) {
+  const navigate = useNavigate();
+
   const router = useRouter();
   const searchTimer: number = 1000;
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -48,32 +52,31 @@ export default function SearchComponent({
   const searchData = async (input: string) => {
     onChangeKeyword(input);
   };
-  
 
   const options: SearchOption[] = [
-    // ...(result?.tracks?.map((item) => ({
-    //   id: item.id,
-    //   label: item.title,
-    //   image: item.album.cover_medium,
-    //   artistName: item?.artist?.name,
-    //   type: "track" as const,
-    // })) ?? []),
+    ...(result?.tracks?.map((item) => ({
+      id: item.id,
+      label: item?.title,
+      image: item?.album?.cover_small,
+      name: item?.title,
+      type: "track" as const,
+    })) ?? []),
 
     ...(result?.albums?.map((item) => ({
       id: item.id,
       label: item.title,
       image: item?.cover_medium,
-      artistName: item?.artist?.name,
+      name: item?.artist?.name,
       type: "album" as const,
     })) ?? []),
 
-    // ...(result?.artists?.map((item) => ({
-    //   id: item.id,
-    //   label: item?.artist?.name,
-    //   image: item?.artist?.picture_medium,
-    //   artistName: item?.artist?.name,
-    //   type: "artist" as const,
-    // })) ?? []),
+    ...(result?.artists?.map((item) => ({
+      id: item.id,
+      label: item?.name,
+      image: item?.picture_small,
+      name: item?.name,
+      type: "artist" as const,
+    })) ?? []),
 
     // ...(result?.playlists?.map((item) => ({
     //   id: item.id,
@@ -84,8 +87,19 @@ export default function SearchComponent({
     // })) ?? []),
   ];
 
-  console.log(options);
-  
+  const changePage = (type: SearchResultType, id: number) => {
+    if (type == "track") {
+      navigate("/artist/" + id);
+    }
+
+    if(type == "album"){
+      navigate("/album/" + id);
+    }
+
+    if(type == "artist"){
+      navigate("/artist/" + id);
+    }
+  };
 
   return (
     <div className="relative w-[250] max-w-md">
@@ -134,9 +148,8 @@ export default function SearchComponent({
                   gap: 10,
                   alignItems: "center",
                 }}
-                // onClick={() => changePage(option.type, option.value)}
+                onClick={() => changePage(option.type, option.id)}
               >
-                {/* {console.log("zzzzzzzzzzzzz",result, option.image, option.value, option.label, option.type)} */}
                 <img
                   src={option.image ? option?.image : "/no-img.png"}
                   width={40}
@@ -150,9 +163,12 @@ export default function SearchComponent({
 
                 <div className={styles.options}>
                   <div className={styles.text_background}>{option.label}</div>
-                  <small className={styles.text_background}>
-                    {option?.artistName}
-                  </small> <br />
+                  {option?.type == "album" && (
+                    <small className={styles.text_background}>
+                      {option?.name}
+                      <br />
+                    </small>
+                  )}
                   <small className={styles.text_background}>
                     {option.type}
                   </small>
