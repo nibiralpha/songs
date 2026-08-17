@@ -56,6 +56,7 @@ export default function SearchComponent({
   const options: SearchOption[] = [
     ...(result?.tracks?.map((item) => ({
       id: item.id,
+      albumId: item?.album?.id,
       value: `${item.type}-${item.id}`,
       label: item?.title,
       image: item?.album?.cover_small,
@@ -90,9 +91,13 @@ export default function SearchComponent({
     // })) ?? []),
   ];
 
-  const changePage = (type: SearchResultType, id: number) => {
+  const changePage = (
+    type: SearchResultType,
+    id: number,
+    albumId: number | undefined = undefined,
+  ) => {
     if (type == "track") {
-      navigate("/artist/" + id);
+      navigate("/album/" + albumId + "/track/" + id);
     }
 
     if (type == "album") {
@@ -161,6 +166,10 @@ export default function SearchComponent({
           options={options}
           onChange={(option) => {
             if (option) {
+              if (option.type == "track") {
+                changePage(option.type, option.id, option?.albumId);
+                return
+              }
               changePage(option.type, option.id);
             }
           }}
@@ -228,15 +237,6 @@ export default function SearchComponent({
           }}
         />
       </div>
-
-      {/* {query && (
-        <button
-          onClick={() => setQuery("")}
-          className="absolute inset-y-0 right-0 flex items-center pr-[10px] hover:text-gray-600 text-gray-400 transition-colors"
-        >
-          <X className="w-4 h-4" />
-        </button>
-      )} */}
     </div>
   );
 }

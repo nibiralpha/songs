@@ -21,7 +21,7 @@ import AlbumComponent from "@/src/app/Components/MusicBox/AlbumComponent/AlbumCo
 import useArtist from "@/src/app/Hooks/useArtist";
 import ArtistComponent from "@/src/app/Components/ArtistComponent/ArtistComponent";
 
-export default function Artist() {
+export default function ArtistPage() {
   const dispatch = useDispatch<AppDispatch>();
 
   const params = useParams();

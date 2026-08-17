@@ -128,8 +128,10 @@ export interface DeezerSearchPlaylist {
 
 export interface SearchOption {
   id: number;
+  albumId?: number;
   label: string;
   image: string | null;
   name?: string;
   type: "track" | "album" | "artist" | "playlist";
+  value: string
 }

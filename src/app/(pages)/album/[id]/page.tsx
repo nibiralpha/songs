@@ -11,7 +11,7 @@ import { fetchAbumDetail } from "@/src/app/Services/Album";
 import useAlbum from "@/src/app/Hooks/useAlbum";
 import AlbumTracksComponent from "@/src/app/Components/Tracks/AlbumTracksComponent/AlbumTracksComponent";
 
-export default function Artist() {
+export default function AlbumPage() {
   const dispatch = useDispatch<AppDispatch>();
 
   const params = useParams();

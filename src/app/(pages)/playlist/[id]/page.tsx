@@ -11,7 +11,7 @@ import { fetchPlaylistByID } from "@/src/app/Services/Playlists";
 import PlaylistBannerComponent from "@/src/app/Components/Banner/PlaylistBannerComponent/PlaylistBannerComponent";
 import PlaylistTrackComponent from "@/src/app/Components/Tracks/PlaylistTracksComponent/PlaylistTracksComponent";
 
-export default function Playlist() {
+export default function PlaylistPage() {
   const dispatch = useDispatch<AppDispatch>();
 
   const params = useParams();

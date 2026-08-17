@@ -11,6 +11,7 @@
 .artish_img_area {
   width: 28%;
   margin-right: 35px;
+  flex: 0 0 28%;
 }
 
 .artist {
