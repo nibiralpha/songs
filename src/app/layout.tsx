@@ -5,6 +5,7 @@ import Header from "@Components/Layout/HeaderComponent/HeaderComponent";
 import StoreProvider from "@redux/StoreProvider";
 import NavigationLoader from "@Components/NavigationLoaderComponent/NavigationLoaderComponent";
 import MusicPlayer from "@Components/MusicPlayerComponent/MusicPlayerComponent";
+import PlayerComponent from "@Components/PlayerComponent/PlayerComponent";
 
 export const metadata: Metadata = {
   title: "Music App",
@@ -37,7 +38,8 @@ export default function RootLayout({
               </div>
 
               <div>{children}</div>
-               <MusicPlayer />
+               {/* <MusicPlayer /> */}
+               <PlayerComponent />
             </div>
           </div>
         </StoreProvider>
