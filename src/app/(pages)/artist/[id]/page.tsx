@@ -69,15 +69,6 @@ export default function ArtistPage() {
           loading={artistAlbums.loading}
         />
       </div>
-      {/* <div className={styles.sections}>
-        <AlbumComponent
-          title={"Top songs"}
-          data={artistAlbums.data}
-          showDefault={5}
-          slidesPerView={4}
-          spaceBetween={12}
-        />
-      </div> */}
       <div className={styles.sections}>
         <ArtistComponent
           title={"Related Artist"}

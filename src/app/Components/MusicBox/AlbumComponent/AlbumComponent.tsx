@@ -92,6 +92,7 @@ export default function AlbumComponent({
                     }
                     className={styles.album_img}
                     alt={box.title}
+                    onClick={() => changePage(box.id)}
                   />
                   <div className={styles.actions}>
                     <div className={styles.action_button}>
