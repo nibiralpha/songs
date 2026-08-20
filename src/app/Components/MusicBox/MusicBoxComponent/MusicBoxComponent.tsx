@@ -115,6 +115,7 @@ export default function MusicBoxComponent({
                         ? box.album?.cover_big
                         : "/no-img.png"
                     }
+                    onClick={() => changePageToAlbumTrack(box.album.id, box.id)}
                     className={styles.album_img}
                     alt={box.title}
                   />

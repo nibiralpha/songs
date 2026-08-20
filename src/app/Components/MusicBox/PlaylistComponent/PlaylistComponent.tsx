@@ -111,6 +111,7 @@ export default function PlaylistComponent({
                     }
                     className={styles.album_img}
                     alt={track.title}
+                    onClick={() => changePageToAlbumTrack(track?.album?.id, track?.id)}
                     // onClick={() => changePage(data?.data?.id)}
                   />
                   <div className={styles.actions}>
@@ -124,7 +125,9 @@ export default function PlaylistComponent({
                 </div>
                 <div className={styles.desc}>
                   <div
-                    onClick={() => changePageToAlbumTrack(track.album.id, track.id)}
+                    onClick={() =>
+                      changePageToAlbumTrack(track.album.id, track.id)
+                    }
                     className={styles.title}
                   >
                     {track.title}

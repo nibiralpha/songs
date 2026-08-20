@@ -3,33 +3,40 @@
 import Link from "next/link";
 import styles from "./Sidebar.module.css";
 import { Music, LibraryBig } from "lucide-react";
+import { useNavigate } from "@Hooks/useNavigate";
 
 export default function SidebarComponent() {
+  const navigate = useNavigate();
+
+  const changePage = () => {
+    navigate("/");
+  };
+
   return (
     <div>
       <div className={styles.desktop_menu}>
         <aside className={styles.sidebar}>
           <h2 className={styles.logo}>
-            <img src="/logo.png" />
+            <img src="/logo.png" onClick={() => changePage()} />
           </h2>
 
           <nav>
             <ul>
               <li>
                 <div className={styles.menus}>
-                  <div className={styles.menu}>
+                  <div className={`${styles.menu} ${styles.active}`}>
                     <div className={styles.icon}>
                       <Music className={styles.icon_type} />
                     </div>
                     <div className={styles.name}>Music</div>
                   </div>
 
-                  <div className={`${styles.menu} ${styles.active}`}>
+                  {/* <div className={`${styles.menu} ${styles.active}`}>
                     <div className={styles.icon}>
                       <LibraryBig className={styles.icon_type} />
                     </div>
                     <div className={styles.name}>Library</div>
-                  </div>
+                  </div> */}
                 </div>
               </li>
             </ul>
