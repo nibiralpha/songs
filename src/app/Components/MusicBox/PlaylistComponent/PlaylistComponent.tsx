@@ -43,6 +43,9 @@ export default function PlaylistComponent({
     navigate("/artist/" + id);
   };
 
+  const changePageToAlbumTrack = (albumId: number, trackId: number) => {
+    navigate("/album/" + albumId + "/track/" + trackId);
+  };
   return (
     <>
       {loading ? (
@@ -120,7 +123,12 @@ export default function PlaylistComponent({
                   </div>
                 </div>
                 <div className={styles.desc}>
-                  <div className={styles.title}>{track.title}</div>
+                  <div
+                    onClick={() => changePageToAlbumTrack(track.album.id, track.id)}
+                    className={styles.title}
+                  >
+                    {track.title}
+                  </div>
                   <div
                     onClick={() => changePageToArtist(track?.artist?.id)}
                     className={styles.sub_title}

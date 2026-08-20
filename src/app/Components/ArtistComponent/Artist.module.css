@@ -85,11 +85,15 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 1;
-  /* pointer-events: none; */
+  pointer-events: none;
 }
 
 .music_box:hover .img_container::after {
   opacity: 1;
+  cursor: pointer;
+}
+
+.music_box:hover {
   cursor: pointer;
 }
 

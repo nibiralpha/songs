@@ -4,26 +4,17 @@ import React from "react";
 import styles from "./Artist.module.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
 
-import { FaHeart, FaPlay } from "react-icons/fa";
-import {
-  Artist,
-  ArtistDetails,
-  RelatedArtistResponse,
-} from "@app-types/Artist";
+import { FaPlay } from "react-icons/fa";
+import { Artist, RelatedArtistResponse } from "@app-types/Artist";
 
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-import { useRouter } from "next/navigation";
-import { RelatedArtistInterface } from "@app-types/ArtistState";
 import { useNavigate } from "@Hooks/useNavigate";
-import ContentLoader from "react-content-loader";
-import { ListSkeletonComponent } from "@Components/Tracks/ListSkeletonComponent/ListSkelatonComponent";
 import { useResponsiveSlides } from "@Hooks/useResponsiveSlides";
 
 interface Props {
@@ -98,6 +89,7 @@ export default function ArtistComponent({
                     }
                     className={styles.album_img}
                     alt={artist.name}
+                    onClick={() => changePage(artist.id)}
                   />
                   <div className={styles.actions}>
                     <div className={styles.action_button}>

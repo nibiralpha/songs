@@ -42,8 +42,13 @@ export default function MusicBoxComponent({
   const changePageToPlaylist = () => {
     navigate("/genra/" + id);
   };
+
   const changePageToArtist = (id: number) => {
     navigate("/artist/" + id);
+  };
+
+  const changePageToAlbumTrack = (albumId: number, trackId: number) => {
+    navigate("/album/" + albumId + "/track/" + trackId);
   };
 
   return (
@@ -123,8 +128,18 @@ export default function MusicBoxComponent({
                   </div>
                 </div>
                 <div className={styles.desc}>
-                  <div className={styles.title}>{box.title}</div>
-                  <div onClick={() => changePageToArtist(box.artist.id)} className={styles.sub_title}>{box.artist?.name}</div>
+                  <div
+                    onClick={() => changePageToAlbumTrack(box.album.id, box.id)}
+                    className={styles.title}
+                  >
+                    {box.title}
+                  </div>
+                  <div
+                    onClick={() => changePageToArtist(box.artist.id)}
+                    className={styles.sub_title}
+                  >
+                    {box.artist?.name}
+                  </div>
                 </div>
               </div>
             </SwiperSlide>

@@ -39,8 +39,7 @@ export default function RootLayout({
               </div>
 
               <div>{children}</div>
-               {/* <MusicPlayer /> */}
-               <PlayerComponent />
+               {/* <PlayerComponent /> */}
             </div>
           </div>
         </StoreProvider>
