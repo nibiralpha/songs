@@ -1,6 +1,5 @@
 "use client";
 
-
 import "./PlayerComponent.module.css";
 import AudioPlayer, {
   ActiveUI,
@@ -37,7 +36,8 @@ const initialState = {
 };
 
 export default function PlayerComponent() {
-  const [progressType, setProgressType] = useState<ProgressUI>("waveform");
+    // error during set to waveform will fix it later
+  const [progressType, setProgressType] = useState<ProgressUI>("bar");
   const [playerPlacement, setPlayerPlacement] =
     useState<PlayerPlacement>("bottom-left");
   const [interfacePlacement, setInterfacePlacement] =

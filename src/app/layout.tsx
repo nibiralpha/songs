@@ -5,7 +5,8 @@ import Header from "@Components/Layout/HeaderComponent/HeaderComponent";
 import StoreProvider from "@redux/StoreProvider";
 import NavigationLoader from "@Components/NavigationLoaderComponent/NavigationLoaderComponent";
 import MusicPlayer from "@Components/MusicPlayerComponent/MusicPlayerComponent";
-import PlayerComponent from "@Components/PlayerComponent/PlayerComponent";
+// import PlayerComponent from "@Components/PlayerComponent/PlayerComponent";
+import PlayerComponent from "@Components/PlayerComponent/PlayerWrapper";
 
 export const metadata: Metadata = {
   title: "Music App",

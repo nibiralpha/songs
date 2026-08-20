@@ -50,6 +50,11 @@ body {
   width: 100%;
 }
 
+.rmap-player-provider {
+  z-index: 900 !important;
+}
+
+
 /* Mobile */
 
 @media screen and (max-width: 430px) {
