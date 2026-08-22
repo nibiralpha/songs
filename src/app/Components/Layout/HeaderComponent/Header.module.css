@@ -1,3 +1,10 @@
-.header{
-    
+.header {
+  width: auto;
+}
+
+/* MOBILE */
+@media screen and (max-width: 430px) {
+  .header {
+    width: 100%;
+  }
 }

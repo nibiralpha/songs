@@ -31,3 +31,10 @@
   position: absolute;
   z-index: 9999 !important;
 } */
+
+/* MOBILE */
+@media screen and (max-width: 430px) {
+ .mobile_width{
+  width: 100%;
+ }
+}

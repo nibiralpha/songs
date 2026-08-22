@@ -124,7 +124,7 @@ export default function SearchComponent({
   };
 
   return (
-    <div className="relative w-[250] max-w-md">
+    <div className={`relative w-[250] max-w-md ${styles.mobile_width}`}>
       <div
         className={`absolute pl-10 inset-y-0 left-0 flex items-center pl-3 pointer-events-none ${styles.search_icon}`}
       >
