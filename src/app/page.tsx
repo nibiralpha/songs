@@ -20,6 +20,7 @@ import usePlaylist from "@Hooks/usePlaylist";
 import PlaylistComponent from "./Components/MusicBox/PlaylistComponent/PlaylistComponent";
 import { PlaylistID } from "@Constant/PlaylistID";
 import { GenreName, Genres } from "@Constant/Genra";
+import MenuComponent from "@Components/MenuComponent/MenuComponent";
 
 export default function HomePage() {
   const dispatch = useDispatch<AppDispatch>();

@@ -1,4 +1,4 @@
-import type { Metadata,Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Sidebar from "@Components/Layout/SidebarComponent/SidebarComponent";
 import Header from "@Components/Layout/HeaderComponent/HeaderComponent";
@@ -7,6 +7,7 @@ import NavigationLoader from "@Components/NavigationLoaderComponent/NavigationLo
 import MusicPlayer from "@Components/MusicPlayerComponent/MusicPlayerComponent";
 // import PlayerComponent from "@Components/PlayerComponent/PlayerComponent";
 import PlayerComponent from "@Components/PlayerComponent/PlayerWrapper";
+import MenuComponent from "@Components/MenuComponent/MenuComponent";
 
 export const metadata: Metadata = {
   title: "Music App",
@@ -18,7 +19,6 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,6 +27,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <MenuComponent />
+
         <StoreProvider>
           <NavigationLoader />
 
@@ -39,7 +41,7 @@ export default function RootLayout({
               </div>
 
               <div>{children}</div>
-               {/* <PlayerComponent /> */}
+              {/* <PlayerComponent /> */}
             </div>
           </div>
         </StoreProvider>
