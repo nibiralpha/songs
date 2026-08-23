@@ -2,36 +2,148 @@
   display: none;
 }
 
-/* MOBILE */
 @media screen and (max-width: 430px) {
   .bar {
-    display: inline;
-  }
-
-  .menu_bar {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    padding: 0 20px;
-    border-bottom: 1px solid rgb(100 100 100);
-  }
-
-  .desktop {
-    display: none;
-  }
-
-  .mobile {
-    display: initial;
-  }
-
-  .bar {
+    display: block;
     width: 100%;
     height: 70px;
     background-color: black;
+  }
+
+  .menu_bar {
+    /* position: relative; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 70px;
+    padding: 0 20px;
+
     border-bottom: 1px solid #4c4c4c;
   }
 
-  .logo_mobile {
-    width: 20%;
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+
+  .logo_mobile {
+    width: 30%;
+  }
+
+  .left_side {
+    /* position: absolute; */
+    left: 20px;
+
+    display: flex;
+    align-items: center;
+  }
+
+  .menu_icon {
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+    color: white;
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    z-index: 9999;
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .overlay_open {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .side_menu {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 80%;
+    height: 100%;
+
+    background: #151515;
+
+    transform: translateX(-100%);
+
+    transition: transform 0.3s ease;
+
+    box-sizing: border-box;
+
+    overflow-y: auto;
+  }
+
+  .side_menu_open {
+    transform: translateX(0);
+  }
+
+  .menu_header {
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+
+    color: white;
+
+    border-bottom: 1px solid #333;
+  }
+
+  .menu_header span {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .close_button {
+    border: none;
+    background: transparent;
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+  }
+
+  .menu_items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu_items .menu {
+    padding: 18px 20px;
+
+    color: white;
+    text-decoration: none;
+
+    border-bottom: 1px solid #292929;
+  }
+
+  /* .menu_items .menu_items:hover {
+    background: #222;
+  } */
 }

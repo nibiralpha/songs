@@ -1,65 +1,81 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
-
+import { useEffect, useRef, useState } from "react";
 import styles from "./Menu.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { IoIosMenu } from "react-icons/io";
-import { FiMenu } from "react-icons/fi";
+import { FiMenu, FiX } from "react-icons/fi";
 
-type HeaderProps = Readonly<{
-  // setClearFilterData?: React.Dispatch<React.SetStateAction<boolean>>;
-  showMenu?: boolean;
-}>;
+export default function MenuComponent() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
-export default function MenuComponent({
-  // setClearFilterData,
-  showMenu = true,
-}: HeaderProps) {
-  //   const dispatch = useDispatch();
-  //   const pathname = usePathname();
-  //   const router = useRouter();
-  //   const path = pathname.split("/");
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
 
-  //   const showFilter = useSelector((state: RootState) => state.filter.showFilter);
-  //   const filter = useSelector((state: RootState) => state.search);
-  //   const route = path[1];
+    if (isMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
 
-  //   const showClearFilter: boolean = !Object.values(filter).every((value) => {
-  //     if (typeof value === "string") return value === "";
-
-  //     if (Array.isArray(value)) return value[0] === 0 && value[1] === 100;
-
-  //     return true;
-  //   });
-
-  const changePage = (page: string) => {
-    // router.push(`/${page}`);
-  };
-
-  //   const visibleMenu = () => {
-  //     dispatch(setFilter(!showFilter));
-  //   };
-
-  //   const clearAllFilterData = () => {
-  //     dispatch(clearFilter(""));
-  //     router.replace(window.location.pathname);
-
-  //     // setClearFilterData?.(true);
-  //   };
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMenuOpen]);
 
   return (
     <div className={styles.bar}>
       <div className={styles.menu_bar}>
         <div className={styles.center}>
           <div className={styles.site_logo}>
-            <img className={styles.logo_mobile} src="/logo.png" />
+            <img
+              className={styles.logo_mobile}
+              src="/logo.png"
+              alt="Logo"
+            />
           </div>
         </div>
+
         <div className={styles.left_side}>
-          <div className={styles.menu_icon}>
-            <FiMenu />
+          <div
+            className={styles.menu_icon}
+            onClick={() => setIsMenuOpen(true)}
+          >
+            <FiMenu size={25} />
           </div>
+        </div>
+      </div>
+
+      {/* Overlay + Side Menu */}
+      <div
+        className={`${styles.overlay} ${
+          isMenuOpen ? styles.overlay_open : ""
+        }`}
+      >
+        <div
+          ref={menuRef}
+          className={`${styles.side_menu} ${
+            isMenuOpen ? styles.side_menu_open : ""
+          }`}
+        >
+          <div className={styles.menu_header}>
+            <span>Menu</span>
+
+            <button
+              className={styles.close_button}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FiX size={25} />
+            </button>
+          </div>
+
+          <nav className={styles.menu_items}>
+            <div className={styles.menu}>Home</div>
+          </nav>
         </div>
       </div>
     </div>
