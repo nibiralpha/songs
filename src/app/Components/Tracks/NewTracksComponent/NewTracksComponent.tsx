@@ -11,6 +11,7 @@ import { FaPlay } from "react-icons/fa";
 import { formatTrackDuration } from "@Helper/Functions";
 import { PlaylistStateInterface } from "@app-types/PlaylistState";
 import { useNavigate } from "@Hooks/useNavigate";
+import Link from "next/link";
 
 interface Props {
   title: string;
@@ -32,10 +33,6 @@ export default function NewTracksComponent({
 }: Readonly<Props>) {
   const navigate = useNavigate();
 
-  const changePageToPlaylist = (id: number) => {
-    navigate(`/playlist/${id}`);
-  };
-
   const changePageToArtist = (id: number) => {
     navigate(`/artist/${id}`);
   };
@@ -50,19 +47,13 @@ export default function NewTracksComponent({
         <div></div>
       ) : (
         <div className={styles.heading}>
-          <p
-            onClick={() => changePageToPlaylist(data.data.id)}
-            className={styles.section_name}
-          >
-            {title}
-          </p>
+          <Link href={`/playlist/${data?.data?.id}`}>
+            <p className={styles.section_name}>{title}</p>
+          </Link>
           {showViewAll && (
-            <p
-              onClick={() => changePageToPlaylist(data?.data?.id)}
-              className={styles.view_all}
-            >
-              View all
-            </p>
+            <Link href={`/playlist/${data?.data?.id}`}>
+              <p className={styles.view_all}>View all</p>
+            </Link>
           )}
         </div>
       )}
@@ -150,19 +141,19 @@ export default function NewTracksComponent({
                       <td
                         className={`${styles.track_details} ${styles.mouse_hover}`}
                       >
-                        <span
-                          onClick={() => changePageToArtist(track?.artist?.id)}
-                        >
-                          {track?.artist?.name}
+                        <span>
+                          <Link href={`/artist/${track?.artist?.id}`}>
+                            {track?.artist?.name}
+                          </Link>
                         </span>
                       </td>
                       <td
                         className={`${styles.track_details} ${styles.mouse_hover}`}
                       >
-                        <span
-                          onClick={() => changePageToAlbum(track?.album?.id)}
-                        >
-                          {track?.album?.title}
+                        <span>
+                          <Link href={`/album/${track?.album?.id}`}>
+                            {track?.album?.title}
+                          </Link>
                         </span>
                       </td>
                       <td className={styles.track_details}>

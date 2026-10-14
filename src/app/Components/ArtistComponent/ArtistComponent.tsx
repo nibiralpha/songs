@@ -16,6 +16,8 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 import { useNavigate } from "@Hooks/useNavigate";
 import { useResponsiveSlides } from "@Hooks/useResponsiveSlides";
+import Link from "next/link";
+import Image from "next/image";
 
 interface Props {
   title: string;
@@ -32,11 +34,6 @@ export default function ArtistComponent({
   spaceBetween,
   loading,
 }: Readonly<Props>) {
-  const navigate = useNavigate();
-
-  const changePage = (id: number) => {
-    navigate("/artist/" + id);
-  };
 
   const responsiveSlides = useResponsiveSlides();
 
@@ -81,16 +78,16 @@ export default function ArtistComponent({
             <SwiperSlide key={i}>
               <div className={styles.music_box}>
                 <div className={styles.img_container}>
-                  <img
-                    src={
-                      artist.picture_medium !== null
-                        ? artist.picture_medium
-                        : "/no-img.png"
-                    }
-                    className={styles.album_img}
-                    alt={artist.name}
-                    onClick={() => changePage(artist.id)}
-                  />
+                  <Link href={`/artist/${artist?.id}`}>
+                    <Image
+                      src={artist.picture_medium || "/no-img.png"}
+                      className={styles.album_img}
+                      alt={artist.name}
+                      width={500}
+                      height={500}
+                      sizes="(max-width: 430px) 100vw, 225px"
+                    />
+                  </Link>
                   <div className={styles.actions}>
                     <div className={styles.action_button}>
                       <FaPlay className={styles.action_icon} size={16} />
@@ -98,11 +95,8 @@ export default function ArtistComponent({
                   </div>
                 </div>
                 <div className={styles.desc}>
-                  <div
-                    onClick={() => changePage(artist.id)}
-                    className={styles.title}
-                  >
-                    {artist.name}
+                  <div className={styles.title}>
+                    <Link href={`/artist/${artist?.id}`}>{artist.name}</Link>
                   </div>
                 </div>
               </div>

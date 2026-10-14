@@ -14,7 +14,8 @@ import { TrackData } from "@app-types/PopulerSongs";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-import { useNavigate } from "@Hooks/useNavigate";
+import Link from "next/link";
+import Image from "next/image";
 
 interface Props {
   id: number;
@@ -37,39 +38,19 @@ export default function MusicBoxComponent({
   loading,
   showViewAll,
 }: Readonly<Props>) {
-  const navigate = useNavigate();
-
-  const changePageToPlaylist = () => {
-    navigate("/genra/" + id);
-  };
-
-  const changePageToArtist = (id: number) => {
-    navigate("/artist/" + id);
-  };
-
-  const changePageToAlbumTrack = (albumId: number, trackId: number) => {
-    navigate("/album/" + albumId + "/track/" + trackId);
-  };
-
   return (
     <>
       {loading ? (
         <Skeleton width={200} height={20} style={{ marginBottom: "15px" }} />
       ) : (
         <div className={styles.heading}>
-          <p
-            onClick={() => changePageToPlaylist()}
-            className={styles.section_name}
-          >
-            {title}
-          </p>
+          <Link href={`/genra/${id}`}>
+            <p className={styles.section_name}>{title}</p>
+          </Link>
           {showViewAll && (
-            <p
-              onClick={() => changePageToPlaylist()}
-              className={styles.view_all}
-            >
-              View all
-            </p>
+            <Link href={`/genra/${id}`}>
+              <p className={styles.view_all}>View all</p>
+            </Link>
           )}
         </div>
       )}
@@ -109,16 +90,19 @@ export default function MusicBoxComponent({
             <SwiperSlide key={i}>
               <div className={styles.music_box}>
                 <div className={styles.img_container}>
-                  <img
-                    src={
-                      box.album?.cover_big !== null
-                        ? box.album?.cover_big
-                        : "/no-img.png"
-                    }
-                    onClick={() => changePageToAlbumTrack(box.album.id, box.id)}
-                    className={styles.album_img}
-                    alt={box.title}
-                  />
+                  <Link href={`/album/${box.album.id}/track/${box.id}`}>
+                    <Image
+                      src={
+                        box.album?.cover_big !== null
+                          ? box.album?.cover_big
+                          : "/no-img.png"
+                      }
+                      className={styles.album_img}
+                      alt={box.title}
+                      width={500}
+                      height={500}
+                    />
+                  </Link>
                   <div className={styles.actions}>
                     <div className={styles.action_button}>
                       <FaPlay className={styles.action_icon} size={16} />
@@ -129,18 +113,12 @@ export default function MusicBoxComponent({
                   </div>
                 </div>
                 <div className={styles.desc}>
-                  <div
-                    onClick={() => changePageToAlbumTrack(box.album.id, box.id)}
-                    className={styles.title}
-                  >
-                    {box.title}
-                  </div>
-                  <div
-                    onClick={() => changePageToArtist(box.artist.id)}
-                    className={styles.sub_title}
-                  >
-                    {box.artist?.name}
-                  </div>
+                  <Link href={`/album/${box.album.id}/track/${box.id}`}>
+                    <div className={styles.title}>{box.title}</div>
+                  </Link>
+                  <Link href={`artist/${box?.artist?.id}`}>
+                    <div className={styles.sub_title}>{box.artist?.name}</div>
+                  </Link>
                 </div>
               </div>
             </SwiperSlide>

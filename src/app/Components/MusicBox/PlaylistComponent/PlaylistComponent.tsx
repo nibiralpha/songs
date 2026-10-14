@@ -9,13 +9,14 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import { FaHeart, FaPlay } from "react-icons/fa";
-import { PlaylistData } from "@app-types/Playlist";
 import { PlaylistStateInterface } from "@app-types/PlaylistState";
 
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { useRouter } from "next/navigation";
-import { useNavigate } from "@Hooks/useNavigate";
+
+import Link from "next/link";
+import Image from "next/image";
+
 interface Props {
   title: string;
   data: PlaylistStateInterface;
@@ -33,19 +34,6 @@ export default function PlaylistComponent({
   showDefault,
   loading,
 }: Readonly<Props>) {
-  const navigate = useNavigate();
-
-  const changePageToPlaylist = (id: number) => {
-    navigate("/playlist/" + id);
-  };
-
-  const changePageToArtist = (id: number) => {
-    navigate("/artist/" + id);
-  };
-
-  const changePageToAlbumTrack = (albumId: number, trackId: number) => {
-    navigate("/album/" + albumId + "/track/" + trackId);
-  };
   return (
     <>
       {loading ? (
@@ -53,18 +41,12 @@ export default function PlaylistComponent({
       ) : (
         // <p className={styles.section_name}>{title}</p>
         <div className={styles.heading}>
-          <p
-            onClick={() => changePageToPlaylist(data?.data?.id)}
-            className={styles.section_name}
-          >
-            {title}
-          </p>
-          <p
-            onClick={() => changePageToPlaylist(data?.data?.id)}
-            className={styles.view_all}
-          >
-            View all
-          </p>
+          <Link href={`/playlist/${data?.data?.id}`}>
+            <p className={styles.section_name}>{title}</p>
+          </Link>
+          <Link href={`/playlist/${data?.data?.id}`}>
+            <p className={styles.view_all}>View all</p>
+          </Link>
         </div>
       )}
 
@@ -103,17 +85,19 @@ export default function PlaylistComponent({
             <SwiperSlide key={i}>
               <div className={styles.music_box}>
                 <div className={styles.img_container}>
-                  <img
-                    src={
-                      track.album?.cover_medium !== null
-                        ? track.album?.cover_medium
-                        : "/no-img.png"
-                    }
-                    className={styles.album_img}
-                    alt={track.title}
-                    onClick={() => changePageToAlbumTrack(track?.album?.id, track?.id)}
-                    // onClick={() => changePage(data?.data?.id)}
-                  />
+                  <Link href={`/album/${track?.album?.id}/track/${track?.id}`}>
+                    <Image
+                      src={
+                        track.album?.cover_medium !== null
+                          ? track.album?.cover_medium
+                          : "/no-img.png"
+                      }
+                      className={styles.album_img}
+                      alt={track.title}
+                      width={500}
+                      height={500}
+                    />
+                  </Link>
                   <div className={styles.actions}>
                     <div className={styles.action_button}>
                       <FaPlay className={styles.action_icon} size={16} />
@@ -124,20 +108,12 @@ export default function PlaylistComponent({
                   </div>
                 </div>
                 <div className={styles.desc}>
-                  <div
-                    onClick={() =>
-                      changePageToAlbumTrack(track.album.id, track.id)
-                    }
-                    className={styles.title}
-                  >
-                    {track.title}
-                  </div>
-                  <div
-                    onClick={() => changePageToArtist(track?.artist?.id)}
-                    className={styles.sub_title}
-                  >
-                    {track.artist?.name}
-                  </div>
+                  <Link href={`/album/${track?.album?.id}/track/${track?.id}`}>
+                    <div className={styles.title}>{track.title}</div>
+                  </Link>
+                  <Link href={`/artist/${track?.artist?.id}`}>
+                    <div className={styles.sub_title}>{track.artist?.name}</div>
+                  </Link>
                 </div>
               </div>
             </SwiperSlide>
