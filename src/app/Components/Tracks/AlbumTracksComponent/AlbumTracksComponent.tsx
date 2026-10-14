@@ -9,7 +9,6 @@ import "swiper/css/navigation";
 import { CiHeart } from "react-icons/ci";
 import { formatTrackDuration } from "@Helper/Functions";
 import { DeezerTrackWithoutContributors } from "@app-types/Artist";
-import { useNavigate } from "@Hooks/useNavigate";
 import { ListSkeletonComponent } from "@Components/Tracks/ListSkeletonComponent/ListSkelatonComponent";
 
 import Link from "next/link";
@@ -35,12 +34,6 @@ export default function AlbumTracksComponent({
   showDefault,
   trackId,
 }: Readonly<Props>) {
-  const navigate = useNavigate();
-
-  const changePageToArtist = (id: number) => {
-    navigate(`/artist/${id}`);
-  };
-
   return (
     <>
       <div className={styles.heading}>
@@ -121,10 +114,10 @@ export default function AlbumTracksComponent({
                       <td
                         className={`${styles.track_details} ${styles.mouse_hover}`}
                       >
-                        <span
-                          onClick={() => changePageToArtist(track?.artist.id)}
-                        >
-                          {track?.artist?.name}
+                        <span>
+                          <Link href={`/artist/${track?.artist.id}`}>
+                            {track?.artist?.name}
+                          </Link>
                         </span>
                       </td>
                       <td className={styles.track_details}>

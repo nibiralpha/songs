@@ -16,6 +16,10 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { ArtistAlbum } from "@app-types/Album";
 import { useNavigate } from "@Hooks/useNavigate";
 import { useResponsiveSlides } from "@/src/app/Hooks/useResponsiveSlides";
+
+import Link from "next/link";
+import Image from "next/image";
+
 interface Props {
   title: string;
   data: ArtistAlbum[];
@@ -84,16 +88,19 @@ export default function AlbumComponent({
             <SwiperSlide key={i}>
               <div className={styles.music_box}>
                 <div className={styles.img_container}>
-                  <img
-                    src={
-                      box?.cover_medium !== null
-                        ? box.cover_medium
-                        : "/no-img.png"
-                    }
-                    className={styles.album_img}
-                    alt={box.title}
-                    onClick={() => changePage(box.id)}
-                  />
+                  <Link href={`/album/${box.id}`}>
+                    <Image
+                      src={
+                        box?.cover_medium !== null
+                          ? box.cover_medium
+                          : "/no-img.png"
+                      }
+                      className={styles.album_img}
+                      alt={box.title}
+                      width={500}
+                      height={500}
+                    />
+                  </Link>
                   <div className={styles.actions}>
                     <div className={styles.action_button}>
                       <FaPlay className={styles.action_icon} size={16} />
@@ -104,7 +111,9 @@ export default function AlbumComponent({
                   </div>
                 </div>
                 <div className={styles.desc}>
-                  <div onClick={() => changePage(box.id)} className={styles.title}>{box.title}</div>
+                  <div className={styles.title}>
+                    <Link href={`/album/${box.id}`}>{box.title}</Link>
+                  </div>
                   {/* <div className={styles.sub_title}>{box?.title}</div> */}
                 </div>
               </div>

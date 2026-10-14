@@ -7,6 +7,8 @@ import { FaPlay } from "react-icons/fa";
 import { FaShuffle } from "react-icons/fa6";
 import { AlbumDetailsResponse } from "@app-types/Album";
 import ContentLoader from "react-content-loader";
+import Image from "next/image";
+
 import { AlbumtBannerSkeletonComponent } from "./AlbumBannerSkeletonComponent";
 interface Props {
   data: AlbumDetailsResponse;
@@ -17,7 +19,6 @@ export default function AlbumBannerComponent({
   loading,
   data,
 }: Readonly<Props>) {
-  
   if (loading) {
     return <AlbumtBannerSkeletonComponent />;
   }
@@ -27,11 +28,14 @@ export default function AlbumBannerComponent({
       <div className={styles.artist}>
         <div className={styles.artish_img_area}>
           <div className={styles.artist_img}>
-            <img
+            <Image
               className={styles.album_main_img}
               src={
                 data?.cover_medium !== null ? data?.cover_medium : "/no-img.png"
               }
+              alt="Album cover"
+              width={500}
+              height={500}
             />
           </div>
         </div>

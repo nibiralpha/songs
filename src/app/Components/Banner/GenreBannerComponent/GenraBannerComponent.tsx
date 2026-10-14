@@ -8,6 +8,7 @@ import { FaShuffle } from "react-icons/fa6";
 import { GenreInterface } from "@app-types/Genre";
 import { GenraOrginalAndAppName } from "@Constant/Genra";
 import { GenraBannerSkeletonComponent } from "./GenraBannerSkeletonComponent";
+import Image from "next/image";
 
 interface Props {
   data: GenreInterface;
@@ -34,13 +35,16 @@ export default function GenraBannerComponent({
       <div className={styles.artist}>
         <div className={styles.artish_img_area}>
           <div className={styles.artist_img}>
-            <img
+            <Image
               className={styles.main_img}
               src={
                 data?.picture_medium !== null
                   ? data?.picture_medium
                   : "/no-img.png"
               }
+              alt="Artist"
+              width={500}
+              height={500}
             />
           </div>
         </div>

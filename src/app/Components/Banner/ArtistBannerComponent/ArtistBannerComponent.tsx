@@ -6,8 +6,8 @@ import Button from "@/src/app/Components/ButtonComponent/ButtonComponent";
 import { FaPlay } from "react-icons/fa";
 import { FaShuffle } from "react-icons/fa6";
 import { ArtistDetails } from "@app-types/Artist";
-import ContentLoader from "react-content-loader";
 import { ArtistBannerSkeletonComponent } from "./ArtistBannerSkeletonComponent";
+import Image from "next/image";
 
 interface Props {
   data: ArtistDetails | null;
@@ -18,9 +18,8 @@ export default function ArtistBannerComponent({
   loading,
   data,
 }: Readonly<Props>) {
-  
   if (loading) {
-    return <ArtistBannerSkeletonComponent />
+    return <ArtistBannerSkeletonComponent />;
   }
 
   return (
@@ -28,10 +27,12 @@ export default function ArtistBannerComponent({
       <div className={styles.artist}>
         <div className={styles.artish_img_area}>
           <div className={styles.artist_img}>
-            <img
+            <Image
               className={styles.main_img}
               src={data?.picture_medium ? data.picture_medium : "/no-img.png"}
               alt={data?.name ?? "Artist"}
+              width={500}
+              height={500}
             />
           </div>
         </div>

@@ -12,6 +12,7 @@ import { formatTrackDuration } from "@Helper/Functions";
 import { PlaylistStateInterface } from "@app-types/PlaylistState";
 import { useNavigate } from "@Hooks/useNavigate";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Props {
   title: string;
@@ -118,14 +119,12 @@ export default function NewTracksComponent({
                   return (
                     <tr className={styles.table_row} key={track.id}>
                       <td className={`${styles.track_details_img}`}>
-                        <img
+                        <Image
                           className={styles.song_img}
-                          src={
-                            track.album.cover_small !== null
-                              ? track.album.cover_small
-                              : "/no-img.png"
-                          }
+                          src={track.album.cover_small || "/no-img.png"}
                           alt={track.album.cover_small}
+                          width={45}
+                          height={45}
                         />
 
                         <div className={styles.play_overlay}>
@@ -178,14 +177,12 @@ export default function NewTracksComponent({
               <div className={styles.mobile_main} key={track.id}>
                 <div className={styles.mobile_img_area}>
                   <div className={styles.mobile_img}>
-                    <img
+                    <Image
                       className={styles.song_img}
-                      src={
-                        track.album.cover_small !== null
-                          ? track.album.cover_small
-                          : "/no-img.png"
-                      }
+                      src={track.album.cover_small || "/no-img.png"}
                       alt={track.album.cover_small}
+                      width={45}
+                      height={45}
                     />
                   </div>
                 </div>

@@ -9,8 +9,9 @@ import "swiper/css/navigation";
 import { CiHeart } from "react-icons/ci";
 import { TrackData } from "@app-types/PopulerSongs";
 import { formatTrackDuration } from "@Helper/Functions";
-import { useNavigate } from "@Hooks/useNavigate";
 import { ListSkeletonComponent } from "@Components/Tracks/ListSkeletonComponent/ListSkelatonComponent";
+import Link from "next/link";
+import Image from "next/image";
 
 interface Props {
   title: string;
@@ -29,15 +30,6 @@ export default function SongsTrackComponent({
   showDefault,
   loading,
 }: Readonly<Props>) {
-  const navigate = useNavigate();
-
-  const changePageToArtist = (id: number) => {
-    navigate(`/artist/${id}`);
-  };
-
-  const changePageToAlbum = (id: number) => {
-    navigate(`/album/${id}`);
-  };
   return (
     <>
       <div className={styles.heading}>
@@ -103,14 +95,12 @@ export default function SongsTrackComponent({
                   return (
                     <tr key={track.id}>
                       <td className={`${styles.track_details_img}`}>
-                        <img
+                        <Image
                           className={styles.song_img}
-                          src={
-                            track.album.cover_small !== null
-                              ? track.album.cover_small
-                              : "/no-img.png"
-                          }
-                          alt={track.album.cover_small}
+                          src={track.album.cover_small || "/no-img.png"}
+                          alt="Album cover"
+                          width={45}
+                          height={45}
                         />
                       </td>
 
@@ -122,19 +112,19 @@ export default function SongsTrackComponent({
                       <td
                         className={`${styles.track_details} ${styles.mouse_hover}`}
                       >
-                        <span
-                          onClick={() => changePageToArtist(track?.artist?.id)}
-                        >
-                          {track?.artist?.name}
+                        <span>
+                          <Link href={`/artist/${track?.artist?.id}`}>
+                            {track?.artist?.name}
+                          </Link>
                         </span>
                       </td>
                       <td
                         className={`${styles.track_details} ${styles.mouse_hover}`}
                       >
-                        <span
-                          onClick={() => changePageToAlbum(track?.album?.id)}
-                        >
-                          {track?.album?.title}
+                        <span>
+                          <Link href={`/album/${track?.album?.id}`}>
+                            {track?.album?.title}
+                          </Link>
                         </span>
                       </td>
                       <td className={styles.track_details}>
@@ -161,29 +151,25 @@ export default function SongsTrackComponent({
                 <div className={styles.mobile_main} key={track.id}>
                   <div className={styles.mobile_img_area}>
                     <div className={styles.mobile_img}>
-                      <img
+                      <Image
                         className={styles.song_img}
-                        src={
-                          track.album.cover_small !== null
-                            ? track.album.cover_small
-                            : "/no-img.png"
-                        }
-                        alt={track.album.cover_small}
+                        src={track.album.cover_small || "/no-img.png"}
+                        alt="Album cover"
+                        width={45}
+                        height={45}
                       />
                     </div>
                   </div>
                   <div className={styles.mobile_content_area}>
-                    <div
-                      // onClick={() => changePageToAlbum(track?.album?.id)}
-                      className={styles.mobile_title}
-                    >
-                      {track?.title}
+                    <div className={styles.mobile_title}>
+                      <Link href={`/album/${track?.album?.id}`}>
+                        {track?.title}
+                      </Link>
                     </div>
-                    <div
-                      onClick={() => changePageToArtist(track?.artist?.id)}
-                      className={styles.mobile_artist}
-                    >
-                      {track?.artist?.name}
+                    <div className={styles.mobile_artist}>
+                      <Link href={`/artist/${track?.artist?.id}`}>
+                        {track?.artist?.name}
+                      </Link>
                     </div>
                   </div>
                 </div>

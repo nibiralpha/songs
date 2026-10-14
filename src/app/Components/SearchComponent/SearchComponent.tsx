@@ -5,6 +5,7 @@ import Select, { SingleValueProps } from "react-select";
 import { components, DropdownIndicatorProps } from "react-select";
 import { DeezerSearchResponse, SearchOption } from "@app-types/Search";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { useNavigate } from "@Hooks/useNavigate";
 
 export type SearchResultType = "track" | "album" | "artist" | "playlist";
@@ -168,7 +169,7 @@ export default function SearchComponent({
             if (option) {
               if (option.type == "track") {
                 changePage(option.type, option.id, option?.albumId);
-                return
+                return;
               }
               changePage(option.type, option.id);
             }
@@ -207,8 +208,8 @@ export default function SearchComponent({
                   alignItems: "center",
                 }}
               >
-                <img
-                  src={option.image ? option.image : "/no-img.png"}
+                <Image
+                  src={option.image || "/no-img.png"}
                   width={40}
                   height={55}
                   style={{

@@ -18,6 +18,8 @@ import { ArtistSongsDetailStateInterface } from "@app-types/ArtistState";
 import { DeezerTrack } from "@app-types/Artist";
 import { useNavigate } from "@Hooks/useNavigate";
 import { ListSkeletonComponent } from "@Components/Tracks/ListSkeletonComponent/ListSkelatonComponent";
+import Link from "next/link";
+import Image from "next/image";
 
 interface Props {
   title: string;
@@ -104,14 +106,12 @@ export default function ArtistTracksComponent({
                   return (
                     <tr key={track.id}>
                       <td className={`${styles.track_details_img}`}>
-                        <img
+                        <Image
                           className={styles.song_img}
-                          src={
-                            track.album.cover_small !== null
-                              ? track.album.cover_small
-                              : "/no-img.png"
-                          }
-                          alt={track.album.cover_small}
+                          src={track.album.cover_small || "/no-img.png"}
+                          alt="Album cover"
+                          width={45}
+                          height={45}
                         />
                       </td>
 
@@ -123,10 +123,10 @@ export default function ArtistTracksComponent({
                       <td
                         className={`${styles.track_details} ${styles.mouse_hover}`}
                       >
-                        <span
-                          onClick={() => changePageToAlbum(track?.album?.id)}
-                        >
-                          {track?.album?.title}
+                        <span>
+                          <Link href={`/album/${track?.album?.id}`}>
+                            {track?.album?.title}
+                          </Link>
                         </span>
                       </td>
                       <td className={styles.track_details}>
@@ -153,14 +153,12 @@ export default function ArtistTracksComponent({
                 <div className={styles.mobile_main} key={track.id}>
                   <div className={styles.mobile_img_area}>
                     <div className={styles.mobile_img}>
-                      <img
+                      <Image
                         className={styles.song_img}
-                        src={
-                          track.album.cover_small !== null
-                            ? track.album.cover_small
-                            : "/no-img.png"
-                        }
-                        alt={track.album.cover_small}
+                        src={track.album.cover_small || "/no-img.png"}
+                        alt="Album cover"
+                        width={45}
+                        height={45}
                       />
                     </div>
                   </div>

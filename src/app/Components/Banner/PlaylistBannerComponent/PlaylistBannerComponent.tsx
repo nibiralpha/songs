@@ -6,8 +6,9 @@ import Button from "@/src/app/Components/ButtonComponent/ButtonComponent";
 import { FaPlay } from "react-icons/fa";
 import { FaShuffle } from "react-icons/fa6";
 import { PlaylistDescription, PlaylistTrack } from "@app-types/Playlist";
-
 import { PlaylistBannerSkeletonComponent } from "./PlaylistBannerSkeletonComponent";
+import Image from "next/image";
+
 interface Props {
   data: PlaylistDescription | null;
   loading: boolean;
@@ -27,13 +28,12 @@ export default function PlaylistBannerComponent({
       <div className={styles.artist}>
         <div className={styles.artish_img_area}>
           <div className={styles.artist_img}>
-            <img
+            <Image
               className={styles.main_img}
-              src={
-                data?.picture_medium !== null
-                  ? data?.picture_medium
-                  : "/no-img.png"
-              }
+              src={data?.picture_medium || "/no-img.png"}
+              alt="Artist"
+              width={500}
+              height={500}
             />
           </div>
         </div>
