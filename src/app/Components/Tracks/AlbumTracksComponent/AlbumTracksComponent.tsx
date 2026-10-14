@@ -3,21 +3,17 @@
 import React from "react";
 import styles from "../Css/Tracks.module.css";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/navigation";
 
 import { CiHeart } from "react-icons/ci";
-import { FaPlay } from "react-icons/fa";
-import { SearchTrack } from "@app-types/PopulerSongs";
 import { formatTrackDuration } from "@Helper/Functions";
-import { PlaylistStateInterface } from "@app-types/PlaylistState";
-import { ArtistSongsDetailStateInterface } from "@app-types/ArtistState";
-import { DeezerTrack, DeezerTrackWithoutContributors } from "@app-types/Artist";
+import { DeezerTrackWithoutContributors } from "@app-types/Artist";
 import { useNavigate } from "@Hooks/useNavigate";
 import { ListSkeletonComponent } from "@Components/Tracks/ListSkeletonComponent/ListSkelatonComponent";
+
+import Link from "next/link";
+import Image from "next/image";
 
 interface Props {
   title: string;
@@ -108,14 +104,12 @@ export default function AlbumTracksComponent({
                       key={track.id}
                     >
                       <td className={`${styles.track_details_img}`}>
-                        <img
+                        <Image
                           className={styles.song_img}
-                          src={
-                            track.album.cover_small !== null
-                              ? track.album.cover_small
-                              : "/no-img.png"
-                          }
-                          alt={track.album.cover_small}
+                          src={track.album.cover_small || "/no-img.png"}
+                          alt={track.album.title || "Album cover"}
+                          width={45}
+                          height={45}
                         />
                       </td>
 
@@ -124,7 +118,6 @@ export default function AlbumTracksComponent({
                       >
                         {track.title}
                       </td>
-                      {/* <td className={styles.track_details}>{track?.artist?.name}</td> */}
                       <td
                         className={`${styles.track_details} ${styles.mouse_hover}`}
                       >
@@ -159,14 +152,12 @@ export default function AlbumTracksComponent({
                 <div className={styles.mobile_main} key={track.id}>
                   <div className={styles.mobile_img_area}>
                     <div className={styles.mobile_img}>
-                      <img
+                      <Image
                         className={styles.song_img}
-                        src={
-                          track.album.cover_small !== null
-                            ? track.album.cover_small
-                            : "/no-img.png"
-                        }
-                        alt={track.album.cover_small}
+                        src={track.album.cover_small || "/no-img.png"}
+                        alt={track.album.title || track.album.title}
+                        width={45}
+                        height={45}
                       />
                     </div>
                   </div>

@@ -39,7 +39,7 @@ export default function AlbumPage() {
           data={albums.data?.tracks?.data}
           trackId={trackId}
           loading={albums.loading}
-          showDefault={10}
+          showDefault={albums?.data?.tracks?.data.length}
           slidesPerView={4}
           spaceBetween={12}
         />
